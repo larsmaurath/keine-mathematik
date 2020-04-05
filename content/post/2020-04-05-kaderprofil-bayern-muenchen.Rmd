@@ -18,9 +18,9 @@ theme_set(theme_bw())
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 text_size <- 3
-background_col <- "seagreen"
+background_col <- "seagreen3"
 link_col <- "red"
 
 x_breaks <- seq(from = 18, to = 38, by = 2)
@@ -37,8 +37,9 @@ ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
   #ggforce::geom_link(aes(x = Alter_Zugang, xend = Alter_Jetzt, y = Minutenanteil, yend = Minutenanteil, alpha = stat(index)), color = link_col) +
   ggforce::geom_link(aes(x = Alter_Zugang, xend = Alter_Jetzt, y = Minutenanteil, yend = Minutenanteil, alpha = stat(index), color = Position)) +
   geom_text(aes(label = Spieler), hjust = "middle", vjust = "bottom", nudge_y = 0.02, size = text_size) +
-  scale_x_continuous(breaks = x_breaks) + 
+  scale_x_continuous(breaks = x_breaks, limits = c(14, 38) ) + 
   scale_y_continuous(labels = scales::percent) + 
-  labs(x = "Alter", y = "Gespielte Minuten in %", title = "Kaderprofil - FC Bayern München", subtitle = "Saison 2019/2020 - Spieltag 25")
+  labs(x = "Alter (zum 4.4.2020)", y = "Gespielte Minuten in %", title = "Kaderprofil - FC Bayern München", subtitle = "Saison 2019/2020 - Spieltag 25") +
+  theme(legend.position="none")
 ```
 

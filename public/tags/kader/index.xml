@@ -18,7 +18,7 @@
       <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/</guid>
-      <description>text_size &amp;lt;- 3 background_col &amp;lt;- &amp;quot;seagreen&amp;quot; link_col &amp;lt;- &amp;quot;red&amp;quot; x_breaks &amp;lt;- seq(from = 18, to = 38, by = 2) data &amp;lt;- read_csv(file = file.path(&amp;quot;../data/bayern_kader_profil_20200404.csv&amp;quot;), col_types = &amp;quot;cnnnnc&amp;quot;) %&amp;gt;% filter(Minutenanteil &amp;gt; 0.05) %&amp;gt;% rowwise() %&amp;gt;% mutate(Spieler = paste0(substr(Spieler, 1, 1), &amp;quot;. &amp;quot;, tail(strsplit(Spieler, &amp;quot; &amp;quot;)[[1]], n=1))) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) + geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf), fill = background_col, alpha = 0.</description>
+      <description> </description>
     </item>
     
   </channel>

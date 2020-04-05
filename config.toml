@@ -32,7 +32,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     description = "Beschreibung"
     github = "https://github.com/larsmaurath/keine-mathematik"
     twitter = "https://twitter.com/XXX"
-    email = "XXX@example.com"
     opengraph = true
     shareTwitter = true
     shareFacebook = true

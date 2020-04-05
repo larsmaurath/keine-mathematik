@@ -43,26 +43,6 @@
   </url>
   
   <url>
-    <loc>/2015/07/23/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/page/about/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url>
@@ -70,21 +50,6 @@
   <url>
     <loc>/page/contact/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/my-awesome-project/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2014/09/28/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T02:13:50+00:00</lastmod>
   </url>
   
 </urlset>
