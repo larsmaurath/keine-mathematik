@@ -1,0 +1,8 @@
+"0","data <- read_csv(file = file.path(""../data/bayern_kader_profil_20200404.csv""), col_types = ""cnnn"") %>%"
+"0","  filter(Minutenanteil > 0.05)"
+"0",""
+"0","ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +"
+"0","  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = ""seagreen""), alpha = 0.4) +"
+"0","  geom_point() +"
+"0","  scale_y_continuous(labels = scales::percent) + "
+"0","  labs(x = ""Alter"", y = ""Gespielte Minuten in %"", title = ""Kaderprofil - FC Bayern München"", subtitle = ""Saison 2019/2020 - Spieltag 25"")"

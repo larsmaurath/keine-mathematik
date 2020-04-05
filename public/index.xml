@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kaderprofil - Bayern München</title>
+      <link>/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/</guid>
+      <description> data &amp;lt;- read_csv(file = file.path(&amp;quot;../data/bayern_kader_profil_20200404.csv&amp;quot;), col_types = &amp;quot;cnnn&amp;quot;) %&amp;gt;% filter(Minutenanteil &amp;gt; 0.05) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) + geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &amp;quot;seagreen&amp;quot;), alpha = 0.4) + geom_point() + scale_y_continuous(labels = scales::percent) + labs(x = &amp;quot;Alter&amp;quot;, y = &amp;quot;Gespielte Minuten in %&amp;quot;, title = &amp;quot;Kaderprofil - FC Bayern München&amp;quot;, subtitle = &amp;quot;Saison 2019/2020 - Spieltag 25&amp;quot;) </description>
+    </item>
     
     <item>
       <title>Datenquellen</title>

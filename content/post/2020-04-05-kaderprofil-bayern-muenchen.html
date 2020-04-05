@@ -1,0 +1,23 @@
+---
+title: Kaderprofil - Bayern München
+author: Lars Maurath
+date: '2020-04-05'
+slug: kaderprofil-bayern-muenchen
+categories: []
+tags:
+  - Kader
+  - Altersprofil
+description: ''
+---
+
+
+
+<pre class="r"><code>data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;%
+  filter(Minutenanteil &gt; 0.05)
+
+ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
+  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) +
+  geom_point() +
+  scale_y_continuous(labels = scales::percent) + 
+  labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;)</code></pre>
+<p><img src="/post/2020-04-05-kaderprofil-bayern-muenchen_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>

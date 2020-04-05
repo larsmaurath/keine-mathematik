@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Altersprofil</title>
+      <link>/tags/altersprofil/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/altersprofil/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kader</title>
+      <link>/tags/kader/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/kader/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>plot</title>

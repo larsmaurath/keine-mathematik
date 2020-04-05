@@ -3,23 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Posts &middot; Lars Maurath</title>
-        <meta name="description" content="Beschreibung">
+        <title>Kaderprofil - Bayern München &middot; Lars Maurath</title>
+        <meta name="description" content=" data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;% filter(Minutenanteil &gt; 0.05) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) &#43; geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) &#43; geom_point() &#43; scale_y_continuous(labels = scales::percent) &#43; labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;) ">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.68.1" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="Posts">
-<meta property="og:description" content="Beschreibung">
-<meta property="og:type" content="website">
-<meta property="og:url" content="/post/">
+        <meta property="og:title" content="Kaderprofil - Bayern München">
+<meta property="og:description" content=" data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;% filter(Minutenanteil &gt; 0.05) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) &#43; geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) &#43; geom_point() &#43; scale_y_continuous(labels = scales::percent) &#43; labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;) ">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/">
         <link rel="stylesheet" href="/dist/site.css">
         <link rel="stylesheet" href="/dist/syntax.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        
-            <link href="/post/index.xml" rel="alternate" type="application/rss+xml">
         
         
         
@@ -95,48 +93,92 @@ if (!doNotTrack) {
             <div id="container">
 
 
-<div id="post-index" class="container">
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Kaderprofil - Bayern München</h1>
     
-    <header class="post-header">
-        <h1 class="post-title" itemprop="name">Keine Mathematik</h1>
-        <p>Beschreibung</p>
-    </header>
+    <p class="post-date">
+        <span>Published <time datetime="2020-04-05" itemprop="datePublished">Sun, Apr 5, 2020</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://google.com/&#43;XXX" itemprop="url" rel="author">Lars Maurath</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 1 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
 
 
+<pre class="r"><code>data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;%
+  filter(Minutenanteil &gt; 0.05)
 
-    <ol class="post-list">
-        
-        
-            <li class="post-stub" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
-    <a href="/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/" itemprop="url" title="Go to post detail">
-        <h4 class="post-stub-title" itemprop="name">Kaderprofil - Bayern München</h4>
-        <time class="post-stub-date" datetime="2020-04-05">Published Sun, Apr 5, 2020</time>
-        
-    </a>
-</li>
-        
-            <li class="post-stub" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
-    <a href="/2015/07/23/2015-07-23-r-rmarkdown/" itemprop="url" title="Go to post detail">
-        <h4 class="post-stub-title" itemprop="name">Hello R Markdown</h4>
-        <time class="post-stub-date" datetime="2015-07-23">Published Thu, Jul 23, 2015</time>
-        
-    </a>
-</li>
-        
-            <li class="post-stub" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
-    <a href="/2014/09/28/creating-a-new-theme/" itemprop="url" title="Go to post detail">
-        <h4 class="post-stub-title" itemprop="name">Creating a New Theme</h4>
-        <time class="post-stub-date" datetime="2014-09-28">Published Sun, Sep 28, 2014</time>
-        
-    </a>
-</li>
-        
-    </ol>
+ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
+  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) +
+  geom_point() +
+  scale_y_continuous(labels = scales::percent) + 
+  labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;)</code></pre>
+<p><img src="/post/2020-04-05-kaderprofil-bayern-muenchen_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 
-    <div class="post-navigation">
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/kader/">Kader</a>, 
+            
+                <a href="/tags/altersprofil/">Altersprofil</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Kaderprofil%20-%20Bayern%20M%c3%bcnchen&url=%2f2020%2f04%2f05%2f2020-04-05-kaderprofil-bayern-muenchen%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
         
 
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2020%2f04%2f05%2f2020-04-05-kaderprofil-bayern-muenchen%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2020%2f04%2f05%2f2020-04-05-kaderprofil-bayern-muenchen%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
     </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
 </div>
 
             </div>
@@ -168,3 +210,4 @@ if (!doNotTrack) {
         <script src="/js/scripts.js"></script>
     </body>
 </html>
+

@@ -1,0 +1,30 @@
+---
+title: Kaderprofil - Bayern München
+author: Lars Maurath
+date: '2020-04-05'
+slug: kaderprofil-bayern-muenchen
+categories: []
+tags:
+  - Kader
+  - Altersprofil
+description: ''
+---
+
+```{r, echo=FALSE, message=FALSE}
+library("tidyverse")
+
+theme_set(theme_bw())
+```
+
+
+```{r}
+data <- read_csv(file = file.path("../data/bayern_kader_profil_20200404.csv"), col_types = "cnnn") %>%
+  filter(Minutenanteil > 0.05)
+
+ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
+  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = "seagreen"), alpha = 0.4) +
+  geom_point() +
+  scale_y_continuous(labels = scales::percent) + 
+  labs(x = "Alter", y = "Gespielte Minuten in %", title = "Kaderprofil - FC Bayern München", subtitle = "Saison 2019/2020 - Spieltag 25")
+```
+
