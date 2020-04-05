@@ -12,18 +12,32 @@ description: ''
 
 ```{r, echo=FALSE, message=FALSE}
 library("tidyverse")
+library("ggforce")
 
 theme_set(theme_bw())
 ```
 
 
 ```{r}
-data <- read_csv(file = file.path("../data/bayern_kader_profil_20200404.csv"), col_types = "cnnn") %>%
-  filter(Minutenanteil > 0.05)
+text_size <- 3
+background_col <- "seagreen"
+link_col <- "red"
+
+x_breaks <- seq(from = 18, to = 38, by = 2)
+
+data <- read_csv(file = file.path("../data/bayern_kader_profil_20200404.csv"), col_types = "cnnnnc") %>%
+  filter(Minutenanteil > 0.05) %>%
+  rowwise() %>%
+  mutate(Spieler = paste0(substr(Spieler, 1, 1), ". ", tail(strsplit(Spieler, " ")[[1]], n=1)))
 
 ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
-  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = "seagreen"), alpha = 0.4) +
-  geom_point() +
+  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf), fill = background_col, alpha = 0.05) +
+  #geom_point(color = link_col) +
+  geom_point(aes(color = Position)) +
+  #ggforce::geom_link(aes(x = Alter_Zugang, xend = Alter_Jetzt, y = Minutenanteil, yend = Minutenanteil, alpha = stat(index)), color = link_col) +
+  ggforce::geom_link(aes(x = Alter_Zugang, xend = Alter_Jetzt, y = Minutenanteil, yend = Minutenanteil, alpha = stat(index), color = Position)) +
+  geom_text(aes(label = Spieler), hjust = "middle", vjust = "bottom", nudge_y = 0.02, size = text_size) +
+  scale_x_continuous(breaks = x_breaks) + 
   scale_y_continuous(labels = scales::percent) + 
   labs(x = "Alter", y = "Gespielte Minuten in %", title = "Kaderprofil - FC Bayern München", subtitle = "Saison 2019/2020 - Spieltag 25")
 ```

@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Kaderprofil - Bayern München &middot; Lars Maurath</title>
-        <meta name="description" content=" data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;% filter(Minutenanteil &gt; 0.05) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) &#43; geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) &#43; geom_point() &#43; scale_y_continuous(labels = scales::percent) &#43; labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;) ">
+        <meta name="description" content="text_size &lt;- 3 background_col &lt;- &quot;seagreen&quot; link_col &lt;- &quot;red&quot; x_breaks &lt;- seq(from = 18, to = 38, by = 2) data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnnnc&quot;) %&gt;% filter(Minutenanteil &gt; 0.05) %&gt;% rowwise() %&gt;% mutate(Spieler = paste0(substr(Spieler, 1, 1), &quot;. &quot;, tail(strsplit(Spieler, &quot; &quot;)[[1]], n=1))) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) &#43; geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf), fill = background_col, alpha = 0.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.68.1" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Kaderprofil - Bayern München">
-<meta property="og:description" content=" data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;% filter(Minutenanteil &gt; 0.05) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) &#43; geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) &#43; geom_point() &#43; scale_y_continuous(labels = scales::percent) &#43; labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;) ">
+<meta property="og:description" content="text_size &lt;- 3 background_col &lt;- &quot;seagreen&quot; link_col &lt;- &quot;red&quot; x_breaks &lt;- seq(from = 18, to = 38, by = 2) data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnnnc&quot;) %&gt;% filter(Minutenanteil &gt; 0.05) %&gt;% rowwise() %&gt;% mutate(Spieler = paste0(substr(Spieler, 1, 1), &quot;. &quot;, tail(strsplit(Spieler, &quot; &quot;)[[1]], n=1))) ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) &#43; geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf), fill = background_col, alpha = 0.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/">
         <link rel="stylesheet" href="/dist/site.css">
@@ -120,12 +120,25 @@ if (!doNotTrack) {
     
 
 
-<pre class="r"><code>data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnn&quot;) %&gt;%
-  filter(Minutenanteil &gt; 0.05)
+<pre class="r"><code>text_size &lt;- 3
+background_col &lt;- &quot;seagreen&quot;
+link_col &lt;- &quot;red&quot;
+
+x_breaks &lt;- seq(from = 18, to = 38, by = 2)
+
+data &lt;- read_csv(file = file.path(&quot;../data/bayern_kader_profil_20200404.csv&quot;), col_types = &quot;cnnnnc&quot;) %&gt;%
+  filter(Minutenanteil &gt; 0.05) %&gt;%
+  rowwise() %&gt;%
+  mutate(Spieler = paste0(substr(Spieler, 1, 1), &quot;. &quot;, tail(strsplit(Spieler, &quot; &quot;)[[1]], n=1)))
 
 ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
-  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf, fill = &quot;seagreen&quot;), alpha = 0.4) +
-  geom_point() +
+  geom_rect(aes(xmin = 25, xmax = 29, ymin = -Inf, ymax = Inf), fill = background_col, alpha = 0.05) +
+  #geom_point(color = link_col) +
+  geom_point(aes(color = Position)) +
+  #ggforce::geom_link(aes(x = Alter_Zugang, xend = Alter_Jetzt, y = Minutenanteil, yend = Minutenanteil, alpha = stat(index)), color = link_col) +
+  ggforce::geom_link(aes(x = Alter_Zugang, xend = Alter_Jetzt, y = Minutenanteil, yend = Minutenanteil, alpha = stat(index), color = Position)) +
+  geom_text(aes(label = Spieler), hjust = &quot;middle&quot;, vjust = &quot;bottom&quot;, nudge_y = 0.02, size = text_size) +
+  scale_x_continuous(breaks = x_breaks) + 
   scale_y_continuous(labels = scales::percent) + 
   labs(x = &quot;Alter&quot;, y = &quot;Gespielte Minuten in %&quot;, title = &quot;Kaderprofil - FC Bayern München&quot;, subtitle = &quot;Saison 2019/2020 - Spieltag 25&quot;)</code></pre>
 <p><img src="/post/2020-04-05-kaderprofil-bayern-muenchen_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
