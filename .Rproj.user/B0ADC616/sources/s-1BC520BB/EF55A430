@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "946009016",
+    "hash" : "0",
     "id" : "EF55A430",
-    "lastKnownWriteTime" : 1585586856,
-    "last_content_update" : 1585586856,
+    "lastKnownWriteTime" : 1586044939,
+    "last_content_update" : 1586044939,
     "path" : "~/Documents/GitHub/keine-mathematik/content/page/datenquellen.Rmd",
     "project_path" : "content/page/datenquellen.Rmd",
     "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "8"
     },
     "read_only" : false,
     "read_only_alternatives" : [
