@@ -1,8 +1,7 @@
 ---
 author: Lars Maurath
 date: "2015-04-03T02:13:50Z"
-description: Warum "Keine Mathematik"?
-title: About
+title: Warum "Keine Mathematik"?
 ---
 
 ## Name

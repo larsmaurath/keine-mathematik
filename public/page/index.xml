@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mitmachen</title>
+      <link>/page/mitmachen/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/page/mitmachen/</guid>
+      <description> Bitte einfach folgendes Formular ausfüllen test2:
+ Your email:   Your message:   Send  </description>
+    </item>
     
     <item>
       <title>Datenquellen</title>
@@ -24,21 +34,12 @@ Seit 2007 veröffentlicht die Webseite auch Prognosen für den weltweiten Klubfu
     </item>
     
     <item>
-      <title>About</title>
+      <title>Warum &#34;Keine Mathematik&#34;?</title>
       <link>/page/about/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
       <guid>/page/about/</guid>
       <description>Name November 2007. Die leidige Saison, die der FC Bayern München im UEFA Cup verbringen muss. Rummenigge gegen Hitzfeld. Bayern spielte gerade 2-2 zu Hause gegen die Bolton Wanderers, nur ein paar Wochen nachdem man in letzter Minute gegen einen serbischen Mittelklasseverein gewann. Hitzfeld hatte in der englischen Woche rotiert, Lahm und Demichelis eine Pause gegönnt und Ribery frühzeitig ausgewechselt. Rumenigge stichelt gegen den Trainer: „Die Zuschauer haben das Recht auf die beste Mannschaft.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>/page/contact/</link>
-      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
-      
-      <guid>/page/contact/</guid>
-      <description>Contact Aenean ipsum justo, semper eu nisl ut, pretium tincidunt sem. Praesent et diam sit amet lacus lobortis dictum a id lacus. Quisque hendrerit sit amet turpis eu varius. Ut id lorem ac felis ultrices tincidunt. Pellentesque consequat arcu ac fringilla imperdiet. Phasellus pellentesque, sapien non pulvinar blandit, sapien ante aliquet felis, vel porttitor sapien ante in lacus. Fusce non urna aliquet, malesuada nibh vel, luctus urna. Phasellus ut lacus molestie, varius purus quis, malesuada lorem.</description>
     </item>
     
   </channel>
