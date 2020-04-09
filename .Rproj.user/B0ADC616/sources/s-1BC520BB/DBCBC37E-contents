@@ -26,7 +26,9 @@ data <- read_csv(file = file.path("../data/bayern_kader_profil_20200404.csv"), c
   mutate(Spieler = paste0(substr(Spieler, 1, 1), ". ", tail(strsplit(Spieler, " ")[[1]], n=1)))
 ```
 
-Kaderprofile können einen schnellen Überblick über den Zustand einer Mannschaft schaffen. Für diesen Artikel habe ich mir einen wunderbaren Post von Twitternutzer [R_by_Ryo](https://twitter.com/R_by_Ryo/status/1233375468952272898) zum Vorbild genommen, der diese Art von Grafik für einige Teams zusammengestellt hat.
+## Kaderprofile
+
+Kaderprofile können einen schnellen Überblick über den Zustand einer Mannschaft schaffen. Für diesen Artikel habe ich mir einen wunderbaren Post von Twitternutzer [R_by_Ryo](https://twitter.com/R_by_Ryo/status/1233375468952272898){target="_blank"} zum Vorbild genommen, der diese Art von Grafik für einige Teams zusammengestellt hat.
 
 ```{r default, echo=FALSE}
 text_size <- 3
@@ -49,11 +51,13 @@ ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
 Auf der x-Achse wird das aktuelle Alter aufgetragen, auf der y-Achse die Spielanteile (gemessen als der Quotient von gespielten und möglichen Spielminuten).
 Je höher der Punkt eines Spieler angesiedelt ist, desto mehr Spielanteile hat er in dieser Saison bekommen (Manuel Neuer absolvierte jede einzelne Spielminute). Ältere Spieler stehen weiter rechts, jünger Spieler weiter links.
 
-Der grüne Balken in der Mitte betont das, zugegeben subjektive, Idealalter von 25-29 Jahren. Natürlich hängt ein Idealalter auch von der Position ab. So kann man als Torwart oder Innenverteidiger sicherlich länger Topleistungen bringen denn als Außenstürmer, die mehr auf ihre Schnelligkeit angewiesen sind. Dennoch ist es sicherlich von Vorteil nicht nur über Spieler zu verfügen die recht oder links diese Balkens angesiedelt sind.
+Der grüne Balken in der Mitte betont das, zugegeben subjektive, Idealalter von 25-29 Jahren. Natürlich sollte dieses Alter auch von der Position abhängen. So kann man als Torwart oder Innenverteidiger sicherlich länger Topleistungen bringen denn als Außenstürmer, die mehr auf ihre Schnelligkeit angewiesen sind. Dennoch ist es sicherlich von Vorteil nicht nur über Spieler zu verfügen die rechts oder links diese Balkens angesiedelt sind.
 
-In Form der Schweife hat [R_by_Ryo](https://twitter.com/R_by_Ryo) eine weitere Informationsdimension unterlegt. Dieses Detail stellt dar wie lange ein Spieler schon dem Kader angehört. So ist auf einen Blick ersichtlich ob jüngste Transfers eingeschlagen sind und viele Spielanteile bekommen (Benjamin Pavard) oder welche Spieler einen harten Kern bilden und schon lange zusammen in dieser Mannschaft spielen (Manuel Neuer, David Alaba, Thomas Müller und Jérôme Boateng).
+Durch die Schweife (?) links der Punkte hat [R_by_Ryo](https://twitter.com/R_by_Ryo){target="_blank"} eine weitere Informationsdimension unterlegt. Dieses Detail stellt dar wie lange ein Spieler schon dem Kader angehört. So ist auf einen Blick ersichtlich ob jüngste Transfers eingeschlagen sind und viele Spielanteile bekommen (Benjamin Pavard) oder welche Spieler einen harten Kern bilden und schon lange zusammen in dieser Mannschaft spielen (Manuel Neuer, David Alaba, Thomas Müller und Jérôme Boateng).
 
 ***
+
+## Vertragslaufzeiten
 
 Wir weichen nun ein bisschen von unserer Vorlage ab und wollen erkunden ob wir weitere Informationen in unserer Grafik darstellen können. Eine Idee ist die Teamzugehörigkeit durch die Restlaufzeit des Vetrages zu ersetzen. So können wir schnell sehen welche Leistungsträger einen auslaufenden Vertrag besitzen oder bis zu welchem Alter sich der Verein an gewisse Spieler gebunden hat (natürlich ist es keine Gewissheit das Verträge bis zum Ende eingehalten werden).
 
@@ -84,6 +88,8 @@ Schnell sieht man einige der Spieler mit kurzer Restlaufzeit wichtige Bestandtei
 
 ***
 
+## Positionen
+
 Eine weiter interessant Dimension ist die der Spielerposition. Während der Sturm mit Robert Lewandowski und Thomas Müller langsam ihrne Zenit überschreitet (auch die Leihe von Ivan Perisic hat wenig für die Perspektive getan) ist die Verteidigung und das Mittelfeld im besten Alter oder mit jungen Perspektivespielern besetzt. Manuel Neuer wäre nun bei Vertragsende 35, doch mit der Verpflichtung von Alexander Nübel (23) wurde für die Zukunft investiert.
 
 ```{r Position, echo=FALSE}
@@ -106,6 +112,8 @@ ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
 ```
 
 ***
+
+## Jugendarbeit
 
 Wir können auch die Spieler aus der eigenen Jugend hervorbeben. Für den aktuellen Bayernkader sieht das relative mager aus: nur David Alaba, Thomas Müller und Joshua Zirkzee stammen aus der eigenen Jugend. 
 
