@@ -1,0 +1,4 @@
+"0","data <- read_csv(file = file.path(""../data/bayern_kader_profil_20200404.csv""), col_types = ""cnnnncn"") %>%"
+"0","  filter(Minutenanteil > 0.05) %>%"
+"0","  rowwise() %>%"
+"0","  mutate(Spieler = paste0(substr(Spieler, 1, 1), "". "", tail(strsplit(Spieler, "" "")[[1]], n=1)))"
