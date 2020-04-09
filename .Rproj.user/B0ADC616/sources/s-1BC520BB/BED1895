@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3248781752",
+    "hash" : "4190777812",
     "id" : "BED1895",
-    "lastKnownWriteTime" : 1586387821,
-    "last_content_update" : 1586387821756,
+    "lastKnownWriteTime" : 1586458471,
+    "last_content_update" : 1586458471507,
     "path" : "~/Documents/GitHub/keine-mathematik/config.toml",
     "project_path" : "config.toml",
     "properties" : {
-        "cursorPosition" : "31,22",
-        "scrollLine" : "19"
+        "cursorPosition" : "5,37",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

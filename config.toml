@@ -3,7 +3,7 @@ title = "Keine Mathematik"
 theme = "ghostwriter"
 languageCode = "de"
 copyright = "Lars Maurath"
-disqusShortname = "XXX"
+disqusShortname = "keinemathematik-de"
 googleAnalytics = "XXX"
 
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
