@@ -4,16 +4,16 @@
     "created" : 1586091969096.000,
     "dirty" : false,
     "encoding" : "UTF-8",
-    "folds" : "32|26|48|0|\n63|31|84|0|\n119|32|138|0|\n",
+    "folds" : "12|48|19|0|\n21|43|26|0|\n63|31|84|0|\n119|32|138|0|\n",
     "hash" : "2451474980",
     "id" : "DBCBC37E",
-    "lastKnownWriteTime" : 1586454885,
-    "last_content_update" : 1586454885213,
+    "lastKnownWriteTime" : 1586555551,
+    "last_content_update" : 1586555551009,
     "path" : "~/Documents/GitHub/keine-mathematik/content/post/2020-04-05-kaderprofil-bayern-muenchen.Rmd",
     "project_path" : "content/post/2020-04-05-kaderprofil-bayern-muenchen.Rmd",
     "properties" : {
-        "cursorPosition" : "115,15",
-        "scrollLine" : "99"
+        "cursorPosition" : "9,15",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

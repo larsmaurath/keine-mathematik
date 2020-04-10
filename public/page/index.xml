@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Warum &#34;Keine Mathematik&#34;?</title>
+      <link>/page/about/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/page/about/</guid>
+      <description>Name November 2007. Die leidige Saison, die der FC Bayern München im UEFA Cup verbringen muss. Rummenigge gegen Hitzfeld. Bayern spielte gerade 2-2 zu Hause gegen die Bolton Wanderers, nur ein paar Wochen nachdem man mit Not und Mühe gegen einen serbischen Mittelklasseverein gewann. Hitzfeld hatte in der englischen Woche rotiert, Lahm und Demichelis eine Pause gegönnt und Ribery frühzeitig ausgewechselt. Rummenigge stichelt gegen den Trainer: „Die Zuschauer haben das Recht auf die beste Mannschaft.</description>
+    </item>
     
     <item>
       <title>Mitmachen</title>
@@ -32,15 +41,6 @@ Gerne veröffentlichen oder verlinken wir auch zu fertigen Artikeln (natürlich 
       <description>Intro FiveThirtyEight Transfermarkt.de Understat.com ClubElo.com   Intro This will be the intro. Test
  FiveThirtyEight FiveThirtyEight wurde 2008 von Nate Silver als Blog zur US-Präsidentschaftswahl ins Leben gerufen und erlangte nach präzisen Wahkprognosen vermehrt Aufmerksamkeit. In den Jahren nach der Wahl weitete sich das Themenfeld auch auf Sportthemen aus was sich durch Silvers’ Hintergrund als quantitativer Baseballanalyst (siehe auch Sabermetrics) als naheliegend erwies.
 Seit 2007 veröffentlicht die Webseite auch Prognosen für den weltweiten Klubfußball (36 Ligen inklusive Champions League und Europa League).</description>
-    </item>
-    
-    <item>
-      <title>Warum &#34;Keine Mathematik&#34;?</title>
-      <link>/page/about/</link>
-      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
-      
-      <guid>/page/about/</guid>
-      <description>Name November 2007. Die leidige Saison, die der FC Bayern München im UEFA Cup verbringen muss. Rummenigge gegen Hitzfeld. Bayern spielte gerade 2-2 zu Hause gegen die Bolton Wanderers, nur ein paar Wochen nachdem man mit Not und Mühe gegen einen serbischen Mittelklasseverein gewann. Hitzfeld hatte in der englischen Woche rotiert, Lahm und Demichelis eine Pause gegönnt und Ribery frühzeitig ausgewechselt. Rummenigge stichelt gegen den Trainer: „Die Zuschauer haben das Recht auf die beste Mannschaft.</description>
     </item>
     
   </channel>
