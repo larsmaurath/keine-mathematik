@@ -6,11 +6,11 @@ title: Warum "Keine Mathematik"?
 
 ## Name
 
-November 2007. Die leidige Saison, die der FC Bayern München im UEFA Cup verbringen muss. Rummenigge gegen Hitzfeld. Bayern spielte gerade 2-2 zu Hause gegen die Bolton Wanderers, nur ein paar Wochen nachdem man in letzter Minute gegen einen serbischen Mittelklasseverein gewann. Hitzfeld hatte in der englischen Woche rotiert, Lahm und Demichelis eine Pause gegönnt und Ribery frühzeitig ausgewechselt. Rumenigge stichelt gegen den Trainer: „Die Zuschauer haben das Recht auf die beste Mannschaft. Fußball ist keine Mathematik“. Hitzfeld ist gelernter Mathematiklehrer.
+November 2007. Die leidige Saison, die der FC Bayern München im UEFA Cup verbringen muss. Rummenigge gegen Hitzfeld. Bayern spielte gerade 2-2 zu Hause gegen die Bolton Wanderers, nur ein paar Wochen nachdem man mit Not und Mühe gegen einen serbischen Mittelklasseverein gewann. Hitzfeld hatte in der englischen Woche rotiert, Lahm und Demichelis eine Pause gegönnt und Ribery frühzeitig ausgewechselt. Rumenigge stichelt gegen den Trainer: „Die Zuschauer haben das Recht auf die beste Mannschaft. Fußball ist keine Mathematik“. Hitzfeld ist gelernter Mathematiklehrer.
 
 Zu Zeiten dieser Anekdote haben die Mehrheit der Fußballfans wahrscheinlich Michael Rummenigge zugestimmt. Zehn Jahre später wird sich das vielleicht langsam ändern. 
 
-
+Begriffe wie *Packing* und *expected Goals* mischen die Fußballbühne auf, Vereine wie Liverpool haben eigene Datenanalysten.
 
 ## Ziel
 

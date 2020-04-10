@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586485599295.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2031196889",
+    "id" : "8A50854A",
+    "lastKnownWriteTime" : 1586485605,
+    "last_content_update" : 1586485605426,
+    "path" : "~/Documents/GitHub/keine-mathematik/content/post/2020-04-09-expected-goals-quiz-1.Rmd",
+    "project_path" : "content/post/2020-04-09-expected-goals-quiz-1.Rmd",
+    "properties" : {
+        "cursorPosition" : "11,85",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
