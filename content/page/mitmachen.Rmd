@@ -12,6 +12,6 @@ output:
       after_body: form.html
 ---
 
-Falls du eine Idee für ein Projekt hast oder einen neuen Datensatz gefunden hast.
+Falls du eine Idee für ein Projekt hast oder einen neuen, interessanten Datensatz gefunden hast, lass es uns gerne durch das folgende Formular wissen!
 
 Gerne veröffentlichen oder verlinken wir auch zu fertigen Artikeln (natürlich mit Zitierung).
