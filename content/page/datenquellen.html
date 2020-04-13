@@ -21,16 +21,18 @@ output:
 
 <div id="intro" class="section level1">
 <h1>Intro</h1>
-<p>This will be the intro. Test</p>
+<p>Die größte Hürde für die ersten Schritte in der Fußballanalytik ist die Suche nach Datensätzen. Hier gibt es keinen Unterschied zwischen datenbasierter Analytik oder mehr qualitativen Herangehensweisen wie z.B. durch Videoanalyse. Für Hobbyanalysten ist es genauso schwer an Videomaterial ganzer Spiele im Weitwinkelformat zu kommen wie an Event- oder Trackingdatensätze.</p>
+<p>Durch einen größeren Fokus auf Daten und eine Vielzahl von neuen Unternehmen hat sich in dieser Hinsicht viel in den letzten Jahren getan. Dank Datenprovidern wie Statsbomb und Metrica Sports gibt es nun frei verfügbare Event- und Trackingdatensätze. Webseiten wie Transfermarkt.de und Understat.com veröffentlichen verlässlich eine Vielzahl von Informationen die als Grundlage für verschiedene Projekte dienen können.</p>
+<p>Hier versuche ich eine Liste von frei verfügbaren Datensätzen zu sammeln um Interessierten den Einstieg zu erleichtern. Falls du einen Vorschlag hast der unten noch nicht aufgeführt ist lass es uns gerne <a href="https://www.keinemathematik.de/page/mitmachen/" target="_blank">wissen</a>.</p>
 </div>
 <div id="fivethirtyeight" class="section level1">
-<h1><a href="https://projects.fivethirtyeight.com/soccer-predictions/">FiveThirtyEight</a></h1>
-<p>FiveThirtyEight wurde 2008 von Nate Silver als Blog zur US-Präsidentschaftswahl ins Leben gerufen und erlangte nach präzisen Wahkprognosen vermehrt Aufmerksamkeit. In den Jahren nach der Wahl weitete sich das Themenfeld auch auf Sportthemen aus was sich durch Silvers’ Hintergrund als quantitativer Baseballanalyst (siehe auch <a href="https://de.wikipedia.org/wiki/Sabermetrics">Sabermetrics</a>) als naheliegend erwies.</p>
+<h1><a href="https://projects.fivethirtyeight.com/soccer-predictions/" target="_blank">FiveThirtyEight</a></h1>
+<p>FiveThirtyEight wurde 2008 von Nate Silver als Blog zur US-Präsidentschaftswahl ins Leben gerufen und erlangte nach präzisen Wahkprognosen vermehrt Aufmerksamkeit. In den Jahren nach der Wahl weitete sich das Themenfeld auch auf Sportthemen aus was sich durch Silvers’ Hintergrund als quantitativer Baseballanalyst (siehe auch <a href="https://de.wikipedia.org/wiki/Sabermetrics">Sabermetrics</a>){target=&quot;_blank&quot;} als naheliegend erwies.</p>
 <p>Seit 2007 veröffentlicht die Webseite auch Prognosen für den weltweiten Klubfußball (36 Ligen inklusive Champions League und Europa League). Für jede nationale Liga wird die Wahrscheinlichkeit für den Titelgewinn, Relegation und Qualifizierung fürs internationale Geschäft berechnet.</p>
 <p>Für individuelle Partien gibt es im Vorraus Wahrscheinlichkeiten für Heimsieg, Auswärtssieg und Unentschieden. Nach Ausgang des Spiels werden schussbasierte expected Goals (xG) und nicht-schussbasierte expected Goals (non-shot xG) veröffentlicht, die weiteren Hintergrund über den Spielverlauf ermöglichen.</p>
 </div>
 <div id="transfermarkt.de" class="section level1">
-<h1><a href="https://www.transfermarkt.de/">Transfermarkt.de</a></h1>
+<h1><a href="https://www.transfermarkt.de/" target="_blank">Transfermarkt.de</a></h1>
 <p>Das deutsche Portal Transfermarkt.de und ihre internationalen Ableger fokussieren sich seit dem Jahre 2000 auf Transfergerüchte und Spielermarktwerte. Die Community-basierte Datenbank umfasst mehr als 70.000 Vereine und 700.00 Spieler.</p>
 <div class="figure">
 <img src="/page/datenquellen_files/transfermarkt1.png" alt="Marktwertanalyse Alphonso David (Transfermarkt.de)" />
@@ -43,7 +45,7 @@ output:
 </div>
 </div>
 <div id="understat.com" class="section level1">
-<h1><a href="https://www.understat.com">Understat.com</a></h1>
+<h1><a href="https://www.understat.com" target="_blank">Understat.com</a></h1>
 <p>Understat veröffentlicht expected Goals-Werte für die fünf großen Ligen (und die russische Premjer-Liga) beginnend mit der Saison 2014/2015. Auf Teamlevel können wir so tatsächlich erzielte Tore mit dem Expected Goals-Wert vergleichen und so, je nach Auslegung, Effizienz oder Glück messen. Das Gleiche gilt selbstverstänglich auch für Gegentore. In der Theorie sollten sich Expected Goals und tatsächlich erzielte Tore über länger Zeiträume annähern.</p>
 <div class="figure">
 <img src="/page/datenquellen_files/understat1.png" alt="Expected Goals vs tatsächlich erzielte Tore für die Bundesliga (Understat.com)" />
@@ -64,14 +66,13 @@ output:
 </div>
 </div>
 <div id="clubelo.com" class="section level1">
-<h1><a href="http://clubelo.com/">ClubElo.com</a></h1>
+<h1><a href="http://clubelo.com/" target="_blank">ClubElo.com</a></h1>
 <p>Die Webseite clubelo.com hat sich einem, auf den ersten Blick, simplen Ziel verschrieben: eine Rangliste internationaler Klubs. Wohlgemerkt außerhalb jeglicher Ligenzugehörigkeit oder internationaler Wettbewerbe wie die Champions League. Dazu haben sich die Macher von der Elo-Methode aus der Welt des Schachs inspirieren lassen. Dort ermöglicht das Rating Spieler ähnlichen Levels in Turnieren gegeneinander anzusetzen.</p>
 <p>Da das Club Elo-Rating lediglich auf historischen Ergebnissen basiert ist es nicht sehr datenhungrig und kann daher auf eine große Anzahl von Ligen angewandt werden (präzisere Eventdatansätze sind oftmals nur für die großen fünf Ligen verfügbar).</p>
-<p>Can be used for game forecasts.
-Can be used for tracking coach impact.</p>
-<p>Problems: inherently backward looking</p>
+<p>Die Macher von clubelo präsentieren unter anderem zwei Anwendungsgebiete ihres Ratings. Für zukünftige Spiele berechnen sie Wahrscheinlichkeiten für Heimsieg, Unentschieden und Auswärtssieg. Für individuelle Vereine produzieren sie Historie des Elo-Ratings bei Trainer und unterstreichen so deren Einfluss auf die Mannschaftsstärke.</p>
+<p>Ein offensichtlicher Nachteil des Elo-Ratings ist, dass es nur auf historischen Daten basiert und so von Natur aus nicht vorausschauend ist. Ein Spitzentransfer wird sich so nur langsam durch bessere Resultate ins Rating niederschlagen.</p>
 <div class="figure">
-<img src="/page/datenquellen_files/clubelo1.png" alt="Club Elo Rating des FC Bayern" />
-<p class="caption">Club Elo Rating des FC Bayern</p>
+<img src="/page/datenquellen_files/elo1.png" alt="Historisches Elo Rating - Bayern München (clubelo.com)" />
+<p class="caption">Historisches Elo Rating - Bayern München (clubelo.com)</p>
 </div>
 </div>

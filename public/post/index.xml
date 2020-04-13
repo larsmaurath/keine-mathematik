@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Thu, 09 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Grundlagen: Passnetzwerke</title>
+      <link>/2020/04/13/2020-04-13-grundlagen-passnetzwerke/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/04/13/2020-04-13-grundlagen-passnetzwerke/</guid>
+      <description>Durch eine bessere Verfügbarkeit von Daten (weiteres zu Datenquellen) und einer blühenden Twittercommunity bestehend aus Hobbyanalysten, Akademikern und Clubangestellten sind in den letzten Jahren eine Reihe von neuen Statistiken und Visualisierungen entstanden, die sich unserem Lieblingssport widmen. In dieser Grundlagenserie versuche ich diese neuen Konzepte vorzustellen, die zwar auf Twitter Gang und Gebe sind, aber noch nicht im Mainstream angekommen sind.
+Passnetzwerke Passnetzwerke basieren grundsätzlich auf zwei Statistiken: die durchschnittliche Position jedes Spielers einer Mannschaft und die häufigsten Passverbindungen zwischen diesen Spielern.</description>
+    </item>
     
     <item>
       <title>Expected Goals Quiz #1</title>
@@ -28,7 +38,7 @@
       
       <guid>/2020/04/05/2020-04-05-kaderprofil-bayern-muenchen/</guid>
       <description>Kaderprofile Kaderprofile können einen schnellen Überblick über den Zustand einer Mannschaft schaffen. Für diesen Artikel habe ich mir einen wunderbaren Post von Twitternutzer R_by_Ryo zum Vorbild genommen, der diese Art von Grafik für einige Teams zusammengestellt hat.
-Auf der x-Achse wird das aktuelle Alter aufgetragen, auf der y-Achse die Spielanteile (gemessen als der Quotient von gespielten und möglichen Spielminuten). Je höher der Punkt eines Spieler angesiedelt ist, desto mehr Spielanteile hat er in dieser Saison bekommen (Manuel Neuer absolvierte jede einzelne Spielminute).</description>
+Auf der x-Achse wird das aktuelle Alter aufgetragen, auf der y-Achse die Spielanteile (gemessen als der Quotient von gespielten und möglichen Spielminuten). Je höher der Punkt eines Spieler angesiedelt ist, desto mehr Spielanteile hat er in dieser Saison bekommen (Manuel Neuer absolvierte z.</description>
     </item>
     
   </channel>

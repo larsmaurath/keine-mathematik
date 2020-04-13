@@ -1,0 +1,91 @@
+"0","```r
+library(ggplot2)
+library(jpeg)
+library(grid)
+library(plotly)
+library(crosstalk)
+shared_freekick <- SharedData$new(freekick_table_filtered)
+images_pitch = list(
+  list(
+    source = \"https://raw.githubusercontent.com/larsmaurath/larsmaurath.github.io/master/2019/03/30/half_pitch_bw.jpeg\",
+    xref = \"x\",
+    yref = \"y\",
+    x = 0,
+    y = 100,
+    sizex = 100,
+    sizey = 50,
+    sizing = \"stretch\",
+    opacity = 0.8,
+    layer = \"below\"
+    )
+  )
+images_goal = list(
+  list(
+    source = \"https://raw.githubusercontent.com/larsmaurath/larsmaurath.github.io/master/2019/03/30/goal.png\",
+    xref = \"x\",
+    yref = \"y\",
+    x = 40,
+    y = 100,
+    sizex = 20,
+    sizey = 100,
+    sizing = \"stretch\",
+    opacity = 0.8,
+    layer = \"below\"
+    )
+  )
+p <- plot_ly(shared_freekick, x = ~y_coordinate, y = ~x_coordinate, width = \"100%\", height = \"100%\", hoverinfo = \"text\",
+              hovertext = paste(\"Against :\", freekick_table_filtered$team_defending,
+                                \"<br> Date :\", freekick_table_filtered$date)) %>%
+  layout(images = images_pitch, xaxis = list(range = c(0, 100), showgrid = F, showticklabels = FALSE, title = \"\"),
+         yaxis = list(range = c(50, 100), showgrid = F, showticklabels = FALSE, title = \"\"), title = \"Free Kick Location\") %>%
+  highlight(\"plotly_selected\", dynamic = TRUE) %>%
+  config(displayModeBar = F)
+```"
+"1","Adding more colors to the selection color palette.
+"
+"0","```r
+q <- plot_ly(shared_freekick, x = ~goal_mouth_y, y = ~goal_mouth_z, width = \"100%\", height = \"100%\", hoverinfo = \"text\",
+                hovertext = paste(\"Against :\", freekick_table_filtered$team_defending,
+                                \"<br> Date :\", freekick_table_filtered$date)) %>%
+  layout(images = images_goal, xaxis = list(range = c(40, 60), showgrid = F, showticklabels = FALSE, title = \"\"),
+         yaxis = list(range = c(0, 100), showgrid = F, showticklabels = FALSE, title = \"\"), title = \"Free Kick Impact\") %>%
+  highlight(\"plotly_selected\", dynamic = TRUE) %>%
+  config(displayModeBar = F)
+```"
+"1","Adding more colors to the selection color palette.
+"
+"0","```r
+bscols(widths = c(2, 5, 5),
+       list(filter_checkbox(\"outcome\", \"Outcome\", shared_freekick, ~outcome, inline = FALSE)),
+       p,
+       q)
+```"
+"1","No trace type specified:
+  Based on info supplied, a 'scatter' trace seems appropriate.
+  Read more about this trace type -> https://plot.ly/r/reference/#scatter
+No scatter mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
+Setting the `off` event (i.e., 'plotly_deselect') to match the `on` event (i.e., 'plotly_selected'). You can change this default via the `highlight()` function.
+No trace type specified:
+  Based on info supplied, a 'scatter' trace seems appropriate.
+  Read more about this trace type -> https://plot.ly/r/reference/#scatter
+No scatter mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
+Setting the `off` event (i.e., 'plotly_deselect') to match the `on` event (i.e., 'plotly_selected'). You can change this default via the `highlight()` function.
+No trace type specified:
+  Based on info supplied, a 'scatter' trace seems appropriate.
+  Read more about this trace type -> https://plot.ly/r/reference/#scatter
+No scatter mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
+Setting the `off` event (i.e., 'plotly_deselect') to match the `on` event (i.e., 'plotly_selected'). You can change this default via the `highlight()` function.
+No trace type specified:
+  Based on info supplied, a 'scatter' trace seems appropriate.
+  Read more about this trace type -> https://plot.ly/r/reference/#scatter
+No scatter mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
+Setting the `off` event (i.e., 'plotly_deselect') to match the `on` event (i.e., 'plotly_selected'). You can change this default via the `highlight()` function.
+"

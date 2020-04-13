@@ -1,0 +1,12 @@
+"0","```r
+library(dplyr)
+freekick_table_filtered <- freekick_table %>% 
+  filter(x_coordinate > 50) %>%
+  filter(!(x_coordinate>83 & y_coordinate>21.1 & y_coordinate<78.9)) %>%
+  filter(!(x_coordinate<17 & y_coordinate>21.1 & y_coordinate<78.9)) %>%
+  filter(goal_mouth_y <= 60) %>%
+  filter(goal_mouth_y >= 40) %>%        
+  filter(player_name == \"Cristiano Ronaldo\")
+freekick_table_filtered$y_coordinate <- (freekick_table_filtered$y_coordinate - 100)*(-1)
+  
+```"

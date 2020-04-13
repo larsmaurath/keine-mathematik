@@ -3,7 +3,7 @@ title: 'Expected Goals Quiz #1'
 output: html_document
 ---
 
-Drei Torschüsse, drei xG-Werte. Rate den Wert und teste deine Intuition für das Modell der expected Goals. In der Lösung findet ihr Kommentare wie dieser Wert zustande kommt und bekannte Mängel des Konzepts.
+Drei Torschüsse, drei xG-Werte. Rate den Wert und teste deine Intuition für das Modell der expected Goals. In der Lösung findet ihr Kommentare wie dieser Wert zustande kommt und potentielle Mängel des Konzepts.
 
 ## Szene 1 {.tabset .tabset-fade .tabset-pills}
 ***
@@ -30,7 +30,7 @@ Als Erinnerung: Generell haben Abschlussstärke der einzelnen Schützen oder Rie
 ### Szene
 
 Ein gutes Beispiel um verschiedene Faktoren die den *Expected Goal*-Wert beeinflussen gegeneinander abzuwägen.
-Hector hat relativ viel Platz ist aber auch außerhalb des 16ers. Es befinden sich zwei Gegenspieler zwischen ihm und dem Tor, der Pass ist sicherlich nicht der Einfachst für eine Direktabnahme.
+Hector hat relativ viel Platz ist aber auch außerhalb des 16ers. Es befinden sich zwei Gegenspieler zwischen ihm und dem Tor, der Pass ist sicherlich nicht der einfachste für eine Direktabnahme.
 
 ![Quelle: https://giphy.com/fckoeln](https://media.giphy.com/media/S8xu4gnuD7JLMGNArn/giphy.gif)
 ***

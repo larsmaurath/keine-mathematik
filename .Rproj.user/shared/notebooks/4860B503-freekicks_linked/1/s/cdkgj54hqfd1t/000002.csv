@@ -1,0 +1,11 @@
+"0","```r
+freekick_table_filtered$blocked[is.na(freekick_table_filtered$blocked)] <- 'false'
+outcome <- function(row){
+  if(row['is_goal'] == '1') return('Goal') else 
+    if(row['blocked'] == 'true') return('Blocked') else
+      if( (row['goal_mouth_z'] > 38) | (row['goal_mouth_y'] < 44.2 | row['goal_mouth_y'] > 55.8 )) return('Off-Goal') else
+        return('Saved')
+}
+  
+freekick_table_filtered$outcome <- apply(freekick_table_filtered, 1, outcome)
+```"

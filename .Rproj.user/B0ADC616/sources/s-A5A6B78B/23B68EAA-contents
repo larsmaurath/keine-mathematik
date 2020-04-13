@@ -1,0 +1,105 @@
+---
+title: "Linking Free Kick Location and Impact with Plotly and Crosstalk"
+---
+
+```{r echo=FALSE, message=FALSE}
+library(DBI)
+
+con <- dbConnect(RSQLite::SQLite(), dbname = '~/Documents/Jupyter/footballData.sqlite')
+alltables <- dbListTables(con)
+freekick_table <- dbGetQuery( con,'SELECT * from Freekicks' )
+freekick_table <- freekick_table[,c('date', 'league', 'player_name', 'is_goal', 'x_coordinate', 'y_coordinate', 'goal_mouth_y', 'goal_mouth_z', 'blocked', 'team_defending')]
+
+dbDisconnect(con)
+```
+
+
+```{r echo=FALSE, message=FALSE}
+library(dplyr)
+
+freekick_table_filtered <- freekick_table %>% 
+  filter(x_coordinate > 50) %>%
+  filter(!(x_coordinate > 83 & y_coordinate > 21.1 & y_coordinate < 78.9)) %>%
+  filter(!(x_coordinate < 17 & y_coordinate > 21.1 & y_coordinate < 78.9)) %>%
+  filter(goal_mouth_y <= 60) %>%
+  filter(goal_mouth_y >= 40) %>%        
+  filter(player_name == "Cristiano Ronaldo")
+
+freekick_table_filtered$y_coordinate <- (freekick_table_filtered$y_coordinate - 100)*(-1)
+  
+```
+
+```{r echo=FALSE, message=FALSE}
+freekick_table_filtered$blocked[is.na(freekick_table_filtered$blocked)] <- 'false'
+
+outcome <- function(row){
+  if(row['is_goal'] == '1') return('Goal') else 
+    if(row['blocked'] == 'true') return('Blocked') else
+      if( (row['goal_mouth_z'] > 38) | (row['goal_mouth_y'] < 44.2 | row['goal_mouth_y'] > 55.8 )) return('Off-Goal') else
+        return('Saved')
+}
+  
+freekick_table_filtered$outcome <- apply(freekick_table_filtered, 1, outcome)
+
+```
+
+```{r echo=FALSE, message=FALSE}
+library(ggplot2)
+library(jpeg)
+library(grid)
+library(plotly)
+library(crosstalk)
+
+options(warn = -1)
+
+shared_freekick <- SharedData$new(freekick_table_filtered)
+
+images_pitch = list(
+  list(
+    source = "https://raw.githubusercontent.com/larsmaurath/larsmaurath.github.io/master/2019/03/30/half_pitch_bw.jpeg",
+    xref = "x",
+    yref = "y",
+    x = 0,
+    y = 100,
+    sizex = 100,
+    sizey = 50,
+    sizing = "stretch",
+    opacity = 0.8,
+    layer = "below"
+    )
+  )
+
+images_goal = list(
+  list(
+    source = "https://raw.githubusercontent.com/larsmaurath/larsmaurath.github.io/master/2019/03/30/goal.png",
+    xref = "x",
+    yref = "y",
+    x = 40,
+    y = 100,
+    sizex = 20,
+    sizey = 100,
+    sizing = "stretch",
+    opacity = 0.8,
+    layer = "below"
+    )
+  )
+
+p <- plot_ly(shared_freekick, x = ~y_coordinate, y = ~x_coordinate, width = "100%", height = "100%", hoverinfo = "text",
+              hovertext = paste("Against :", freekick_table_filtered$team_defending,
+                                "<br> Date :", freekick_table_filtered$date)) %>%
+  layout(images = images_pitch, xaxis = list(range = c(0, 100), showgrid = F, showticklabels = FALSE, title = ""),
+         yaxis = list(range = c(50, 100), showgrid = F, showticklabels = FALSE, title = ""), title = "Free Kick Location") %>%
+  highlight("plotly_selected", dynamic = TRUE) %>%
+  config(displayModeBar = F)
+
+q <- plot_ly(shared_freekick, x = ~goal_mouth_y, y = ~goal_mouth_z, width = "100%", height = "100%", hoverinfo = "text",
+                hovertext = paste("Against :", freekick_table_filtered$team_defending,
+                                "<br> Date :", freekick_table_filtered$date)) %>%
+  layout(images = images_goal, xaxis = list(range = c(40, 60), showgrid = F, showticklabels = FALSE, title = ""),
+         yaxis = list(range = c(0, 100), showgrid = F, showticklabels = FALSE, title = ""), title = "Free Kick Impact") %>%
+  highlight("plotly_selected", dynamic = TRUE) %>%
+  config(displayModeBar = F)
+
+bscols(list(filter_checkbox("outcome", "Outcome", shared_freekick, ~outcome, inline = FALSE), p, q ))
+
+```
