@@ -1,0 +1,8 @@
+"0","library(DBI)"
+"0",""
+"0","con <- dbConnect(RSQLite::SQLite(), dbname = '~/Documents/Jupyter/footballData.sqlite')"
+"0",""
+"0","freekick_table <- dbGetQuery( con,'SELECT * from Freekicks' )"
+"0","freekick_table <- freekick_table[,c('date', 'league', 'player_name', 'is_goal', 'x_coordinate', 'y_coordinate', 'goal_mouth_y', 'goal_mouth_z', 'blocked', 'team_defending')]"
+"0",""
+"0","dbDisconnect(con)"

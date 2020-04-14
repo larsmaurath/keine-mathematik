@@ -16,6 +16,23 @@ Durch einen größeren Fokus auf Daten und eine Vielzahl von neuen Unternehmen h
 
 Hier versuche ich eine Liste von frei verfügbaren Datensätzen zu sammeln um Interessierten den Einstieg zu erleichtern. Falls du einen Vorschlag hast der unten noch nicht aufgeführt ist lass es uns gerne [wissen](https://www.keinemathematik.de/page/mitmachen/){target="_blank"}.
 
+
+# [ClubElo](http://clubelo.com/){target="_blank"}
+
+Die Webseite clubelo.com hat sich einem, auf den ersten Blick, simplen Ziel verschrieben: eine Rangliste internationaler Klubs. Wohlgemerkt außerhalb jeglicher Ligenzugehörigkeit oder internationaler Wettbewerbe wie die Champions League. Dazu haben sich die Macher von der Elo-Methode aus der Welt des Schachs inspirieren lassen. Dort ermöglicht das Rating Spieler ähnlichen Levels in Turnieren gegeneinander anzusetzen. 
+
+Da das Club Elo-Rating lediglich auf historischen Ergebnissen basiert ist es nicht sehr datenhungrig und kann daher auf eine große Anzahl von Ligen angewandt werden (präzisere Eventdatansätze sind oftmals nur für die großen fünf Ligen verfügbar).
+
+Die Macher von clubelo präsentieren unter anderem zwei Anwendungsgebiete ihres Ratings. Für zukünftige Spiele berechnen sie Wahrscheinlichkeiten für Heimsieg, Unentschieden und Auswärtssieg. Für individuelle Vereine produzieren sie Historie des Elo-Ratings bei Trainer und unterstreichen so deren Einfluss auf die Mannschaftsstärke.
+
+Ein offensichtlicher Nachteil des Elo-Ratings ist, dass es nur auf historischen Daten basiert und so von Natur aus nicht vorausschauend ist. Ein Spitzentransfer wird sich so nur langsam durch bessere Resultate ins Rating niederschlagen.
+
+![Historisches Elo Rating - Bayern München (clubelo.com)](/page/datenquellen_files/elo1.png)
+
+# [FBRef](https://fbref.com/en/){target="_blank"}
+
+TBA
+
 # [FiveThirtyEight](https://projects.fivethirtyeight.com/soccer-predictions/){target="_blank"}
 
 FiveThirtyEight wurde 2008 von Nate Silver als Blog zur US-Präsidentschaftswahl ins Leben gerufen und erlangte nach präzisen Wahkprognosen vermehrt Aufmerksamkeit. In den Jahren nach der Wahl weitete sich das Themenfeld auch auf Sportthemen aus was sich durch Silvers' Hintergrund als quantitativer Baseballanalyst (siehe auch [Sabermetrics](https://de.wikipedia.org/wiki/Sabermetrics)){target="_blank"} als naheliegend erwies.  
@@ -24,7 +41,15 @@ Seit 2007 veröffentlicht die Webseite auch Prognosen für den weltweiten Klubfu
   
 Für individuelle Partien gibt es im Vorraus Wahrscheinlichkeiten für Heimsieg, Auswärtssieg und Unentschieden. Nach Ausgang des Spiels werden schussbasierte expected Goals (xG) und nicht-schussbasierte expected Goals (non-shot xG) veröffentlicht, die weiteren Hintergrund über den Spielverlauf ermöglichen.
 
-# [Transfermarkt.de](https://www.transfermarkt.de/){target="_blank"}
+# [Metrica Sports](https://metrica-sports.com/){target="_blank"}
+
+TBA
+
+# [Statsbomb](https://statsbomb.com/){target="_blank"}
+
+TBA
+
+# [Transfermarkt](https://www.transfermarkt.de/){target="_blank"}
 
 Das deutsche Portal Transfermarkt.de und ihre internationalen Ableger fokussieren sich seit dem Jahre 2000 auf Transfergerüchte und Spielermarktwerte. Die Community-basierte Datenbank umfasst mehr als 70.000 Vereine und 700.00 Spieler.
 
@@ -34,7 +59,7 @@ Neben den Marktwerten gibt es viele weitere Datensätze wie z.B. einen detailier
 
 ![Verletzungshistorie Marco Reus (Transfermarkt.de)](/page/datenquellen_files/transfermarkt2.png)
 
-# [Understat.com](https://www.understat.com){target="_blank"}
+# [Understat](https://www.understat.com){target="_blank"}
 
 Understat veröffentlicht expected Goals-Werte für die fünf großen Ligen (und die russische Premjer-Liga) beginnend mit der Saison 2014/2015. Auf Teamlevel können wir so tatsächlich erzielte Tore mit dem Expected Goals-Wert vergleichen und so, je nach Auslegung, Effizienz oder Glück messen. Das Gleiche gilt selbstverstänglich auch für Gegentore. In der Theorie sollten sich Expected Goals und tatsächlich erzielte Tore über länger Zeiträume annähern.
 
@@ -54,14 +79,6 @@ Neben den xG-Tabellen gibt es noch viele weitere Datenschätze zu entdecken: Sho
 
 ![Shotmap für Kai Havertz (Understat.com)](/page/datenquellen_files/understat3.png)
 
-# [ClubElo.com](http://clubelo.com/){target="_blank"}
+# [WhoScored](https://www.whoscored.com/){target="_blank"}
 
-Die Webseite clubelo.com hat sich einem, auf den ersten Blick, simplen Ziel verschrieben: eine Rangliste internationaler Klubs. Wohlgemerkt außerhalb jeglicher Ligenzugehörigkeit oder internationaler Wettbewerbe wie die Champions League. Dazu haben sich die Macher von der Elo-Methode aus der Welt des Schachs inspirieren lassen. Dort ermöglicht das Rating Spieler ähnlichen Levels in Turnieren gegeneinander anzusetzen. 
-
-Da das Club Elo-Rating lediglich auf historischen Ergebnissen basiert ist es nicht sehr datenhungrig und kann daher auf eine große Anzahl von Ligen angewandt werden (präzisere Eventdatansätze sind oftmals nur für die großen fünf Ligen verfügbar).
-
-Die Macher von clubelo präsentieren unter anderem zwei Anwendungsgebiete ihres Ratings. Für zukünftige Spiele berechnen sie Wahrscheinlichkeiten für Heimsieg, Unentschieden und Auswärtssieg. Für individuelle Vereine produzieren sie Historie des Elo-Ratings bei Trainer und unterstreichen so deren Einfluss auf die Mannschaftsstärke.
-
-Ein offensichtlicher Nachteil des Elo-Ratings ist, dass es nur auf historischen Daten basiert und so von Natur aus nicht vorausschauend ist. Ein Spitzentransfer wird sich so nur langsam durch bessere Resultate ins Rating niederschlagen.
-
-![Historisches Elo Rating - Bayern München (clubelo.com)](/page/datenquellen_files/elo1.png)
+TBA
