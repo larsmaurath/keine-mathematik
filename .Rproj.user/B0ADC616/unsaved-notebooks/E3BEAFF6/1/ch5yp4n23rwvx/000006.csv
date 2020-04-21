@@ -1,8 +1,0 @@
-"0","library(crosstalk)"
-"0","library(d3scatter)"
-"0",""
-"0","shared_iris <- SharedData$new(iris)"
-"0","bscols("
-"0","  d3scatter(shared_iris, ~Petal.Length, ~Petal.Width, ~Species, width=""100%"", height=300),"
-"0","  d3scatter(shared_iris, ~Sepal.Length, ~Sepal.Width, ~Species, width=""100%"", height=300)"
-"0",")"

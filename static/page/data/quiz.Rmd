@@ -11,7 +11,7 @@ Drei Torschüsse, drei xG-Werte. Rate den Wert und teste deine Intuition für da
 
 ### Szene
 
-Ein einfach Beispiel zum Aufwärmen. Was ist der xG-Wert eines Elfmeters? Für die richtige Antwort müssen wir einschätzen wie viele Elfmeter im Durchschnitt direkt verwandelt werden.
+Ein einfaches Beispiel zum Aufwärmen. Was ist der xG-Wert eines Elfmeters? Für die richtige Antwort müssen wir einschätzen wie viele Elfmeter im Durchschnitt direkt verwandelt werden.
 
 ![Quelle: https://giphy.com/werderbremen](https://media.giphy.com/media/l4pSZbkn2lBZDVqs8/giphy.gif)
 ***
