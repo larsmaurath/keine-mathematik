@@ -7,32 +7,45 @@ categories: []
 tags:
   - Passnetzwerk
   - Grundlagen
+  - Python
 description: ''
 ---
 
-Durch eine bessere Verfügbarkeit von Daten [(weiteres zu Datenquellen)](https://www.keinemathematik.de/page/datenquellen/){target="_blank"} und einer blühenden Twittercommunity bestehend aus Hobbyanalysten, Akademikern und Clubangestellten sind in den letzten Jahren eine Reihe von neuen Statistiken und Visualisierungen entstanden, die sich unserem Lieblingssport widmen. In dieser Grundlagenserie versuche ich diese neuen Konzepte vorzustellen, die zwar auf Twitter Gang und Gebe sind, aber noch nicht im Mainstream angekommen sind.
+Durch die bessere Verfügbarkeit von Daten [(weiteres zu Datenquellen)](https://www.keinemathematik.de/page/datenquellen/){target="_blank"} und einer blühenden Twittercommunity bestehend aus Hobbyanalysten, Akademikern und Clubangestellten sind in den letzten Jahren eine Reihe von neuen Statistiken und Grafiken entstanden, die sich unserem Lieblingssport widmen. In dieser Grundlagenserie versuche ich diese neuen Konzepte vorzustellen, die zwar auf Twitter Gang und Gebe sind, aber noch nicht im Mainstream angekommen sind.
 
 # Passnetzwerke
 
-Passnetzwerke basieren grundsätzlich auf zwei Statistiken: die durchschnittliche Position jedes Spielers einer Mannschaft und die häufigsten Passverbindungen zwischen diesen Spielern. 
+Passnetzwerke basieren grundsätzlich auf zwei Statistiken: die durchschnittliche Position jedes Spielers einer Mannschaft und die häufigsten Passwege zwischen diesen Spielern. 
 
-Die durchschnittlichen Positionen verraten uns mehr über das Spiel als die gängigen Aufstellungen die vor der Liveübertragung eingeblendet werden welche die Mannschaften in symmetrische und standardisierte Formen wie z.B. 4-3-3 pressen. Passnetzwerke illustrieren unter anderem wie hoch ein Team verteidigt oder ob ein Mittelstürmer sich öfter fallen lässt oder auf die Seite ausweicht.
+Die durchschnittlichen Positionen verraten uns mehr über das Spiel als die gängigen Aufstellungsgrafiken die vor einer Liveübertragung eingeblendet werden und die die Mannschaften in symmetrische und standardisierte Formen wie z.B. 4-3-3 pressen. Passnetzwerke illustrieren unter anderem wie hoch ein Team verteidigt oder ob ein Mittelstürmer sich öfter fallen lässt oder auf die Seite ausweicht.
 
-Die Verbindungen zwischen den Spielern repräsentieren häufig benutze Passwege. Oft sind die wichtigsten Verbindungen farblich hervorgehoben oder dicker gezeichnet. 
+Die Verbindungen zwischen den Spielern repräsentieren häufig benutzte Passwege. Oft sind die wichtigsten Verbindungen farblich hervorgehoben oder dicker gezeichnet. 
 
 
 ## Beispiel für Chelsea FC gegen Huddersfield Town
 
-Weiter unten seht ihr ein Passnetzwerk von [BetweenThePosts.net](https://betweentheposts.net/){target="_blank"} und [11Tegen11](https://twitter.com/11tegen11){target="_blank"}, die diese Grafiken für verschiedene Spiele der fünf großen Ligen veröffentlichen. Das Netzwerk umfasst Chelsea's Heimspiel gegen Huddersfield Town der vergangenen Saison welches Chelsea mit 5:0 gewann.
+Weiter unten seht ihr ein Passnetzwerk von [BetweenThePosts.net](https://betweentheposts.net/){target="_blank"} und [11Tegen11](https://twitter.com/11tegen11){target="_blank"}, die diese Grafiken für verschiedene Spiele der fünf großen Ligen veröffentlichen. Das Netzwerk beschreibt Chelsea's Heimspiel gegen Huddersfield Town der vergangenen Saison welches Chelsea mit 5:0 gewann.
 
 ![](/post/2020-04-13-grundlagen-passnetzwerke_files/passing_network.png)
 
 Wir können gleich intuitiv einige Beobachtungen machen: Chelsea scheint in einem 4-3-3 System aufgelaufen zu sein. Die zwei Außenverteidiger Alonso und Azpilicueta hatten einige Möglichkeiten sich in die Vorwärtsbewegung miteinzuschalten und ihre durchschnittliche Position ist fast auf der Höhe der Mittelfeldspieler. In Anbetracht von Chelseas 65% Ballbesitz und ihrer Führung nach der 16. Minute ist das wenig verwunderlich. 
 
-Joginho hatte die meisten Ballkontakte (größter Punkt), Torhüter Kepa hatte die wenigsten. Auch das macht natürlich intuitiv Sinn, da Huddersfield nicht als Angriffsmaschine bekannt ist und nur drei Torschüsse hatte. 
+Joginho hatte die meisten Ballkontakte (größter Punkt in der Grafik), Torhüter Kepa hatte die wenigsten. Auch das macht natürlich intuitiv Sinn, da Huddersfield nicht als Angriffsmaschine bekannt ist und nur drei Torschüsse hatte. 
 
 Allerdings gibt es uns auch einen Einblick in das Pressingspiel der Gäste: Chelseas Verteidiger waren selten zu einem Umweg über den Keeper gezwungen. Nur David Luiz spielte mehr als fünf mal zurück.
 
 ## Mehr als nur eine statische Mannschaftsaufstellung
 
 Zusammengefasst beinhalten diese Grafiken eine Vielzahl an Informationen ohne mehr Platz als die gewöhnliche Mannschaftsaustellung einzunehmen. Sie illustrieren einige Facetten des Spiels: durchschnittliche Spielerposition, häufigste Passwege und Anzahl der Ballkontakte.
+
+***
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+- Auf Twitter postet der Account [11Tegen11](https://twitter.com/11tegen11){target="_blank"} häufig Passnetzwerke für verschiedene Ligen
+- Wenn ihr eure eigenen Passnetzwerke erstellen wollt findet ihr [hier](https://github.com/Friends-of-Tracking-Data-FoTD/passing-networks-in-python){target="_blank"} ein Python-Tutorial im Rahmen der grandiosen Friends-of-Tracking Initiative von [David Sumpter](https://twitter.com/Soccermatics){target="_blank"}
+
+</div>

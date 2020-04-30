@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event Daten on Keine Mathematik</title>
+    <link>/tags/event-daten/</link>
+    <description>Recent content in Event Daten on Keine Mathematik</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de</language>
+    <copyright>Lars Maurath</copyright>
+    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/event-daten/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Daten sind nicht gleich Daten</title>
+      <link>/2020/04/21/2020-04-21-daten-sind-nicht-gleich-daten/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/04/21/2020-04-21-daten-sind-nicht-gleich-daten/</guid>
+      <description> Dieser Post soll ein kurzen Überblick über die verschiedenen Typen von Daten und Statistiken geben, die mittlerweile verfügbar sind. Ich teile diese in vier verschiedene Kategorien ein:
+Standard Statistiken: Ballbesitz, Schüsse, Schüße aufs Tor, Ballkontakte, Passquoten, Anzahl der Ecken  Spieldaten für Borussia Mönchengladbach gg. Borussian Dortmund (kicker.de)
+ Fortgeschrittene Statistiken: expected Goals, expected assists, Pressures, Carries, Progressive Distance
+ Event Data
+ Tracking Data
+  </description>
+    </item>
+    
+  </channel>
+</rss>

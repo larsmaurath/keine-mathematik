@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Passnetzwerk on Keine Mathematik</title>
-    <link>/tags/passnetzwerk/</link>
-    <description>Recent content in Passnetzwerk on Keine Mathematik</description>
+    <title>Python on Keine Mathematik</title>
+    <link>/tags/python/</link>
+    <description>Recent content in Python on Keine Mathematik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
     <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/passnetzwerk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
