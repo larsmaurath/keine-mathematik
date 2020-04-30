@@ -26,7 +26,9 @@ Die Verbindungen zwischen den Spielern repräsentieren häufig benutzte Passwege
 
 Weiter unten seht ihr ein Passnetzwerk von [BetweenThePosts.net](https://betweentheposts.net/){target="_blank"} und [11Tegen11](https://twitter.com/11tegen11){target="_blank"}, die diese Grafiken für verschiedene Spiele der fünf großen Ligen veröffentlichen. Das Netzwerk beschreibt Chelsea's Heimspiel gegen Huddersfield Town der vergangenen Saison welches Chelsea mit 5:0 gewann.
 
+<center>
 ![](/post/2020-04-13-grundlagen-passnetzwerke_files/passing_network.png)
+</center>
 
 Wir können gleich intuitiv einige Beobachtungen machen: Chelsea scheint in einem 4-3-3 System aufgelaufen zu sein. Die zwei Außenverteidiger Alonso und Azpilicueta hatten einige Möglichkeiten sich in die Vorwärtsbewegung miteinzuschalten und ihre durchschnittliche Position ist fast auf der Höhe der Mittelfeldspieler. In Anbetracht von Chelseas 65% Ballbesitz und ihrer Führung nach der 16. Minute ist das wenig verwunderlich. 
 
