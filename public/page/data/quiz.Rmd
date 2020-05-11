@@ -3,6 +3,7 @@ title: 'Expected Goals Quiz #1'
 output: html_document
 ---
 
+
 Drei Torschüsse, drei xG-Werte. Rate den Wert und teste deine Intuition für das Modell der expected Goals. In der Lösung findet ihr Kommentare wie dieser Wert zustande kommt und potentielle Mängel des Konzepts.
 
 ## Szene 1 {.tabset .tabset-fade .tabset-pills}
