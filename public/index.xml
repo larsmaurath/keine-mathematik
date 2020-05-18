@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Sun, 10 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Daten sind nicht gleich Daten</title>
+      <link>/2020/05/18/2020-04-21-daten-sind-nicht-gleich-daten/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/18/2020-04-21-daten-sind-nicht-gleich-daten/</guid>
+      <description>Dieser Post soll einen kurzen Überblick über die verschiedenen Typen von Daten und Statistiken verschaffen, die mittlerweile für interessierte Fußballfans verfügbar sind. Ich teile diese grob in vier verschiedene Kategorien ein:
+Standard Statistiken, die ihr zum Beispiel auf Kicker.de nach einem Spiel findet oder im Rahmen einer Fußballübertragung seht.
+Fortgeschrittene Statistiken und Grafiken, die erst über die letzten Jahre von Datenprovidern, Clubanalysten und Wettanbietern entwickelt wurden um das Spiel besser zu beschreiben, Spieler zu scouten oder sogar das Spiel an sich zu verändern.</description>
+    </item>
     
     <item>
       <title>Querpasstoni</title>
@@ -19,19 +30,6 @@
       
       <guid>/2020/05/10/2020-05-10-querpasstoni/</guid>
       <description>library(tidyverse) ## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✓ ggplot2 3.3.0.9000 ✓ purrr 0.3.3 ## ✓ tibble 2.1.3 ✓ dplyr 0.8.5 ## ✓ tidyr 1.0.2 ✓ stringr 1.4.0 ## ✓ readr 1.3.1 ✓ forcats 0.4.0 ## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## x dplyr::filter() masks stats::filter() ## x dplyr::lag() masks stats::lag() library(dbplyr) ## ## Attaching package: &amp;#39;dbplyr&amp;#39; ## The following objects are masked from &amp;#39;package:dplyr&amp;#39;: ## ## ident, sql library(DBI) con &amp;lt;- DBI::dbConnect(RSQLite::SQLite(), dbname = &amp;quot;~/Documents/Blog/Data/data.</description>
-    </item>
-    
-    <item>
-      <title>Daten sind nicht gleich Daten</title>
-      <link>/2020/04/21/2020-04-21-daten-sind-nicht-gleich-daten/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/04/21/2020-04-21-daten-sind-nicht-gleich-daten/</guid>
-      <description> Dieser Post soll ein kurzen Überblick über die verschiedenen Typen von Daten und Statistiken geben, die mittlerweile verfügbar sind. Ich teile diese in vier verschiedene Kategorien ein:
-Intro Standard Statistiken Spieldaten anynomes Spiel (kicker.de)
- Statistiken Brasilien - Deutschland (WM 2014, kicker.de)
-  Fortgeschrittene Statistiken expected Goals, expected assists, Pressures, Carries, Progressive Distance
- Event Data  Tracking Data   </description>
     </item>
     
     <item>

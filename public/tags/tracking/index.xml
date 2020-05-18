@@ -7,22 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <copyright>Lars Maurath</copyright>
-    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/tracking/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Daten sind nicht gleich Daten</title>
-      <link>/2020/04/21/2020-04-21-daten-sind-nicht-gleich-daten/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <link>/2020/05/18/2020-04-21-daten-sind-nicht-gleich-daten/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/04/21/2020-04-21-daten-sind-nicht-gleich-daten/</guid>
-      <description> Dieser Post soll ein kurzen Überblick über die verschiedenen Typen von Daten und Statistiken geben, die mittlerweile verfügbar sind. Ich teile diese in vier verschiedene Kategorien ein:
-Intro Standard Statistiken Spieldaten anynomes Spiel (kicker.de)
- Statistiken Brasilien - Deutschland (WM 2014, kicker.de)
-  Fortgeschrittene Statistiken expected Goals, expected assists, Pressures, Carries, Progressive Distance
- Event Data  Tracking Data   </description>
+      <guid>/2020/05/18/2020-04-21-daten-sind-nicht-gleich-daten/</guid>
+      <description>Dieser Post soll einen kurzen Überblick über die verschiedenen Typen von Daten und Statistiken verschaffen, die mittlerweile für interessierte Fußballfans verfügbar sind. Ich teile diese grob in vier verschiedene Kategorien ein:
+Standard Statistiken, die ihr zum Beispiel auf Kicker.de nach einem Spiel findet oder im Rahmen einer Fußballübertragung seht.
+Fortgeschrittene Statistiken und Grafiken, die erst über die letzten Jahre von Datenprovidern, Clubanalysten und Wettanbietern entwickelt wurden um das Spiel besser zu beschreiben, Spieler zu scouten oder sogar das Spiel an sich zu verändern.</description>
     </item>
     
   </channel>
