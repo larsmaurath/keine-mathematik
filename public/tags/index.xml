@@ -13,29 +13,29 @@
     
     
     <item>
-      <title>Daten</title>
-      <link>/tags/daten/</link>
+      <title>Eventdaten</title>
+      <link>/tags/eventdaten/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/daten/</guid>
+      <guid>/tags/eventdaten/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Event Daten</title>
-      <link>/tags/event-daten/</link>
+      <title>expected goals</title>
+      <link>/tags/expected-goals/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/event-daten/</guid>
+      <guid>/tags/expected-goals/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tracking</title>
-      <link>/tags/tracking/</link>
+      <title>Trackingdaten</title>
+      <link>/tags/trackingdaten/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tracking/</guid>
+      <guid>/tags/trackingdaten/</guid>
       <description></description>
     </item>
     
@@ -72,15 +72,6 @@
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>expected goals</title>
-      <link>/tags/expected-goals/</link>
-      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/expected-goals/</guid>
       <description></description>
     </item>
     
