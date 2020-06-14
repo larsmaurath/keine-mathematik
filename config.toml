@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://www.keinemathematik.de/"
 title = "Keine Mathematik"
 theme = "hugo-creative-portfolio-theme"
 languageCode = "en-us"
