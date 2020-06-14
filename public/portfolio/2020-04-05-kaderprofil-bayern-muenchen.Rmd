@@ -7,7 +7,8 @@ categories: []
 tags:
   - Kader
   - Altersprofil
-description: ''
+image: 'img/portfolio/kader_profil_thumb.png'
+showonlyimage: no
 ---
 
 ```{r load libraries, echo=FALSE, message=FALSE}

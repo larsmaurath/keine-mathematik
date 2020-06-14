@@ -8,7 +8,8 @@ tags:
   - Passnetzwerk
   - Grundlagen
   - Python
-description: ''
+image: 'img/portfolio/pass_netzwerk_thumb.png'
+showonlyimage: no
 ---
 
 Durch die bessere Verfügbarkeit von Daten [(weiteres zu Datenquellen)](https://www.keinemathematik.de/page/datenquellen/){target="_blank"} und einer blühenden Twittercommunity bestehend aus Hobbyanalysten, Akademikern und Clubangestellten sind in den letzten Jahren eine Reihe von neuen Statistiken und Grafiken entstanden, die sich unserem Lieblingssport widmen. In dieser Grundlagenserie versuche ich diese neuen Konzepte vorzustellen, die zwar auf Twitter Gang und Gebe sind, aber noch nicht im Mainstream angekommen sind.

@@ -8,9 +8,9 @@ tags:
   - Expected Goals
   - Trackingdaten
   - Eventdaten
-description: ''
+image: 'img/portfolio/daten_thumb.png'
+showonlyimage: no
 ---
-<meta name="twitter:image" content="https://raw.githubusercontent.com/larsmaurath/keine-mathematik/master/static/post/2020-04-21-daten-sind-nicht-gleich-daten_files/twitter_preview.png" />
 
 Dieser Post soll einen kurzen Überblick über die verschiedenen Typen von Daten und Statistiken verschaffen, die mittlerweile für interessierte Fußballfans verfügbar sind. Ich teile diese grob in vier verschiedene Kategorien ein: 
 
