@@ -8,6 +8,7 @@ tags:
   - Passnetzwerk
   - Grundlagen
   - Python
+  - Lars Maurath  
 image: 'img/portfolio/pass_netzwerk_thumb.png'
 showonlyimage: no
 ---

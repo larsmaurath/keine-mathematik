@@ -12,7 +12,7 @@ googleAnalytics = "UA-156024236-2"
   # Use custom.css for your custom styling
   style = "red"
   description = "Blog für datenbasierte Fußballanalytik"
-  copyright = "&copy;2016 Keine Mathematik"
+  copyright = "&copy;2020 Keine Mathematik"
   sidebarAbout = [
     "Blog für datenbasierte Fußballanalytik"
   ]
@@ -28,6 +28,18 @@ googleAnalytics = "UA-156024236-2"
   [[params.navlinks]]
   name = "Warum 'Keine Mathematik'?"
   url = "about/"
+
+  [[params.navlinks]]
+  name = "Datenquellen"
+  url = "datenquellen/"
+
+  [[params.navlinks]]
+  name = "Tutorials"
+  url = "tags/eventdaten/"
+
+  [[params.navlinks]]
+  name = "Autoren"
+  url = "autoren/"
 
   [[params.navlinks]]
   name = "Mitmachen"
