@@ -20,7 +20,7 @@ description: ''
 <p><strong>Eventdaten</strong> bilden das Grundgerüst auf dem obengenannte Statistiken basieren, sind aber auch nur ein kleiner Ausschnitt dessen was während eines Fußballspiels passiert.</p>
 <p><strong>Trackingdaten</strong> sind derzeit die detailliertesten Datensätze und im Fußball noch nicht so sehr verbreitet.</p>
 <div class="figure">
-<img src="/post/2020-04-21-daten-sind-nicht-gleich-daten_files/daten_typen.png" alt="Schematische Darstellung von Datentypen" />
+<img src="/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/daten_typen.png" alt="Schematische Darstellung von Datentypen" />
 <p class="caption"><em>Schematische Darstellung von Datentypen</em></p>
 </div>
 <hr />
@@ -28,15 +28,18 @@ description: ''
 <h1>Standard Statistiken</h1>
 <p>Statistiken wie Torschüsse, Ballbesitz und Passquote bedürfen natürlich keiner Erklärung. Jeder Fußballfan wächst mit ihnen auf und sie haben sich auch schon längere Zeit nicht verändert (jedenfalls nicht während meiner aktiven Laufbahn als Fan). Stattdessen möchte ich auf die Defizite dieser Statistiken hinweisen und aufzeigen wie notwendig detailliertere Datensätze und Statistiken für unser Verständnis von Fußball sind.</p>
 <p>Das folgende Beispiel habe ich mir von Christoph Biermann’s <a href="https://www.kiwi-verlag.de/buch/christoph-biermann-die-fussball-matrix-9783462305012" target="_blank">Die Fußball-Matrix</a> geborgt, weil es diese Defizite so perfekt zur Schau stellt und dieses Spiel zudem noch sehr in der Erinnerung deutscher Fußballfans verwurzelt ist. Aber ich will nicht zu viel verraten da ich zunächst erstmal nur anonymisierte Statistiken eines bestimmten Spiels zeigen will:</p>
-<p><img src="/post/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten1.png" alt="Spieldaten (kicker.de)" />
-Macht euch gerne einmal selbst Gedanken was für Schlüsse ihr aus den obigen Statistiken ziehen würdet.</p>
+<div class="figure">
+<img src="/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten1.png" alt="Spieldaten (kicker.de)" />
+<p class="caption"><em>Spieldaten (kicker.de)</em></p>
+</div>
+<p>Macht euch gerne einmal selbst Gedanken was für Schlüsse ihr aus den obigen Statistiken ziehen würdet.</p>
 <p>Der erste Blick fällt vielleicht auf die Torschussstatistik, die ein relativ ausgeglichenes Spiel mit vielen Offensivaktionen und leichten Vorteilen für Team Gelb beschreibt. Ballbesitz und Zweikampfquote sind gleichmäßig verteilt.</p>
 <p>Insgesamt würde ich möglicherweise auf ein 2:2 Unentschieden oder einen knappen Heimsieg für Team Geld tippen. Natürlich ist der Punkt dieses Beispiels zu zeigen, dass es gerade keinen Sinn macht von diesen simplen Statistiken auf den Verlauf des Spiels zu schließen.</p>
 <details>
 <summary><b>Klicke für die Auflösung</b></summary>
 <p>
 <div class="figure">
-<img src="/post/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten2.png" alt="Statistiken Brasilien - Deutschland (WM 2014, kicker.de)" />
+<img src="/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten2.png" alt="Statistiken Brasilien - Deutschland (WM 2014, kicker.de)" />
 <p class="caption"><em>Statistiken Brasilien - Deutschland (WM 2014, kicker.de)</em></p>
 </div>
 <p>Diese Kicker-Statistiken beschreiben tatsächlich das legendäre Halbfinale der Weltmeisterschaft 2014, indem Brasilien Deutschland mit 1:7 unterlag.</p>
@@ -53,7 +56,7 @@ Macht euch gerne einmal selbst Gedanken was für Schlüsse ihr aus den obigen St
 <p>So sehen wir zum Beispiel auf einen Blick, dass das 3:0 Deutschlands einen relative kleinen xG-Wert hatte, also aus einer nicht-so-klaren Torchance entstand. Eine weitere interessante Periode ist die Viertelstunde nach der Pause, in der Brasilien einige Schüsse verzeichnete, aber den Ball nicht im Tor unterbringen konnte.</p>
 <p>Ein großer Vorteil dieser Grafik ist die Zeitachse, die uns einen besseren Überblick über Reihenfolge der Ereignisse gibt. Im obigen Beispiel fällt auf, dass Brasilien erst zu Chancen kam als das Spiel schon für Deutschland gewonnen war. Die Tatsache, dass die Brasilianer mehr Torschüsse verzeichneten kann uns in dieser Darstellung nicht mehr täuschen.</p>
 <p>Als Fan erkennen wir intuitiv dass Spielverläufe sehr davon abhängig sind, wie der derzeitige Spielstand ist und welche Ergebnisse die beiden Teams benötigen (im Englischen <em>Game State</em> genannt). Während klassische Statistiken diese Informationsebene oft verlieren, sehen wir sie in xG-Timelines sehr klar.</p>
-<p><img src="/post/2020-04-21-daten-sind-nicht-gleich-daten_files/timeline_shotmap.png" /></p>
+<p><img src="/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/timeline_shotmap.png" /></p>
 </div>
 <div id="xg-shotmap" class="section level3">
 <h3>xG-Shotmap</h3>
@@ -71,11 +74,11 @@ Macht euch gerne einmal selbst Gedanken was für Schlüsse ihr aus den obigen St
 <p>Im folgenden zeige ich nun wie Eventdaten für das 5:0 Sami Khedira’s sowohl in tabularer Form als auch in einer Grafik aussehen. Aber zuerst einmal als Video um die Erinnerung aufzufrischen:</p>
 {{% youtube "jW5jobEpkk4?start=2016&end=2050" %}}
 <p>Beginnend mit Luiz Gustavo’s klärendem Kopfball umfasst diese Spielszene 12 Aktionen und beschreibt zu Beginn Thomas Müller’s Einwurf, Miroslav Klose’s folgender Fehlpass und der Befreiungsschlag von David Luiz der dann bei Mats Hummels landet.</p>
-<p><img src="/post/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data.png" /></p>
+<p><img src="/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data.png" /></p>
 <p>Was nun auffällt ist, dass Hummels’ Dribbling nicht in den Eventdaten enthalten ist. Wir müssen uns das durch die gegebenen Daten selbst erschließen. Auch fehlt uns die Information, dass der Schuss aus einer Spielszene resultiert in der Deutschland mit drei Spielern auf drei brasilianische Spieler zuläuft. <em>Expected Goals</em>-Modelle werden so wahrscheinlich die Erfolgschancen diese Schusses unterbewerten.</p>
 <p>Auch ist es nicht möglich Mats Hummels’ Anteil an diesem Tor korrekt zu bewerten. Mit seinem Vorstoß überspielt er nicht nur vier Gegenspieler sondern zieht dann auch noch zwei Verteidiger aus dem Abwehrverbund, was die obengenannte 3-gegen-3 Situation erst ermöglicht.</p>
 <p>In der folgenden Grafik seht ihr nun wie diese Informationen visualisiert werden können:</p>
-<p><img src="/post/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data_plot.png" /></p>
+<p><img src="/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data_plot.png" /></p>
 <hr />
 </div>
 <div id="trackingdaten" class="section level1">

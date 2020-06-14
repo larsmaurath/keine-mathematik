@@ -26,8 +26,6 @@ data <- read_csv(file = file.path("../data/bayern_kader_profil_20200404.csv"), c
   mutate(Spieler = paste0(substr(Spieler, 1, 1), ". ", tail(strsplit(Spieler, " ")[[1]], n=1)))
 ```
 
-## Kaderprofile
-
 Kaderprofile können einen schnellen Überblick über den Zustand einer Mannschaft schaffen. Für diesen Artikel habe ich mir einen wunderbaren Post von Twitternutzer [R_by_Ryo](https://twitter.com/R_by_Ryo/status/1233375468952272898){target="_blank"} zum Vorbild genommen, der diese Art von Grafik für einige Teams zusammengestellt hat.
 
 ```{r default, echo=FALSE}

@@ -22,7 +22,7 @@ Dieser Post soll einen kurzen Überblick über die verschiedenen Typen von Daten
 
 **Trackingdaten** sind derzeit die detailliertesten Datensätze und im Fußball noch nicht so sehr verbreitet.
 
-![*Schematische Darstellung von Datentypen*](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/daten_typen.png)
+![*Schematische Darstellung von Datentypen*](/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/daten_typen.png)
 
 ***
 
@@ -32,7 +32,8 @@ Statistiken wie Torschüsse, Ballbesitz und Passquote bedürfen natürlich keine
 
 Das folgende Beispiel habe ich mir von Christoph Biermann's [Die Fußball-Matrix](https://www.kiwi-verlag.de/buch/christoph-biermann-die-fussball-matrix-9783462305012){target="_blank"} geborgt, weil es diese Defizite so perfekt zur Schau stellt und dieses Spiel zudem noch sehr in der Erinnerung deutscher Fußballfans verwurzelt ist. Aber ich will nicht zu viel verraten da ich zunächst erstmal nur anonymisierte Statistiken eines bestimmten Spiels zeigen will:
 
-![*Spieldaten (kicker.de)*](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten1.png)
+![*Spieldaten (kicker.de)*](/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten1.png)
+
 Macht euch gerne einmal selbst Gedanken was für Schlüsse ihr aus den obigen Statistiken ziehen würdet.
 
 Der erste Blick fällt vielleicht auf die Torschussstatistik, die ein relativ ausgeglichenes Spiel mit vielen Offensivaktionen und leichten Vorteilen für Team Gelb beschreibt. Ballbesitz und Zweikampfquote sind gleichmäßig verteilt. 
@@ -42,7 +43,7 @@ Insgesamt würde ich möglicherweise auf ein 2:2 Unentschieden oder einen knappe
 <details><summary><b>Klicke für die Auflösung</b></summary>
 <p>
 
-![*Statistiken Brasilien - Deutschland (WM 2014, kicker.de)*](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten2.png)
+![*Statistiken Brasilien - Deutschland (WM 2014, kicker.de)*](/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten2.png)
 
 Diese Kicker-Statistiken beschreiben tatsächlich das legendäre Halbfinale der Weltmeisterschaft 2014, indem Brasilien Deutschland mit 1:7 unterlag. 
 
@@ -65,7 +66,7 @@ Ein großer Vorteil dieser Grafik ist die Zeitachse, die uns einen besseren Übe
 
 Als Fan erkennen wir intuitiv dass Spielverläufe sehr davon abhängig sind, wie der derzeitige Spielstand ist und welche Ergebnisse die beiden Teams benötigen (im Englischen *Game State* genannt). Während klassische Statistiken diese Informationsebene oft verlieren, sehen wir sie in xG-Timelines sehr klar.
 
-![](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/timeline_shotmap.png)
+![](/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/timeline_shotmap.png)
 
 ### xG-Shotmap
 
@@ -94,7 +95,7 @@ blogdown::shortcode("youtube", "jW5jobEpkk4?start=2016&end=2050")
 
 Beginnend mit Luiz Gustavo's klärendem Kopfball umfasst diese Spielszene 12 Aktionen und beschreibt zu Beginn Thomas Müller's Einwurf, Miroslav Klose's folgender Fehlpass und der Befreiungsschlag von David Luiz der dann bei Mats Hummels landet. 
 
-![](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data.png)
+![](/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data.png)
 
 Was nun auffällt ist, dass Hummels' Dribbling nicht in den Eventdaten enthalten ist. Wir müssen uns das durch die gegebenen Daten selbst erschließen. Auch fehlt uns die Information, dass der Schuss aus einer Spielszene resultiert in der Deutschland mit drei Spielern auf drei brasilianische Spieler zuläuft. *Expected Goals*-Modelle werden so wahrscheinlich die Erfolgschancen diese Schusses unterbewerten.
 
@@ -102,7 +103,7 @@ Auch ist es nicht möglich Mats Hummels' Anteil an diesem Tor korrekt zu bewerte
 
 In der folgenden Grafik seht ihr nun wie diese Informationen visualisiert werden können:
 
-![](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data_plot.png)
+![](/portfolio/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data_plot.png)
 
 ***
 
