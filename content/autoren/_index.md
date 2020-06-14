@@ -9,6 +9,6 @@ title: Autoren
 
 ## Lars Maurath
 
-Schreibt sonst für thesignificantgame.com und auf @thesignigame.
+Schreibt sonst auf seinem englischsprachigen Blog [The Significant Game](https://www.thesignificantgame.com/portfolio/) und auf Twitter unter [@thesignigame](https://twitter.com/thesignigame).
 
 Zu Lars' [Artikeln](https://www.keinemathematik.de/tags/lars-maurath/)
