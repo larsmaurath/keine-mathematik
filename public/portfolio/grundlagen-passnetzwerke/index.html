@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Grundlagen: Passnetzwerke</title>
+<meta name="description" content="Blog für datenbasierte Fußballanalytik">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.css">
+
+
+  <link href="/css/style.red.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="/img/favicon.png">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-156024236-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">Keine Mathematik</a></h1>
+    
+      <p class="sidebar-p">Blog für datenbasierte Fußballanalytik</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="/portfolio/">Home</a></li>
+      
+        <li><a href="/about/">Warum Keine Mathematik</a></li>
+      
+        <li><a href="/contact/">Mitmachen</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/KeineMathematik" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2016 Keine Mathematik |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">Keine Mathematik</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Grundlagen: Passnetzwerke</h1>
+         
+
+
+<p>Durch die bessere Verfügbarkeit von Daten <a href="https://www.keinemathematik.de/page/datenquellen/" target="_blank">(weiteres zu Datenquellen)</a> und einer blühenden Twittercommunity bestehend aus Hobbyanalysten, Akademikern und Clubangestellten sind in den letzten Jahren eine Reihe von neuen Statistiken und Grafiken entstanden, die sich unserem Lieblingssport widmen. In dieser Grundlagenserie versuche ich diese neuen Konzepte vorzustellen, die zwar auf Twitter Gang und Gebe sind, aber noch nicht im Mainstream angekommen sind.</p>
+<div id="passnetzwerke" class="section level1">
+<h1>Passnetzwerke</h1>
+<p>Passnetzwerke basieren grundsätzlich auf zwei Statistiken: die durchschnittliche Position jedes Spielers einer Mannschaft und die häufigsten Passwege zwischen diesen Spielern.</p>
+<p>Die durchschnittlichen Positionen verraten uns mehr über das Spiel als die gängigen Aufstellungsgrafiken die vor einer Liveübertragung eingeblendet werden und die die Mannschaften in symmetrische und standardisierte Formen wie z.B. 4-3-3 pressen. Passnetzwerke illustrieren unter anderem wie hoch ein Team verteidigt oder ob ein Mittelstürmer sich öfter fallen lässt oder auf die Seite ausweicht.</p>
+<p>Die Verbindungen zwischen den Spielern repräsentieren häufig benutzte Passwege. Oft sind die wichtigsten Verbindungen farblich hervorgehoben oder dicker gezeichnet.</p>
+<div id="beispiel-für-chelsea-fc-gegen-huddersfield-town" class="section level2">
+<h2>Beispiel für Chelsea FC gegen Huddersfield Town</h2>
+<p>Weiter unten seht ihr ein Passnetzwerk von <a href="https://betweentheposts.net/" target="_blank">BetweenThePosts.net</a> und <a href="https://twitter.com/11tegen11" target="_blank">11Tegen11</a>, die diese Grafiken für verschiedene Spiele der fünf großen Ligen veröffentlichen. Das Netzwerk beschreibt Chelsea’s Heimspiel gegen Huddersfield Town der vergangenen Saison welches Chelsea mit 5:0 gewann.</p>
+<center>
+<img src="/post/2020-04-13-grundlagen-passnetzwerke_files/passing_network.png" />
+</center>
+<p>Wir können gleich intuitiv einige Beobachtungen machen: Chelsea scheint in einem 4-3-3 System aufgelaufen zu sein. Die zwei Außenverteidiger Alonso und Azpilicueta hatten einige Möglichkeiten sich in die Vorwärtsbewegung miteinzuschalten und ihre durchschnittliche Position ist fast auf der Höhe der Mittelfeldspieler. In Anbetracht von Chelseas 65% Ballbesitz und ihrer Führung nach der 16. Minute ist das wenig verwunderlich.</p>
+<p>Joginho hatte die meisten Ballkontakte (größter Punkt in der Grafik), Torhüter Kepa hatte die wenigsten. Auch das macht natürlich intuitiv Sinn, da Huddersfield nicht als Angriffsmaschine bekannt ist und nur drei Torschüsse hatte.</p>
+<p>Allerdings gibt es uns auch einen Einblick in das Pressingspiel der Gäste: Chelseas Verteidiger waren selten zu einem Umweg über den Keeper gezwungen. Nur David Luiz spielte mehr als fünf mal zurück.</p>
+</div>
+<div id="mehr-als-nur-eine-statische-mannschaftsaufstellung" class="section level2">
+<h2>Mehr als nur eine statische Mannschaftsaufstellung</h2>
+<p>Zusammengefasst beinhalten diese Grafiken eine Vielzahl an Informationen ohne mehr Platz als die gewöhnliche Mannschaftsaustellung einzunehmen. Sie illustrieren einige Facetten des Spiels: durchschnittliche Spielerposition, häufigste Passwege und Anzahl der Ballkontakte.</p>
+<hr />
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class="blue">
+<ul>
+<li>Auf Twitter postet der Account <a href="https://twitter.com/11tegen11" target="_blank">11Tegen11</a> häufig Passnetzwerke für verschiedene Ligen</li>
+<li>Wenn ihr eure eigenen Passnetzwerke erstellen wollt findet ihr <a href="https://github.com/Friends-of-Tracking-Data-FoTD/passing-networks-in-python" target="_blank">hier</a> ein Python-Tutorial im Rahmen der grandiosen Friends-of-Tracking Initiative von <a href="https://twitter.com/Soccermatics" target="_blank">David Sumpter</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.cookie.js"> </script>
+<script src="/js/ekko-lightbox.js"></script>
+<script src="/js/jquery.scrollTo.min.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/front.js"></script>
+
+
+
+</body>
+</html>

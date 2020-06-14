@@ -1,15 +1,96 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Creative portfolio</title>
+    <title>Tags on Keine Mathematik</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on Creative portfolio</description>
+    <description>Recent content in Tags on Keine Mathematik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Eventdaten</title>
+      <link>/tags/eventdaten/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/eventdaten/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>expected goals</title>
+      <link>/tags/expected-goals/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/expected-goals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Trackingdaten</title>
+      <link>/tags/trackingdaten/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/trackingdaten/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grundlagen</title>
+      <link>/tags/grundlagen/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/grundlagen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Passnetzwerk</title>
+      <link>/tags/passnetzwerk/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/passnetzwerk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quiz</title>
+      <link>/tags/quiz/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/quiz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Altersprofil</title>
+      <link>/tags/altersprofil/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/altersprofil/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kader</title>
+      <link>/tags/kader/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/kader/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>plot</title>

@@ -53,23 +53,93 @@
   </url>
   
   <url>
+    <loc>/portfolio/daten-sind-nicht-gleich-daten/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/eventdaten/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/expected-goals/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <lastmod>2016-11-06T13:00:25+05:30</lastmod>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/trackingdaten/</loc>
+    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/grundlagen/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/grundlagen-passnetzwerke/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/passnetzwerk/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/expected-goals-quiz-1/</loc>
+    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/quiz/</loc>
+    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2020-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/altersprofil/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/kader/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/kaderprofil-bayern-muenchen/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
-    <lastmod>2016-11-05T21:05:33+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/portfolio/</loc>
-    <lastmod>2016-11-05T20:23:59+05:30</lastmod>
   </url>
   
   <url>
@@ -109,11 +179,6 @@
   
   <url>
     <loc>/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
   </url>
   

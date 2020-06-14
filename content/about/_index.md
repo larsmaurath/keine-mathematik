@@ -1,21 +1,17 @@
 ---
-date: "2016-11-05T21:05:33+05:30"
-title: About me
+author: Lars Maurath
+date: '2020-04-09'
+title: Warum "Keine Mathematik"?
 ---
 
-An sincerity so extremity he additions. Her yet **there truth merit**. Mrs all projecting favourable now unpleasing. Son law garden chatty temper. Oh children provided to mr elegance marriage strongly. Off can admiration prosperous now devonshire diminution law.
+## Name
 
-Received overcame oh sensible so at an. Formed do change merely to county it. **Am separate contempt** domestic to to oh. On relation my so addition branched. Put hearing cottage she norland letters equally prepare too. Replied exposed savings he no viewing as up. Soon body add him hill. No father living really people estate if. Mistake do produce beloved demesne if am pursuit.
+November 2007. Die leidige Saison, die der FC Bayern München im UEFA Cup verbringen muss. Rummenigge gegen Hitzfeld. Bayern spielte gerade 2-2 zu Hause gegen die Bolton Wanderers, nur ein paar Wochen nachdem man mit Not und Mühe gegen einen serbischen Mittelklasseverein gewann. Hitzfeld hatte in der englischen Woche rotiert, Lahm und Demichelis eine Pause gegönnt und Ribery frühzeitig ausgewechselt. Rummenigge stichelt gegen den Trainer: „Die Zuschauer haben das Recht auf die beste Mannschaft. Fußball ist keine Mathematik“. Hitzfeld ist gelernter Mathematiklehrer.
 
-![This is me][1]
+Zu Zeiten dieser Anekdote haben die Mehrheit der Fußballfans wahrscheinlich Michael Rummenigge zugestimmt. Zehn Jahre später wird sich das vielleicht langsam ändern. 
 
-The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+Begriffe wie *Packing* und *expected Goals* verändern wie Fußballfans über Statistiken sprechen, Vereine wie Liverpool haben eigene Datenanalysten mit Dokotortiteln. Daten und ausgeklügelte Statistiken bestimmen mehr und mehr wie Clubs Spieler rekrutieren, Mannschaften aufstellen und für die Zukunft planen.
 
-#### Education
+## Ziel
 
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
-
-When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then
-
-[1]: /img/about.jpg
+Das Ziel von **Keine Mathematik** ist es das wachsende Gebiet der Fußballdatenanalyse deutschsprachigen Fußballfans näherzubringen. Diskussionen darüber finden zur Zeit großteils auf englischsprachigen Blogs und auf Twitter statt. Während in England das beliebte *Match of the Day* TV-Programm (das Äquivalent zur deutschen Sportschau) nach den Spielen *expected Goals*-Werte einblendet ist diese Statistik noch nicht wirklich in den deutschen Wohnzimmern angekommen. Wir hoffen dieser Blog hilft dies zu ändern.

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Portfolios on Creative portfolio</title>
+    <title>Portfolios on Keine Mathematik</title>
     <link>/portfolio/</link>
-    <description>Recent content in Portfolios on Creative portfolio</description>
+    <description>Recent content in Portfolios on Keine Mathematik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Nov 2016 20:23:59 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
@@ -99,6 +99,46 @@
       
       <guid>/portfolio/work11/</guid>
       <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Daten sind nicht gleich Daten</title>
+      <link>/portfolio/daten-sind-nicht-gleich-daten/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/daten-sind-nicht-gleich-daten/</guid>
+      <description>Dieser Post soll einen kurzen Überblick über die verschiedenen Typen von Daten und Statistiken verschaffen, die mittlerweile für interessierte Fußballfans verfügbar sind. Ich teile diese grob in vier verschiedene Kategorien ein:
+Standard Statistiken, die ihr zum Beispiel auf Kicker.de nach einem Spiel findet oder im Rahmen einer Fußballübertragung seht.
+Fortgeschrittene Statistiken und Grafiken, die erst über die letzten Jahre von Datenprovidern, Clubanalysten und Wettanbietern entwickelt wurden um das Spiel besser zu beschreiben, Spieler zu scouten oder sogar das Spiel an sich zu verändern.</description>
+    </item>
+    
+    <item>
+      <title>Grundlagen: Passnetzwerke</title>
+      <link>/portfolio/grundlagen-passnetzwerke/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/grundlagen-passnetzwerke/</guid>
+      <description>Durch die bessere Verfügbarkeit von Daten (weiteres zu Datenquellen) und einer blühenden Twittercommunity bestehend aus Hobbyanalysten, Akademikern und Clubangestellten sind in den letzten Jahren eine Reihe von neuen Statistiken und Grafiken entstanden, die sich unserem Lieblingssport widmen. In dieser Grundlagenserie versuche ich diese neuen Konzepte vorzustellen, die zwar auf Twitter Gang und Gebe sind, aber noch nicht im Mainstream angekommen sind.
+Passnetzwerke Passnetzwerke basieren grundsätzlich auf zwei Statistiken: die durchschnittliche Position jedes Spielers einer Mannschaft und die häufigsten Passwege zwischen diesen Spielern.</description>
+    </item>
+    
+    <item>
+      <title>Expected Goals Quiz #1</title>
+      <link>/portfolio/expected-goals-quiz-1/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/expected-goals-quiz-1/</guid>
+      <description>  </description>
+    </item>
+    
+    <item>
+      <title>Kaderprofil - Bayern München</title>
+      <link>/portfolio/kaderprofil-bayern-muenchen/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/kaderprofil-bayern-muenchen/</guid>
+      <description>Kaderprofile Kaderprofile können einen schnellen Überblick über den Zustand einer Mannschaft schaffen. Für diesen Artikel habe ich mir einen wunderbaren Post von Twitternutzer R_by_Ryo zum Vorbild genommen, der diese Art von Grafik für einige Teams zusammengestellt hat.
+Auf der x-Achse wird das aktuelle Alter aufgetragen, auf der y-Achse die Spielanteile (gemessen als der Quotient von gespielten und möglichen Spielminuten). Je höher der Punkt eines Spieler angesiedelt ist, desto mehr Spielanteile hat er in dieser Saison bekommen (Manuel Neuer absolvierte z.</description>
     </item>
     
     <item>

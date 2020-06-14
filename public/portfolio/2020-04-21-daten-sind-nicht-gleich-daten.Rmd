@@ -1,0 +1,131 @@
+---
+title: Daten sind nicht gleich Daten
+author: Lars Maurath
+date: '2020-05-18'
+slug: daten-sind-nicht-gleich-daten
+categories: []
+tags:
+  - Expected Goals
+  - Trackingdaten
+  - Eventdaten
+description: ''
+---
+<meta name="twitter:image" content="https://raw.githubusercontent.com/larsmaurath/keine-mathematik/master/static/post/2020-04-21-daten-sind-nicht-gleich-daten_files/twitter_preview.png" />
+
+Dieser Post soll einen kurzen Überblick über die verschiedenen Typen von Daten und Statistiken verschaffen, die mittlerweile für interessierte Fußballfans verfügbar sind. Ich teile diese grob in vier verschiedene Kategorien ein: 
+
+**Standard Statistiken**, die ihr zum Beispiel auf Kicker.de nach einem Spiel findet oder im Rahmen einer Fußballübertragung seht. 
+
+**Fortgeschrittene Statistiken und Grafiken**, die erst über die letzten Jahre von Datenprovidern, Clubanalysten und Wettanbietern entwickelt wurden um das Spiel besser zu beschreiben, Spieler zu scouten oder sogar das Spiel an sich zu verändern. Ihr findet diese zur Zeit hauptsächlich auf Twitter. 
+
+**Eventdaten** bilden das Grundgerüst auf dem obengenannte Statistiken basieren, sind aber auch nur ein kleiner Ausschnitt dessen was während eines Fußballspiels passiert. 
+
+**Trackingdaten** sind derzeit die detailliertesten Datensätze und im Fußball noch nicht so sehr verbreitet.
+
+![*Schematische Darstellung von Datentypen*](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/daten_typen.png)
+
+***
+
+# Standard Statistiken
+
+Statistiken wie Torschüsse, Ballbesitz und Passquote bedürfen natürlich keiner Erklärung. Jeder Fußballfan wächst mit ihnen auf und sie haben sich auch schon längere Zeit nicht verändert (jedenfalls nicht während meiner aktiven Laufbahn als Fan). Stattdessen möchte ich auf die Defizite dieser Statistiken hinweisen und aufzeigen wie notwendig detailliertere Datensätze und Statistiken für unser Verständnis von Fußball sind. 
+
+Das folgende Beispiel habe ich mir von Christoph Biermann's [Die Fußball-Matrix](https://www.kiwi-verlag.de/buch/christoph-biermann-die-fussball-matrix-9783462305012){target="_blank"} geborgt, weil es diese Defizite so perfekt zur Schau stellt und dieses Spiel zudem noch sehr in der Erinnerung deutscher Fußballfans verwurzelt ist. Aber ich will nicht zu viel verraten da ich zunächst erstmal nur anonymisierte Statistiken eines bestimmten Spiels zeigen will:
+
+![*Spieldaten (kicker.de)*](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten1.png)
+Macht euch gerne einmal selbst Gedanken was für Schlüsse ihr aus den obigen Statistiken ziehen würdet.
+
+Der erste Blick fällt vielleicht auf die Torschussstatistik, die ein relativ ausgeglichenes Spiel mit vielen Offensivaktionen und leichten Vorteilen für Team Gelb beschreibt. Ballbesitz und Zweikampfquote sind gleichmäßig verteilt. 
+
+Insgesamt würde ich möglicherweise auf ein 2:2 Unentschieden oder einen knappen Heimsieg für Team Geld tippen. Natürlich ist der Punkt dieses Beispiels zu zeigen, dass es gerade keinen Sinn macht von diesen simplen Statistiken auf den Verlauf des Spiels zu schließen.
+
+<details><summary><b>Klicke für die Auflösung</b></summary>
+<p>
+
+![*Statistiken Brasilien - Deutschland (WM 2014, kicker.de)*](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/spieldaten2.png)
+
+Diese Kicker-Statistiken beschreiben tatsächlich das legendäre Halbfinale der Weltmeisterschaft 2014, indem Brasilien Deutschland mit 1:7 unterlag. 
+
+</p>
+</details>
+
+***
+
+# Fortgeschrittene Statistiken und Grafiken
+
+In den letzten Jahren wurden eine Vielzahl von neuen Statistiken und Visualisierungen entwickelt, um einige Defizite der obengenannten Statistiken zu beheben. Am obigen Beispiel des WM-Halbfinals stellen wir euch zwei vor und heben hervor wie sie das Spiel besser beschreiben.
+
+### xG-Timeline
+
+Eine xG-Timeline beschreibt den kumulativen *expected Goals*-Wert für beide Mannschaften über den Verlauf eine Begegnung. Für jeden Schuss wird der zugehörige xG-Wert zum Gesamtwert hinzuaddiert. Tore werde nochmal extra durch Punkte hervorgehoben. 
+
+So sehen wir zum Beispiel auf einen Blick, dass das 3:0 Deutschlands einen relative kleinen xG-Wert hatte, also aus einer nicht-so-klaren Torchance entstand. Eine weitere interessante Periode ist die Viertelstunde nach der Pause, in der Brasilien einige Schüsse verzeichnete, aber den Ball nicht im Tor unterbringen konnte. 
+
+Ein großer Vorteil dieser Grafik ist die Zeitachse, die uns einen besseren Überblick über Reihenfolge der Ereignisse gibt. Im obigen Beispiel fällt auf, dass Brasilien erst zu Chancen kam als das Spiel schon für Deutschland gewonnen war. Die Tatsache, dass die Brasilianer mehr Torschüsse verzeichneten kann uns in dieser Darstellung nicht mehr täuschen. 
+
+Als Fan erkennen wir intuitiv dass Spielverläufe sehr davon abhängig sind, wie der derzeitige Spielstand ist und welche Ergebnisse die beiden Teams benötigen (im Englischen *Game State* genannt). Während klassische Statistiken diese Informationsebene oft verlieren, sehen wir sie in xG-Timelines sehr klar.
+
+![](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/timeline_shotmap.png)
+
+### xG-Shotmap
+
+Shotmaps sind eine weitere Möglichkeit Torschüsse und *expected Goals*-Werte darzustellen. Während xG-Timelines die Zeitachse hervorheben, stehen bei Shotmaps die Schusspositionen im Mittelpunkt. Im obigen Beispiel sehr ihr, dass es Brasilien, bis auf zwei Ausnahmen, nicht geschafft hat in gute Schusspositionen zu kommen. Demzufolge fallen auch trotz der hohen Anzahl an Abschlüssen die jeweiligen *expected Goals*-Werte niedrig aus. 
+
+Im Gegensatz dazu kam Deutschland gleich sechs mal in bester Position (mittig und nahe am Tor) zum Abschluss und konnte fünf davon auch gleich versenken. Dazu gesellen sich noch zwei Treffer aus schlechterer Lage, darunter natürlich Schürrle's 7:0 aus sehr spitzem Winkel.
+
+Diese zwei Grafiken, die beide auf *expected Goals*-Werten beruhen, sind natürlich nur Beispiele für eine Fülle an neuen Statistiken. 
+
+Eine erst Anlaufstation um weitere kennenzulernen sollte [FBRef](https://fbref.com){target="_blank"} sein. Weitere Inspiration findet ihr auf unserer [Datenquellen-Seite](https://www.keinemathematik.de/page/datenquellen/){target="_blank"}.
+
+***
+
+# Eventdaten
+
+Eventdaten bilden das Grundgerüst auf dem obengenannte Statistiken beruhen und sind grundsätzlich einfach eine Tabelle mit allen Aktionen (Pässe, Schüsse, Zweikämpfe, gelbe Karten, Spielerwechsel, ...) eines Fußballspiels. Je nach Provider haben diese Tabellen zwischen 2000 und 3000 Events/Reihen pro Spiel und nehmen circa 0.5 MB Speicherplatz ein. 
+
+Einige Dienstleister reichern diese Datensätze noch mit zusätzlichen Informationen an. Statsbomb bietet zum Beispiel sogennante *Freezemaps* an, die für jeden Schuss die Positionen aller Spieler im Umkreis enthält.
+
+Im folgenden zeige ich nun wie Eventdaten für das 5:0 Sami Khedira's sowohl in tabularer Form als auch in einer Grafik aussehen. Aber zuerst einmal als Video um die Erinnerung aufzufrischen:
+
+```{r, eval=TRUE, echo=FALSE}
+blogdown::shortcode("youtube", "jW5jobEpkk4?start=2016&end=2050")
+```
+
+
+Beginnend mit Luiz Gustavo's klärendem Kopfball umfasst diese Spielszene 12 Aktionen und beschreibt zu Beginn Thomas Müller's Einwurf, Miroslav Klose's folgender Fehlpass und der Befreiungsschlag von David Luiz der dann bei Mats Hummels landet. 
+
+![](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data.png)
+
+Was nun auffällt ist, dass Hummels' Dribbling nicht in den Eventdaten enthalten ist. Wir müssen uns das durch die gegebenen Daten selbst erschließen. Auch fehlt uns die Information, dass der Schuss aus einer Spielszene resultiert in der Deutschland mit drei Spielern auf drei brasilianische Spieler zuläuft. *Expected Goals*-Modelle werden so wahrscheinlich die Erfolgschancen diese Schusses unterbewerten.
+
+Auch ist es nicht möglich Mats Hummels' Anteil an diesem Tor korrekt zu bewerten. Mit seinem Vorstoß überspielt er nicht nur vier Gegenspieler sondern zieht dann auch noch zwei Verteidiger aus dem Abwehrverbund, was die obengenannte 3-gegen-3 Situation erst ermöglicht.
+
+In der folgenden Grafik seht ihr nun wie diese Informationen visualisiert werden können:
+
+![](/post/2020-04-21-daten-sind-nicht-gleich-daten_files/event_data_plot.png)
+
+***
+
+# Trackingdaten
+
+Trackingdaten gehen noch einen Schritt weiter und beschreiben nicht nur was rund um den Ball geschieht sondern auch sekundengenau wo sich jeder einzelne Spieler aufhält. Sie füllen so die große Lücke, die Eventdaten offen lassen. Diese beschreiben zwar von wo aus aufs Tor geschossen wird aber nicht wie viele Gegenspieler sich noch im Weg befinden. Das kann natürlich den Unterschied zwischen Verzweiflungsschuss und glasklarer Torchance bedeuten. 
+
+Ein weiteres Beispiel sind Läufe abseits des Balls um sich entweder selbst Raum zu verschaffen oder einen Verteidiger zu binden. Dieser sehr wichtige Bestandteil wird von Eventdaten naturgemäß ignoriert und führt natürlich dazu dass sich Fähigkeiten bestimmter Spielertypen nicht in Daten und Statistiken wiederspiegeln. Paola Maldini's berühmter Satz "Wenn ich grätschen muss, habe ich schon einen Fehler gemacht" würde in einer Eventdatenwelt keinen Sinn ergeben; genausowenig Thomas Müller's Ruf als *Raumdeuter*. 
+
+Weiter unten seht ihr zwei Analytikbeispiele, die auf Trackingdaten basieren. Wie oben angedeutet liegt der Fokus nun darauf Räume zu messen und fortlaufend Situationen zu bewerten. Während man zum Beispiel mit Eventdaten Kontersituationen nur durch einen Proxy (z.B. Schnelligkeit der Vorwärtspässe) messen kann, erlauben uns Trackingdaten sie schon sehr explizit im Aufbau zu erkennen.
+
+Twitter-User [lastrowview](https://twitter.com/lastrowview){target="_blank"} verwendet schon seit längerer Zeit Trackingdaten und hat auf seinem [Blog](https://medium.com/football-crunching/){target="_blank"} unter anderem auch das obige 5:0 Deutschland's analysiert. Im folgenden Video ist sehr schön zu sehen wie Mats Hummels zwei Brasilianer aus der Verteidigung lockt und sich Sami Khedira nach seinem Pass zu Mesut Özil (Nummer 8) Platz verschafft indem er sich fallen lässt.
+
+Die Raumgewinne werden durch sogenannte [Voronoi-Diagramme](https://de.wikipedia.org/wiki/Voronoi-Diagramm){target="_blank"} repräsentiert, die durch die Positionen der individuellen Spieler definiert werden. Durch diese Methode lassen sich Aktionen abseits des Balles quantifizieren. Das heißt dass wir Hummels' Vorstoß und die clevere Bewegung Khedira's besser erfassen und belohnen können.
+
+```{r, eval=TRUE, echo=FALSE}
+blogdown::shortcode("youtube", "z70Paa6YqiI")
+```
+
+***
+
+[Karun Singh](https://twitter.com/karun1710){target="_blank"} veröffentlicht im März diesen Jahres eine zweite Anwendung von Trackingdaten in der er die Erkennung von Spielszenen automatisiert. Im folgenden Video sehr ihr wie der Algorithmus die folgende Szene also Kontersituation bewertet. Dieser Bewertung erfolgt schon sehr früh im Aufbauspiel und ist nicht auf schnelle Vorwärtspässe angewiesen, wie es für Eventdaten der Fall wäre.
+
+```{r echo=FALSE}
+blogdown::shortcode('tweet', '1240640473334775808')
+```
