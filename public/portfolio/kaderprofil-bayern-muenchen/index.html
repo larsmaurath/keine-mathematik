@@ -15,6 +15,8 @@
 
 
   <link href="/css/style.red.css" rel="stylesheet" id="theme-stylesheet">
+  <script src="/js/highlight.pack.js"></script> 
+  <script>hljs.initHighlightingOnLoad();</script> 
 
  
 
@@ -60,7 +62,7 @@ if (!doNotTrack) {
       
         <li><a href="/datenquellen/">Datenquellen</a></li>
       
-        <li><a href="/tags/eventdaten/">Tutorials</a></li>
+        <li><a href="/tags/Tutorial/">Tutorials</a></li>
       
         <li><a href="/autoren/">Autoren</a></li>
       
@@ -120,24 +122,91 @@ Je höher der Punkt eines Spieler angesiedelt ist, desto mehr Spielanteile hat e
 <p>Der grüne Balken in der Mitte betont das, zugegeben subjektive, Idealalter von 25-29 Jahren. Natürlich sollte dieses Alter auch von der Position abhängen. So kann man als Torwart oder Innenverteidiger sicherlich länger Topleistungen bringen denn als Außenstürmer, die mehr auf ihre Schnelligkeit angewiesen sind. Dennoch ist es sicherlich von Vorteil nicht nur über Spieler zu verfügen die rechts oder links diese Balkens angesiedelt sind.</p>
 <p>Durch die Linien links der Punkte hat <a href="https://twitter.com/R_by_Ryo" target="_blank">R_by_Ryo</a> eine weitere Informationsdimension unterlegt. Dieses Detail stellt dar wie lange ein Spieler schon dem Kader angehört. So ist auf einen Blick ersichtlich ob jüngste Transfers eingeschlagen sind und viele Spielanteile bekommen (z.B. Benjamin Pavard) oder welche Spieler einen harten Kern bilden und schon lange zusammen in dieser Mannschaft spielen (Manuel Neuer, David Alaba, Thomas Müller und Jérôme Boateng).</p>
 <hr />
-<div id="vertragslaufzeiten" class="section level2">
-<h2>Vertragslaufzeiten</h2>
+<div id="vertragslaufzeiten" class="section level3">
+<h3>Vertragslaufzeiten</h3>
 <p>Wir weichen nun ein bisschen von unserer Vorlage ab und wollen erkunden ob wir weitere Informationen in unserer Grafik darstellen können.</p>
 <p>Eine Idee ist die Teamzugehörigkeit durch die Restlaufzeit des Vetrages zu ersetzen. So können wir schnell sehen welche Leistungsträger einen auslaufenden Vertrag besitzen oder bis zu welchem Alter sich der Verein an gewisse Spieler gebunden hat (natürlich ist es keine Gewissheit das Verträge bis zum Ende eingehalten werden).</p>
 <p><img src="/portfolio/2020-04-05-kaderprofil-bayern-muenchen_files/figure-html/Vertragsende-1.png" width="672" /></p>
 <p>Schnell findet man Spieler mit kurzer Restlaufzeit die aber wichtige Bestandteile des jetzigen Teams sind: David Alaba, Thiago und Manuel Neuer. Die Zukunft von Jérôme Boateng und Javi Martinez scheint ungewisser zu sein (Boateng kommt durch die Verletzung von Niklas Süle auf relative hohe Einsatzszeiten). Coutinho und Perisic sind Stand jetzt (Apr 2020) bis zum Saisonende ausgeliehen.</p>
 <hr />
 </div>
-<div id="positionen" class="section level2">
-<h2>Positionen</h2>
+<div id="positionen" class="section level3">
+<h3>Positionen</h3>
 <p>Eine weiter interessant Dimension ist die der Spielerposition. Während der Sturm mit Robert Lewandowski und Thomas Müller langsam ihren Zenit überschreitet (auch die Leihe von Ivan Perisic hat wenig für die Perspektive getan) ist die Verteidigung und das Mittelfeld im besten Alter oder mit jungen Perspektivespielern besetzt. Manuel Neuer wäre nun bei Vertragsende 35, doch mit der Verpflichtung von Alexander Nübel (23) wurde in die Zukunft investiert.</p>
 <p><img src="/portfolio/2020-04-05-kaderprofil-bayern-muenchen_files/figure-html/Position-1.png" width="672" /></p>
 <hr />
 </div>
-<div id="jugendarbeit" class="section level2">
-<h2>Jugendarbeit</h2>
+<div id="jugendarbeit" class="section level3">
+<h3>Jugendarbeit</h3>
 <p>Wir können auch die Spieler aus der eigenen Jugend hervorbeben. Für den aktuellen Bayernkader sieht das relative mager aus: nur David Alaba, Thomas Müller und Joshua Zirkzee stammen aus der eigenen Jugend.</p>
 <p><img src="/portfolio/2020-04-05-kaderprofil-bayern-muenchen_files/figure-html/Eigene%20Jugend-1.png" width="672" /></p>
+</div>
+<div id="tutorial" class="section level3">
+<h3>Tutorial</h3>
+<p>Im folgenden will ich kurz beschreiben, wie ich das erste Chart dieses Artikels erstelle. Ganz am Ende findet ihr noch einen Link zu den Rohdaten.</p>
+<p>Wir beginnen mit dem Laden der nötigen R libraries.</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;) # Manipulierung der Daten und ggplot
+library(&quot;ggforce&quot;) # Nötig um die Schweife in der Grafik zu generieren 
+library(&quot;glue&quot;) # Nötig für die farbige Überschrift
+library(&quot;ggtext&quot;) # Nötig für die farbige Überschrift
+
+theme_set(theme_bw()) # Schwarz-weiße Voreinstellungen für ggplot</code></pre>
+<p><br></p>
+<p>Als nächstes importieren wir unsere Rohdaten, filtern für Spieler die mindestens 5% aller Spielminuten auf dem Platz standen und kürzen die Vornamen.</p>
+<pre class="r"><code>pfad &lt;- &quot;../data/bayern_kader_profil_20200404.csv&quot;
+
+data &lt;- read_csv(file = file.path(pfad), col_types = &quot;cnnnncn&quot;) %&gt;%
+  filter(Minutenanteil &gt; 0.05) %&gt;%
+  rowwise() %&gt;%
+  mutate(Spieler = 
+           paste0(substr(Spieler, 1, 1), &quot;. &quot;, tail(strsplit(Spieler, &quot; &quot;)[[1]], n=1)))</code></pre>
+<p><br></p>
+<p>Im nächten Schritt erstellen wir schon unsere fertige Grafik. Zuerst definieren wir die Farbpalette und manuell die Eigenschaften unserer x-Achse.
+In der <em>ggplot</em>-Funktion legen wir fest, dass wir Minutenanteile (y-Achse) gegen jetziges Alter (x-Achse) in einem Scatterplot (<em>geom_point</em>) darstellen wollen um dann noch die obengenannten Schweife anzufügen (<em>ggforce::geom_link</em>).</p>
+<pre class="r"><code>text_size &lt;- 3
+background_col &lt;- &quot;seagreen3&quot;
+link_col &lt;- &quot;red&quot;
+
+x_breaks &lt;- seq(from = 18, to = 38, by = 2) # Definiere die x-Achse manuell
+
+ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
+  # Plotte das grüne Rechteck
+  geom_rect(aes(xmin = 25, 
+                xmax = 29, 
+                ymin = -Inf, 
+                ymax = Inf), 
+            fill = background_col, alpha = 0.05) +
+  geom_point(color = link_col) +
+  # Hier definieren wir die Schweife
+  ggforce::geom_link(aes(x = Alter_Zugang, 
+                         xend = Alter_Jetzt, 
+                         y = Minutenanteil, 
+                         yend = Minutenanteil, 
+                         alpha = stat(index)), 
+                     color = link_col) +
+  # Es folgen nur noch Beschriftungen
+  geom_text(aes(label = Spieler), 
+            hjust = &quot;middle&quot;, 
+            vjust = &quot;bottom&quot;, 
+            nudge_y = 0.02, 
+            size = text_size) +
+  scale_x_continuous(breaks = x_breaks, limits = c(14, 38) ) + 
+  scale_y_continuous(labels = scales::percent) + 
+  labs(x = &quot;Alter (zum 4.4.2020)&quot;, 
+       y = &quot;Gespielte Minuten in %&quot;, 
+       title = &quot;Kaderprofil - FC Bayern München&quot;, 
+       subtitle = &quot;Bundesliga Saison 2019/2020 - Spieltag 25&quot;) +
+  theme(legend.position=&quot;none&quot;)</code></pre>
+<p><br></p>
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class="blue">
+<ul>
+<li>Die Rohdaten für die obigen Charts findet ihr <a href="https://github.com/larsmaurath/keine-mathematik/blob/master/content/data/bayern_kader_profil_20200404.csv" target="_blank">hier</a>.</li>
+<li>Natürlich könnt ihr auch selbst ähnliche Datensätze mit Information von <a href="https://www.transfermarkt.de/" target="_blank">transfermarkt.de</a> zusammenstellen.</li>
+</ul>
+</div>
 </div>
 
          <div id="disqus_thread"></div>

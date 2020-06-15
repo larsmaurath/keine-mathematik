@@ -8,6 +8,7 @@ tags:
   - Kader
   - Altersprofil
   - Lars Maurath
+  - Tutorial
 image: 'img/portfolio/kader_profil_thumb.png'
 showonlyimage: no
 ---
@@ -57,7 +58,7 @@ Durch die Linien links der Punkte hat [R_by_Ryo](https://twitter.com/R_by_Ryo){t
 
 ***
 
-## Vertragslaufzeiten
+### Vertragslaufzeiten
 
 Wir weichen nun ein bisschen von unserer Vorlage ab und wollen erkunden ob wir weitere Informationen in unserer Grafik darstellen können. 
 
@@ -90,7 +91,7 @@ Schnell findet man Spieler mit kurzer Restlaufzeit die aber wichtige Bestandteil
 
 ***
 
-## Positionen
+### Positionen
 
 Eine weiter interessant Dimension ist die der Spielerposition. Während der Sturm mit Robert Lewandowski und Thomas Müller langsam ihren Zenit überschreitet (auch die Leihe von Ivan Perisic hat wenig für die Perspektive getan) ist die Verteidigung und das Mittelfeld im besten Alter oder mit jungen Perspektivespielern besetzt. Manuel Neuer wäre nun bei Vertragsende 35, doch mit der Verpflichtung von Alexander Nübel (23) wurde in die Zukunft investiert.
 
@@ -115,7 +116,7 @@ ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
 
 ***
 
-## Jugendarbeit
+### Jugendarbeit
 
 Wir können auch die Spieler aus der eigenen Jugend hervorbeben. Für den aktuellen Bayernkader sieht das relative mager aus: nur David Alaba, Thomas Müller und Joshua Zirkzee stammen aus der eigenen Jugend. 
 
@@ -139,3 +140,86 @@ ggplot(data2, aes(x = Alter_Jetzt, y = Minutenanteil)) +
   labs(x = "Alter (zum 4.4.2020)", y = "Gespielte Minuten in %", title = glue::glue("Kaderprofil - FC Bayern München - <b style = 'color:tomato'>Aus eigener Jugend</b>"), subtitle = "Bundesliga Saison 2019/2020 - Spieltag 25") +
   theme(legend.position="none", plot.title = element_markdown())
 ```
+
+### Tutorial
+
+Im folgenden will ich kurz beschreiben, wie ich das erste Chart dieses Artikels erstelle. Ganz am Ende findet ihr noch einen Link zu den Rohdaten.
+
+Wir beginnen mit dem Laden der nötigen R libraries.
+
+```{r load libraries show, eval=FALSE}
+library("tidyverse") # Manipulierung der Daten und ggplot
+library("ggforce") # Nötig um die Schweife in der Grafik zu generieren 
+library("glue") # Nötig für die farbige Überschrift
+library("ggtext") # Nötig für die farbige Überschrift
+
+theme_set(theme_bw()) # Schwarz-weiße Voreinstellungen für ggplot
+```
+
+<br>
+
+Als nächstes importieren wir unsere Rohdaten, filtern für Spieler die mindestens 5% aller Spielminuten auf dem Platz standen und kürzen die Vornamen.
+
+```{r load data show, eval=FALSE}
+pfad <- "../data/bayern_kader_profil_20200404.csv"
+
+data <- read_csv(file = file.path(pfad), col_types = "cnnnncn") %>%
+  filter(Minutenanteil > 0.05) %>%
+  rowwise() %>%
+  mutate(Spieler = 
+           paste0(substr(Spieler, 1, 1), ". ", tail(strsplit(Spieler, " ")[[1]], n=1)))
+```
+
+<br>
+
+Im nächten Schritt erstellen wir schon unsere fertige Grafik. Zuerst definieren wir die Farbpalette und manuell die Eigenschaften unserer x-Achse.
+In der *ggplot*-Funktion legen wir fest, dass wir Minutenanteile (y-Achse) gegen jetziges Alter (x-Achse) in einem Scatterplot (*geom_point*) darstellen wollen um dann noch die obengenannten Schweife anzufügen (*ggforce::geom_link*).
+
+```{r default show, eval=FALSE}
+text_size <- 3
+background_col <- "seagreen3"
+link_col <- "red"
+
+x_breaks <- seq(from = 18, to = 38, by = 2) # Definiere die x-Achse manuell
+
+ggplot(data, aes(x = Alter_Jetzt, y = Minutenanteil)) +
+  # Plotte das grüne Rechteck
+  geom_rect(aes(xmin = 25, 
+                xmax = 29, 
+                ymin = -Inf, 
+                ymax = Inf), 
+            fill = background_col, alpha = 0.05) +
+  geom_point(color = link_col) +
+  # Hier definieren wir die Schweife
+  ggforce::geom_link(aes(x = Alter_Zugang, 
+                         xend = Alter_Jetzt, 
+                         y = Minutenanteil, 
+                         yend = Minutenanteil, 
+                         alpha = stat(index)), 
+                     color = link_col) +
+  # Es folgen nur noch Beschriftungen
+  geom_text(aes(label = Spieler), 
+            hjust = "middle", 
+            vjust = "bottom", 
+            nudge_y = 0.02, 
+            size = text_size) +
+  scale_x_continuous(breaks = x_breaks, limits = c(14, 38) ) + 
+  scale_y_continuous(labels = scales::percent) + 
+  labs(x = "Alter (zum 4.4.2020)", 
+       y = "Gespielte Minuten in %", 
+       title = "Kaderprofil - FC Bayern München", 
+       subtitle = "Bundesliga Saison 2019/2020 - Spieltag 25") +
+  theme(legend.position="none")
+```
+
+<br>
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+- Die Rohdaten für die obigen Charts findet ihr [hier](https://github.com/larsmaurath/keine-mathematik/blob/master/content/data/bayern_kader_profil_20200404.csv){target="_blank"}. 
+- Natürlich könnt ihr auch selbst ähnliche Datensätze mit Information von [transfermarkt.de](https://www.transfermarkt.de/){target="_blank"} zusammenstellen.
+
+</div>
