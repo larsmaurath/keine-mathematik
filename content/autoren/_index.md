@@ -5,10 +5,14 @@ title: Autoren
 
 ***
 
-![](/autoren/_index_files/lm.jpg)
+<img src="/autoren/_index_files/lm.jpg" width="200" align="left"/>
+
+<br><br><br><br><br><br><br><br>
 
 ## Lars Maurath
 
 Schreibt sonst auf seinem englischsprachigen Blog [The Significant Game](https://www.thesignificantgame.com/portfolio/) und auf Twitter unter [@thesignigame](https://twitter.com/thesignigame).
 
-Zu Lars' [Artikeln](https://www.keinemathematik.de/tags/lars-maurath/)
+[Artikel](https://www.keinemathematik.de/tags/lars-maurath/) von Lars.
+
+***

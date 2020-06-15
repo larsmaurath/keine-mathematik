@@ -6,10 +6,20 @@
     <description>Recent content in Portfolios on Keine Mathematik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Neues Daten-Feature in der Bundesliga Liveberichterstattung</title>
+      <link>/portfolio/neues-daten-feature-in-der-bundesliga-liveberichterstattung/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/neues-daten-feature-in-der-bundesliga-liveberichterstattung/</guid>
+      <description>Zum Neustart der Bundesliga gab es einige Neuerungen: keine Zuschauer, Betreuer mit Mundschutz und Torjubel nur mit Abstandshaltung. Seit dem Topspiel zwischen Borussia Dortmund und FC Bayern gesellte sich in Zusammenarbeit mit Amazon’s Cloud Computing Abteilung AWS noch eine weitere Änderung hinzu: zwei fortgeschrittene Statistiken während der Liveübertragung.
+Durchschnittliche Positionierung Nach der Anfangsphase werden nun zuerst die Aufstellungen beider Teams eingeblendet. Nach kurzer Zeit verändert sich diese Grafik zu einer Darstellung der durchschnittlichen Positionen der Spieler in den Anfangsminuten.</description>
+    </item>
     
     <item>
       <title>Daten sind nicht gleich Daten</title>

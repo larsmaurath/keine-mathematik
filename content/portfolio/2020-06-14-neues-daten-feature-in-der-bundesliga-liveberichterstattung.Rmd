@@ -1,0 +1,49 @@
+---
+title: Neues Daten-Feature in der Bundesliga Liveberichterstattung
+author: Lars Maurath
+date: '2020-06-14'
+slug: neues-daten-feature-in-der-bundesliga-liveberichterstattung
+categories: []
+tags:
+  - Lars Maurath
+  - Bundesliga
+image: ''
+showonlyimage: no
+---
+
+Zum Neustart der Bundesliga gab es einige Neuerungen: keine Zuschauer, Betreuer mit Mundschutz und Torjubel nur mit Abstandshaltung. Seit dem Topspiel zwischen Borussia Dortmund und FC Bayern gesellte sich in Zusammenarbeit mit Amazon's Cloud Computing Abteilung AWS noch eine weitere Änderung hinzu: zwei fortgeschrittene Statistiken während der Liveübertragung. 
+
+### Durchschnittliche Positionierung
+
+Nach der Anfangsphase werden nun zuerst die Aufstellungen beider Teams eingeblendet. Nach kurzer Zeit verändert sich diese Grafik zu einer Darstellung der durchschnittlichen Positionen der Spieler in den Anfangsminuten. Die neuen Marker bleiben durch einen Strich mit der ursprünglichen Aufstellung verbunden, so dass wir Zuschauer die Abweichung besser erfassen können. 
+
+So lässt sich zum Beispiel unten erkennen, dass Bayern gegen Dortmung zu Beginn sehr kompakt steht. Sowohl die Außenverteidiger Davies und Pavard, als auch die Außenstürmer Gnabry und Coman sind recht weit eingerückt. 
+
+![*Schematische Aufstellung des FC Bayern gegen Borussia Dortmund*](/portfolio/2020-06-14-neues-daten-feature-in-der-bundesliga-liveberichterstattung_files/network1.png){width=300px}
+
+<br>
+
+![*Durschnittliche Positionierung des FC Bayern in der 12. Spielminute*](/portfolio/2020-06-14-neues-daten-feature-in-der-bundesliga-liveberichterstattung_files/network2.png){width=300px}
+
+
+### Expected Goals-Werte nach Toren
+
+Ein weiteres tolles Feature ist der Expected Goals-Wert, der nun häufig nach Toren eingeblendet wird. Unten seht ihr diese Statistik für Dani Olmo's Blitzdoppelpack gegen Hoffenheim.
+
+![*xG-Wert für Dani Olmo's 1:0 gegen Hoffenheim*](/portfolio/2020-06-14-neues-daten-feature-in-der-bundesliga-liveberichterstattung_files/xg1.png){width=300px}
+
+![*xG-Wert für Dani Olmo's 2:0 gegen Hoffenheim*](/portfolio/2020-06-14-neues-daten-feature-in-der-bundesliga-liveberichterstattung_files/xg2.png){width=300px}
+
+### Offizielle Kommunikation der Bundesliga
+
+Im folgenden zwei Videos vom Twitteraccount der Bundesliga, die eine sehr gute Übersicht über diese Statistiken geben.
+
+```{r echo=FALSE}
+blogdown::shortcode('tweet', '1265175839903268864')
+```
+
+<br><br>
+
+```{r echo=FALSE}
+blogdown::shortcode('tweet', '1265304185387380738')
+```

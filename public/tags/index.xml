@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Keine Mathematik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bundesliga</title>
+      <link>/tags/bundesliga/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bundesliga/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lars Maurath</title>
+      <link>/tags/lars-maurath/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lars-maurath/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Eventdaten</title>
@@ -26,15 +44,6 @@
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/expected-goals/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lars Maurath</title>
-      <link>/tags/lars-maurath/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/lars-maurath/</guid>
       <description></description>
     </item>
     

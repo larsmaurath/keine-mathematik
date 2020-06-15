@@ -7,6 +7,12 @@ disqusShortname = "keinemathematik-de"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-156024236-2"
 
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+# Do not omit raw html in markdown files
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet
   # Use custom.css for your custom styling

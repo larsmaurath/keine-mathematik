@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bundesliga on Keine Mathematik</title>
+    <link>/tags/bundesliga/</link>
+    <description>Recent content in Bundesliga on Keine Mathematik</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/bundesliga/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Neues Daten-Feature in der Bundesliga Liveberichterstattung</title>
+      <link>/portfolio/neues-daten-feature-in-der-bundesliga-liveberichterstattung/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/neues-daten-feature-in-der-bundesliga-liveberichterstattung/</guid>
+      <description>Zum Neustart der Bundesliga gab es einige Neuerungen: keine Zuschauer, Betreuer mit Mundschutz und Torjubel nur mit Abstandshaltung. Seit dem Topspiel zwischen Borussia Dortmund und FC Bayern gesellte sich in Zusammenarbeit mit Amazon’s Cloud Computing Abteilung AWS noch eine weitere Änderung hinzu: zwei fortgeschrittene Statistiken während der Liveübertragung.
+Durchschnittliche Positionierung Nach der Anfangsphase werden nun zuerst die Aufstellungen beider Teams eingeblendet. Nach kurzer Zeit verändert sich diese Grafik zu einer Darstellung der durchschnittlichen Positionen der Spieler in den Anfangsminuten.</description>
+    </item>
+    
+  </channel>
+</rss>
