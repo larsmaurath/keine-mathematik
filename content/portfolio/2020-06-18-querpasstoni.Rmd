@@ -1,0 +1,1013 @@
+---
+title: Von Wegen Querpasstoni
+author: Lars Maurath
+date: '2020-06-18'
+slug: querpasstoni
+categories: []
+tags:
+  - Lars Maurath
+  - Toni Kroos
+image: 'img/portfolio/kroos_1.png'
+showonlyimage: no
+---
+
+Toni Kroos ist seit jeher einer dieser Spieler, die ihren schwersten Stand im eigenen Land haben. Obwohl er sicherlich einer der erfolgreichsten deutschen Nationalspieler des letzten Jahrzehnts ist gewinnt er keine [Beliebtheitspreise](https://www.horizont.net/marketing/nachrichten/EM-Kader-Das-sind-die-beliebtesten-deutschen-Nationalspieler-140514){target="_blank"}. Kroos gilt als schwierig, seine Verweigerung im *Finale Dahoam* einen der Elfmeter zu schießen hat ihn bei Bayern entfremdet. Während seine reservierte Art in Madrid als Gegenpol zu einem extrovertierten Ronaldo gut ankam wurden Bayernfans nie wirklich warm mit ihm. Ein Spitzname hängt ihm in Deutschland besonders nach: Querpasstoni. 
+
+Ich denke oftmals dass die Ablehnung Kroos als Querpasstoni ein Proxy für die Ablehnung des Ballbesitzfußballs an sich ist. Kroos ist ein Symbol dieses Fußballs der oft als langweilig und ineffizient gilt. Was nützt einem all der Ballbesitz wenn ein Großteil der Pässe tief im Mittelfeld stattfinden und das Spiel nur von rechts nach links und zurück verlagert wird? Kroos war dann häufig der Spieler mit den meisten Pässen und der besten Passquote (zwei der meistzitierten Statistiken in der heutigen Fußballübertragung).
+
+In diesem Post zeige ich ein paar Visualisierungen und fortgeschrittene Passstatistiken, die hoffentlich ein neues Gefühl über Toni Kroos' Passspiel geben.
+
+```{r Load Libraries, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse) # dataframe manipulation
+library(dbplyr) # database access
+library(DBI) # database access
+library(r2d3) # evaluate D3 directly from R
+library(viridis) # color scheme for pass polar
+library(cowplot) # plotting the player portrait
+library(broom) # getting kmeans results
+library(patchwork) # combining plots
+library(ggrepel) # pretty labels for scatter plot
+library(r2d3) # d3 support
+
+source("../data/pitch_plots.r")
+```
+
+```{r Query All Toni Kroos Passes, echo=FALSE}
+con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "~/Documents/Blog/Data/data.sqlite")
+
+passes <- tbl(con, "events") %>%
+  filter(playerId == "31772") %>%
+  filter(type_name == "Pass") %>%
+  filter(!(qualifiers %like% "%CornerTaken%")) %>%
+  filter(!(qualifiers %like% "%HeadPass%")) %>%
+  filter(!(qualifiers %like% "%FreekickTaken%")) %>%
+  filter(!(qualifiers %like% "%ThrowIn%")) %>%
+  filter(!(qualifiers %like% "%FreekickTaken%")) %>%
+  collect()
+
+DBI::dbDisconnect(con)
+
+passes <- passes %>%
+  mutate(PassEndX = as.numeric(PassEndX)) %>%
+  mutate(PassEndY = as.numeric(PassEndY))
+
+match_ids <- unique(passes$match_id)
+
+con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "~/Documents/Blog/Data/data.sqlite")
+
+matches <- tbl(con, "matches") %>%
+  filter(match_id %in% match_ids) %>%
+  collect()
+
+DBI::dbDisconnect(con)
+```
+
+```{r Query All Comparison Passes, echo=FALSE}
+con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "~/Documents/Blog/Data/data.sqlite")
+
+passes_all <- tbl(con, "events") %>%
+  filter(playerId %in% c("31772", "74939", "77464")) %>%
+  filter(type_name == "Pass") %>%
+  filter(!(qualifiers %like% "%CornerTaken%")) %>%
+  filter(!(qualifiers %like% "%HeadPass%")) %>%
+  filter(!(qualifiers %like% "%FreekickTaken%")) %>%
+  filter(!(qualifiers %like% "%ThrowIn%")) %>%
+  filter(!(qualifiers %like% "%FreekickTaken%")) %>%
+  collect()
+
+DBI::dbDisconnect(con)
+
+passes_all <- passes_all %>%
+  mutate(PassEndX = as.numeric(PassEndX)) %>%
+  mutate(PassEndY = as.numeric(PassEndY))
+
+match_ids <- unique(passes_all$match_id)
+
+con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "~/Documents/Blog/Data/data.sqlite")
+
+matches_all <- tbl(con, "matches") %>%
+  filter(match_id %in% match_ids) %>%
+  collect()
+
+DBI::dbDisconnect(con)
+```
+
+```{r Enrich Pass Data, echo=FALSE}
+assumed_length_of_pitch = 105
+assumed_width_of_pitch = 68
+
+x_mult = assumed_length_of_pitch/100
+y_mult = assumed_width_of_pitch/100
+
+matches <- matches %>%
+  select(match_id, season, league)
+
+passes_ext <- left_join(passes, matches, by = c('match_id'))
+
+passes_ext <- passes_ext %>%
+  mutate(switch = if_else(abs(PassEndY - location_y) > 50, TRUE, FALSE)) %>%
+  mutate(into_final_third = if_else(PassEndX > 100*2/3 & location_x <= 100*2/3, TRUE, FALSE)) %>%
+  mutate(into_box = if_else(PassEndX > 83 && (PassEndY > 21.1 && PassEndY < 78.9 ), TRUE, FALSE)) %>%
+  mutate(length = sqrt(((PassEndX - location_x)*x_mult)^2 + ((PassEndY - location_y)*y_mult)^2)) %>%
+  mutate(angle = (atan2((PassEndY - location_y)*y_mult, (PassEndX - location_x)*x_mult) * 180) / pi)
+
+# passes %>%
+#   mutate(switch = if_else(abs(PassEndY - location_y) > 50, 1, 0)) %>% 
+#   mutate(final_third = if_else(PassEndX > 100*2/3 & location_x <= 100*2/3, TRUE, FALSE)) %>%
+#   mutate(key = if_else(grepl('KeyPass', qualifiers), TRUE, FALSE)) %>%
+#   group_by(season) %>%
+#   summarize(switch_ratio = mean(switch), final_third_ratio = mean(final_third), key_count = sum(key))
+```
+
+```{r Enrich Pass Data All, echo=FALSE}
+assumed_length_of_pitch = 105
+assumed_width_of_pitch = 68
+
+x_mult = assumed_length_of_pitch/100
+y_mult = assumed_width_of_pitch/100
+
+matches_all <- matches_all %>%
+  select(match_id, season, league)
+
+passes_ext_all <- left_join(passes_all, matches_all, by = c('match_id'))
+
+passes_ext_all <- passes_ext_all %>%
+  mutate(switch = if_else(abs(PassEndY - location_y) > 50, TRUE, FALSE)) %>%
+  mutate(into_final_third = if_else(PassEndX > 100*2/3 & location_x <= 100*2/3, TRUE, FALSE)) %>%
+  mutate(into_box = if_else(PassEndX > 83 && (PassEndY > 21.1 && PassEndY < 78.9 ), TRUE, FALSE)) %>%
+  mutate(length = sqrt(((PassEndX - location_x)*x_mult)^2 + ((PassEndY - location_y)*y_mult)^2)) %>%
+  mutate(angle = (atan2((PassEndY - location_y)*y_mult, (PassEndX - location_x)*x_mult) * 180) / pi)
+
+# passes %>%
+#   mutate(switch = if_else(abs(PassEndY - location_y) > 50, 1, 0)) %>% 
+#   mutate(final_third = if_else(PassEndX > 100*2/3 & location_x <= 100*2/3, TRUE, FALSE)) %>%
+#   mutate(key = if_else(grepl('KeyPass', qualifiers), TRUE, FALSE)) %>%
+#   group_by(season) %>%
+#   summarize(switch_ratio = mean(switch), final_third_ratio = mean(final_third), key_count = sum(key))
+```
+
+<br>
+
+### Häufigste Passtypen
+
+Wir beginnen zunächst einmal damit unsere Passdaten naiv zu plotten. In unserer ersten Grafik seht ihr alle Pässe von Toni Kroos im Champions League-Finale 2017/2018. Um uns wirklich auf das Passspiel aus dem Spiel heraus zu konzentrieren, filtern wir alle Standardsituationen und Kopfbälle heraus. 
+
+Wir können sofort ein paar Beobachtungen machen: die meisten Pässe beginnen und enden im mittleren Drittel des Platzes; durchschnittlich beginnen Kroos' Pässe im linken Halbfeld, ungefähr auf der Höhe der Mittellinie; nach vorne gibts es wenige direkt vertikale Pässe und Kroos scheint den Ball bevorzugt auf die Außen zu verlagern.
+
+```{r Naive Pass Plot, echo=FALSE}
+source("../data/pitch_plots.r")
+
+passes_naive <- passes_ext %>%
+  filter(match_id == "1278491")
+
+
+pitch <- create_opta_Pitch(grass_colour = "grey10", line_colour = "#8F8F8F", background_colour = "grey10", goal_colour = "#000000", middlethird = TRUE, arcs = FALSE) +
+  geom_segment(data = passes_naive, aes(x = location_x, y = location_y, xend = PassEndX, yend = PassEndY), color = "grey", arrow = arrow(length = unit(0.02, "npc"))) + 
+  theme(legend.position = "none") +
+  draw_image("https://tmssl.akamaized.net/images/portrait/header/31909-1519743952.jpg?lm=1519743979", x = 5.0, y = 10.0, scale = 20) +
+  annotate("text", 
+           x = 12, 
+           y = 10, 
+           colour = "grey90", 
+           family = "mono",
+           size = 2.5, 
+           hjust = 0, 
+           label = "Toni Kroos \nOpen Play Passes \nChampions League Final \nv Liverpool 2017/2018")
+
+pitch
+```
+
+<br>
+
+Ein Nachteil dieser Darstellung ist natürlich, dass es schnell sehr unübersichtlich wird. In dieser Grafik seht ihr "nur" 78 Pässe, aber um Aussagen über Trends oder Strukturen zu treffen benötigen wir viel größere Datensätze (zum Beispiel alle Pässe einer Saison).
+
+Ein Ansatz einen größeren Datensatz zu analysieren aber trotzdem den Überblick zu behalten bietet sich durch den sogenannten [K-Means-Algorithmus](https://de.wikipedia.org/wiki/K-Means-Algorithmus){target="_blank"}. Angewandt auf unsere Passdaten versucht diese Methode alle Pässe in *k* verschiedene Gruppen zusammenzufassen, indem es den mittleren Abstand aller Pässe in einer Gruppe minimiert. 
+
+Für unser obiges Beispiel sieht das nun wie folgt aus.
+
+```{r Naive Pass Plot II, echo=FALSE}
+source("../data/pitch_plots.r")
+
+passes_naive <- passes_ext %>%
+  filter(match_id == "1278491")
+
+passes_kmeans <- passes_naive %>% 
+  mutate(vertical = PassEndX - location_x) %>%
+  mutate(horizontal = PassEndY - location_y) %>%
+  mutate(location_x = location_x - 50) %>%
+  mutate(location_y = location_y - 50) %>%
+  select(location_x, location_y, vertical, horizontal)
+
+kclust <- kmeans(passes_kmeans, centers = 5)
+
+kmean_result <- tidy(kclust) %>%
+  mutate(location_x = x1 + 50, location_y = x2 + 50) %>%
+  mutate(PassEndX = location_x + x3) %>%
+  mutate(PassEndY = location_y + x4)
+
+passes_to_plot <- augment(kclust, passes_kmeans) %>%
+  mutate(cluster = .cluster) %>%
+  mutate(location_x = location_x + 50, location_y = location_y + 50) %>%
+  mutate(PassEndX = location_x + vertical) %>%
+  mutate(PassEndY = location_y + horizontal)
+
+pitch <- create_opta_Pitch(grass_colour = "grey10", line_colour = "#8F8F8F", background_colour = "grey10", goal_colour = "#000000", middlethird = TRUE, arcs = FALSE) +
+  geom_segment(data = passes_to_plot, aes(x = location_x, y = location_y, xend = PassEndX, yend = PassEndY, color = cluster), alpha = 0.25, arrow = arrow(length = unit(0.02, "npc"))) + 
+  geom_segment(data = kmean_result, aes(x = location_x, y = location_y, xend = PassEndX, yend = PassEndY, color = cluster), linetype = "twodash", arrow = arrow(length = unit(0.04, "npc"))) +
+  scale_color_brewer(name = "cluster", palette = "RdYlBu") +
+  theme(legend.position = "none") +
+  draw_image("https://tmssl.akamaized.net/images/portrait/header/31909-1519743952.jpg?lm=1519743979", x = 5.0, y = 10.0, scale = 20) +
+  annotate("text", 
+           x = 12, 
+           y = 10, 
+           colour = "grey90", 
+           family = "mono",
+           size = 2.5, 
+           hjust = 0, 
+           label = "Toni Kroos \nOpen Play Passes \nChampions League Final \nv Liverpool 2017/2018")
+
+pitch
+```
+
+<br>
+
+Die 78 Pässe wurden nun in fünf Kategorien eingeteilt und werden jeweils durch die gestrichelten, dickeren Pfeile repräsentiert. Wichtig ist, dass diese fünf Pfeile keine echten Pässe darstellen, sondern nur den Durchschnitt der Eigenschaften (Ursprung, Länge, Winkel) aller Pässe ihrer Kategorie. 
+
+
+
+So können wir nun also eine größere Anzahl an Pässen gleichzeitig analysieren ohne den Überblick zu verlieren. Die folgende Grafik zeigt nun eine Analyse aller Toni Kroos Pässe der Saisons 2009/2010 bis jetzt (Liga und Champions League), eingeteilt in sechs Kategorien. Im Titel für jeden Plot findet ihr die Häufigkeit, mit der diese Pässe auftreten.
+
+```{r K-Means Data, echo=FALSE}
+library(broom)
+
+passes_kmeans <- passes_ext %>% 
+  mutate(vertical = PassEndX - location_x) %>%
+  mutate(horizontal = PassEndY - location_y) %>%
+  mutate(location_x = location_x - 50) %>%
+  mutate(location_y = location_y - 50) %>%
+  select(location_x, location_y, vertical, horizontal) %>%
+  head(1000)
+
+kclust <- kmeans(passes_kmeans, centers = 6)
+
+# kclusts <- tibble(k = 1:9) %>%
+#   mutate(
+#     kclust = map(k, ~kmeans(passes_kmeans, .x)),
+#     tidied = map(kclust, tidy),
+#     glanced = map(kclust, glance),
+#     augmented = map(kclust, augment, passes_kmeans)
+#   )
+# 
+# clusterings <- kclusts %>%
+#   unnest(glanced)
+# 
+# ggplot(clusterings, aes(k, tot.withinss)) +
+#    geom_line()
+```
+
+```{r K-Means Plot, echo=FALSE}
+source("../data/pitch_plots.r")
+
+# kmean_result <- tidy(kclust) %>%
+#   rename(location_x = x1, location_y = x2, angle = x3, length = x4) %>%
+#   mutate(PassEndX = location_x + cos(angle*pi/180)*length) %>%
+#   mutate(PassEndY = location_y + sin(angle*pi/180)*length)
+
+kmean_result <- tidy(kclust) %>%
+  mutate(location_x = x1 + 50, location_y = x2 + 50) %>%
+  mutate(PassEndX = location_x + x3) %>%
+  mutate(PassEndY = location_y + x4) %>%
+  mutate(ratio = scales::percent(size / sum(size)))
+
+passes_to_plot <- augment(kclust, passes_kmeans) %>%
+  mutate(cluster = .cluster) %>%
+  mutate(location_x = location_x + 50, location_y = location_y + 50) %>%
+  mutate(PassEndX = location_x + vertical) %>%
+  mutate(PassEndY = location_y + horizontal)
+
+passes_to_plot <- left_join(passes_to_plot, kmean_result %>% select(cluster, ratio), by = c("cluster"))
+
+pitch <- create_opta_Pitch_basic(grass_colour = "#F9F9F9", line_colour = "#8F8F8F", background_colour = "#F9F9F9", goal_colour = "#000000")
+
+pitch +
+  geom_segment(data = passes_to_plot, aes(x = location_x, y = location_y, xend = PassEndX, yend = PassEndY), color = "grey30", alpha = 0.4, arrow = arrow(length = unit(0.02, "npc"))) +
+  geom_segment(data = kmean_result, aes(x = location_x, y = location_y, xend = PassEndX, yend = PassEndY), color = "tomato2", arrow = arrow(length = unit(0.02, "npc"))) +
+  facet_wrap(~ ratio) +
+  geom_rect(data = data.frame(xmin = 0, xmax = 100, ymin = 0, ymax = 100), aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = NA, colour = "white") +
+  geom_segment(data = data.frame(x = 50, y = 0, xend = 50, yend = 100), aes(x = x, y = y, xend = xend, yend = yend), colour = "white") +
+  geom_rect(data = data.frame(xmin = 0, xmax = 17, ymin = 21.1, ymax = 78.9), aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = NA, colour = "white") +
+  geom_rect(data = data.frame(xmin = 83, xmax = 100, ymin = 21.1, ymax = 78.9), aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = NA, colour = "white") +
+  geom_rect(data = data.frame(xmin = 0, xmax = 5.8, ymin = 36.8, ymax = 63.2), aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = NA, colour = "white") +
+  geom_rect(data = data.frame(xmin = 94.2, xmax = 100, ymin = 36.8, ymax = 63.2), aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = NA, colour = "white") +
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank(), 
+        axis.text.x = element_blank(), axis.text.y = element_blank(),
+        axis.ticks.x = element_blank(), axis.ticks.y = element_blank(),
+        panel.background = element_rect(fill = "grey10"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()) +
+  theme(plot.background = element_rect(fill = "grey10")) +
+  theme(strip.background = element_rect(fill = "grey10"))+
+  theme(strip.text = element_text(colour = 'white'))
+```
+
+Am häufigsten sind kurze Pässe auf rechts oder links außen, gefolgt von drei Gruppen von Pässen in die Mitte. Die homogenste Gruppe ist allerdings die letzte (12.3% aller Pässe), die Seitenwechsel von links auf den rechten Flügel repräsentiert. 
+
+Wir werden dieses Muster noch häufiger in den nächsten Grafiken sehen.
+
+<br>
+
+### Pass Heatmaps
+
+Eine weitere Technik eine große Anzahl von Pässen übersichtlich darzustellen sind *Heatmaps*. Hierzu wird das Spielfeld in eine Anzahl gleich großer Rechtecke aufgeteilt, deren Farbe von einer bestimmten Kennzahl (Ballkontakte, Pässe, Fouls, ...) abhängt.
+
+Weiter unten seht ihr nun so eine Heatmap: je mehr Pässe in einem Rechteck beginnen, desto dunkler ist die grüne Einfärbung. 
+
+```{r Pass Heatmap Data, echo=FALSE}
+# Initialize parameters
+
+num_zones_width <- 12 # Number of zones horizontally
+num_zones_height <- 8 # Number of zones vertically
+num_zones_tot <- num_zones_width*num_zones_height # Total number of zones
+
+pitch_width <- 100 # As per Opta definition
+pitch_height <- 100 # As per Opta definition
+
+d3_pitch_width <- 840 # Pitch width for our d3 plot
+d3_pitch_height <- 544 # Pitch height for our d3 plot
+
+# Determine passing origin and destination zones
+
+pass_areas <- passes %>%
+  mutate(location_y = 100 - location_y) %>% # Flip y-coordinate
+  mutate(PassEndY = 100 - PassEndY) %>% # Flip y-coordinate
+  mutate(area_origin_x = ceiling(location_x * num_zones_width / pitch_width)) %>%
+  mutate(area_origin_y = ceiling(location_y * num_zones_height / pitch_height)) %>%
+  mutate(area_origin = (area_origin_x - 1) * num_zones_height + area_origin_y) %>%
+  mutate(area_end_x = ceiling(PassEndX * num_zones_width / pitch_width)) %>%
+  mutate(area_end_y = ceiling(PassEndY * num_zones_height / pitch_height)) %>%
+  mutate(area_end = (area_end_x - 1) * num_zones_height + area_end_y) %>%
+  filter(area_origin <= num_zones_tot & area_end <= num_zones_tot)
+
+# Tally up in which zones the passes originate
+
+summary_origin <- pass_areas %>%
+  group_by(area_origin) %>%
+  summarize(n = n(), ratio_origin = n()/nrow(pass_areas))
+
+# Add any zones for which we have no passing data. We of course intitialize them with 0.
+
+missing_rows <- setdiff(seq(1, num_zones_tot), summary_origin$area_origin)
+
+for(row in missing_rows){
+  summary_origin <- summary_origin %>%
+    add_row(area_origin = row, n = 0, ratio_origin = 0.0)
+}
+
+# Tally up in which zones the passes end
+
+summary_end <- pass_areas %>%  
+  group_by(area_origin, area_end) %>%
+  summarize(n_end = n()) %>%
+  ungroup()
+
+# Add any zones for which we have no passing data. We of course intitialize them with 0.
+
+missing_cols <- setdiff(seq(1, 96), summary_end$area_end)
+
+for(col in missing_cols){
+  summary_end <- summary_end %>%
+    add_row(area_origin = 1, area_end = col, n_end = 0)
+}
+
+# Combine passing origin and destination information and format as wide dataframe
+
+data <- summary_origin %>%
+  left_join(summary_end, by = c("area_origin")) %>%
+  mutate(ratio = n_end / n) %>%
+  select(area_origin, area_end, ratio) %>%
+  pivot_wider(id_cols = c("area_origin"), names_from = "area_end", values_from = "ratio") %>%
+  replace(is.na(.), 0)
+
+# Add plotting information for d3 (rectangle locations, widths and heights)
+
+data <- summary_origin %>%
+  left_join(data, by = c("area_origin")) %>%
+  select(-n) %>%
+  mutate(width = d3_pitch_width / num_zones_width, 
+         height = d3_pitch_height / num_zones_height, 
+         y1 = ((area_origin - 1) %% num_zones_height) * height, 
+         x1 = floor((area_origin - 1) / num_zones_height) * width) %>%
+  arrange(area_origin)
+```
+
+Wir sehen natürlich sofort, dass Toni Kroos vor allem im linken Halbfeld zu finden ist und sich auch öfter mal etwas fallen lässt. 
+
+```{r Pass Heatmap Plot Static, echo=FALSE}
+r2d3(data = data, script = "../data/pass_transition_static.js", height = 584, width = 880)
+```
+
+<br>
+
+Im einem nächsten Schritt können wir diese Grafik nun auch noch interaktiv machen und die Ziele der Pässe darstellen. Wenn ihr in der nächsten Heatmap mit der Maus über das Spielfeld fahrt, seht ihr den Zusammenhang zwischen Passursprung und -ziel. Natürlich ist ein Großteil aller Pässe relative kurz, was aber auffällt ist, dass Kroos sehr häufig das Spielauf die außen verlagert und bevorzugt aus dem linken Halbfeld auf die rechte Außenbahn.
+
+```{r Pass Heatmap Plot, echo=FALSE}
+r2d3(data = data, script = "../data/pass_transition.js", height = 584, width = 880)
+```
+
+<br>
+
+Wir können das noch klarer darstellen, indem wir nur die Pässe herausfiltern, die mehr als 35m des Spielfelds in der Breite überwinden. So sehen wir sehr deutlich dass diese zum Großteil aus dem linken Halbfeld gespielt werden. Da Kroos rechtsfüßig ist, bietet sich dann natürlich die rechte Flanke als Ziel für diese Pässe an.
+
+```{r Pass Heatmap Data Switches, echo=FALSE}
+# Initialize parameters
+
+num_zones_width <- 12 # Number of zones horizontally
+num_zones_height <- 8 # Number of zones vertically
+num_zones_tot <- num_zones_width*num_zones_height # Total number of zones
+
+pitch_width <- 100 # As per Opta definition
+pitch_height <- 100 # As per Opta definition
+
+d3_pitch_width <- 840 # Pitch width for our d3 plot
+d3_pitch_height <- 544 # Pitch height for our d3 plot
+
+# Determine passing origin and destination zones
+
+pass_areas <- passes %>%
+  filter(abs(PassEndY - location_y) >= 50) %>%
+  mutate(location_y = 100 - location_y) %>% # Flip y-coordinate
+  mutate(PassEndY = 100 - PassEndY) %>% # Flip y-coordinate
+  mutate(area_origin_x = ceiling(location_x * num_zones_width / pitch_width)) %>%
+  mutate(area_origin_y = ceiling(location_y * num_zones_height / pitch_height)) %>%
+  mutate(area_origin = (area_origin_x - 1) * num_zones_height + area_origin_y) %>%
+  mutate(area_end_x = ceiling(PassEndX * num_zones_width / pitch_width)) %>%
+  mutate(area_end_y = ceiling(PassEndY * num_zones_height / pitch_height)) %>%
+  mutate(area_end = (area_end_x - 1) * num_zones_height + area_end_y) %>%
+  filter(area_origin <= num_zones_tot & area_end <= num_zones_tot)
+
+# Tally up in which zones the passes originate
+
+summary_origin <- pass_areas %>%
+  group_by(area_origin) %>%
+  summarize(n = n(), ratio_origin = n()/nrow(pass_areas))
+
+# Add any zones for which we have no passing data. We of course intitialize them with 0.
+
+missing_rows <- setdiff(seq(1, num_zones_tot), summary_origin$area_origin)
+
+for(row in missing_rows){
+  summary_origin <- summary_origin %>%
+    add_row(area_origin = row, n = 0, ratio_origin = 0.0)
+}
+
+# Tally up in which zones the passes end
+
+summary_end <- pass_areas %>%  
+  group_by(area_origin, area_end) %>%
+  summarize(n_end = n()) %>%
+  ungroup()
+
+# Add any zones for which we have no passing data. We of course intitialize them with 0.
+
+missing_cols <- setdiff(seq(1, 96), summary_end$area_end)
+
+for(col in missing_cols){
+  summary_end <- summary_end %>%
+    add_row(area_origin = 1, area_end = col, n_end = 0)
+}
+
+# Combine passing origin and destination information and format as wide dataframe
+
+data <- summary_origin %>%
+  left_join(summary_end, by = c("area_origin")) %>%
+  mutate(ratio = n_end / n) %>%
+  select(area_origin, area_end, ratio) %>%
+  pivot_wider(id_cols = c("area_origin"), names_from = "area_end", values_from = "ratio") %>%
+  replace(is.na(.), 0)
+
+# Add plotting information for d3 (rectangle locations, widths and heights)
+
+data <- summary_origin %>%
+  left_join(data, by = c("area_origin")) %>%
+  select(-n) %>%
+  mutate(width = d3_pitch_width / num_zones_width, 
+         height = d3_pitch_height / num_zones_height, 
+         y1 = ((area_origin - 1) %% num_zones_height) * height, 
+         x1 = floor((area_origin - 1) / num_zones_height) * width) %>%
+  arrange(area_origin)
+```
+
+```{r Pass Heatmap Plot Switches, echo=FALSE}
+r2d3(data = data, script = "../data/pass_transition_switches.js", height = 584, width = 880)
+```
+
+<br>
+
+Um einen weiteren Aspekt von Kroos' Passrepertoire abzudecken können wir auch auf Torschussvorlagen, also Pässe die direkt zu Torabschlüssen führen, filtern. Der Schwerpunkt dieser Pässe befindet sich nun natürlich ein bisschen weiter vorne.
+
+```{r Pass Heatmap Data Key Passes, echo=FALSE}
+# Initialize parameters
+
+num_zones_width <- 12 # Number of zones horizontally
+num_zones_height <- 8 # Number of zones vertically
+num_zones_tot <- num_zones_width*num_zones_height # Total number of zones
+
+pitch_width <- 100 # As per Opta definition
+pitch_height <- 100 # As per Opta definition
+
+d3_pitch_width <- 840 # Pitch width for our d3 plot
+d3_pitch_height <- 544 # Pitch height for our d3 plot
+
+# Determine passing origin and destination zones
+
+pass_areas <- passes %>%
+  filter(grepl("KeyPass", qualifiers)) %>%
+  mutate(location_y = 100 - location_y) %>% # Flip y-coordinate
+  mutate(PassEndY = 100 - PassEndY) %>% # Flip y-coordinate
+  mutate(area_origin_x = ceiling(location_x * num_zones_width / pitch_width)) %>%
+  mutate(area_origin_y = ceiling(location_y * num_zones_height / pitch_height)) %>%
+  mutate(area_origin = (area_origin_x - 1) * num_zones_height + area_origin_y) %>%
+  mutate(area_end_x = ceiling(PassEndX * num_zones_width / pitch_width)) %>%
+  mutate(area_end_y = ceiling(PassEndY * num_zones_height / pitch_height)) %>%
+  mutate(area_end = (area_end_x - 1) * num_zones_height + area_end_y) %>%
+  filter(area_origin <= num_zones_tot & area_end <= num_zones_tot)
+
+# Tally up in which zones the passes originate
+
+summary_origin <- pass_areas %>%
+  group_by(area_origin) %>%
+  summarize(n = n(), ratio_origin = n()/nrow(pass_areas))
+
+# Add any zones for which we have no passing data. We of course intitialize them with 0.
+
+missing_rows <- setdiff(seq(1, num_zones_tot), summary_origin$area_origin)
+
+for(row in missing_rows){
+  summary_origin <- summary_origin %>%
+    add_row(area_origin = row, n = 0, ratio_origin = 0.0)
+}
+
+# Tally up in which zones the passes end
+
+summary_end <- pass_areas %>%  
+  group_by(area_origin, area_end) %>%
+  summarize(n_end = n()) %>%
+  ungroup()
+
+# Add any zones for which we have no passing data. We of course intitialize them with 0.
+
+missing_cols <- setdiff(seq(1, 96), summary_end$area_end)
+
+for(col in missing_cols){
+  summary_end <- summary_end %>%
+    add_row(area_origin = 1, area_end = col, n_end = 0)
+}
+
+# Combine passing origin and destination information and format as wide dataframe
+
+data <- summary_origin %>%
+  left_join(summary_end, by = c("area_origin")) %>%
+  mutate(ratio = n_end / n) %>%
+  select(area_origin, area_end, ratio) %>%
+  pivot_wider(id_cols = c("area_origin"), names_from = "area_end", values_from = "ratio") %>%
+  replace(is.na(.), 0)
+
+# Add plotting information for d3 (rectangle locations, widths and heights)
+
+data <- summary_origin %>%
+  left_join(data, by = c("area_origin")) %>%
+  select(-n) %>%
+  mutate(width = d3_pitch_width / num_zones_width, 
+         height = d3_pitch_height / num_zones_height, 
+         y1 = ((area_origin - 1) %% num_zones_height) * height, 
+         x1 = floor((area_origin - 1) / num_zones_height) * width) %>%
+  arrange(area_origin)
+```
+
+```{r Pass Heatmap Plot Key Passes, echo=FALSE}
+r2d3(data = data, script = "../data/pass_transition_key.js", height = 584, width = 880)
+```
+
+<br>
+
+Falls ihr keine Angst vor Highlight-Videos mit Technountermalung habt, können wir im folgenden Clip einige unsere Beobachtungen bestätigen. Ein Großteil der Szenen sind elegante Seitenwechsel und Steilpässe. Natürlich ist es aber generell keine gute Idee sich auf Videos zu verlassen, die lediglich Highlights zusammenschneiden.
+
+```{r, eval=TRUE, echo=FALSE}
+blogdown::shortcode("youtube", "qsgaQxDix4M?start=27")
+```
+
+<br>
+
+### Pass Sonarplots
+
+Die dritte Technik die wir heute benutzen um Passdaten zu visualisieren sind sogennante Sonarplots. Hierbei liegt der Hauptfokus auf dem Winkel der gespielten Pässe während die Länge der Sektoren die relative Häufigkeit dieser Pässe darstellt. Andere Merkmale wie durchschnittliche Passlänge oder Passquote können zusätzlich durch Farben dargestellt werden.
+
+Einen Sonarplot für Toni Kroos seht ihr hier:
+
+```{r Sonar Data, echo=FALSE}
+angle_section = 15
+
+passes_sonar <- passes_ext %>% mutate(angle_rounded = round(angle/angle_section)*angle_section)
+passes_sonar <- passes_sonar %>% mutate(outcome_int = ifelse(outcome == "Successful", 1, 0))
+
+passes_sonar <- passes_sonar %>%
+  filter(between(location_x, 100*1/3, 100*2/3))
+
+sonar_data = passes_sonar %>%
+  mutate(N = n()) %>%
+  group_by(angle_rounded) %>%
+  mutate(n_angle = n() / N) %>%
+  ungroup() %>%
+  mutate(maxN = max(n_angle),
+         angle_norm = n_angle / maxN) %>%
+  group_by(angle_rounded, N) %>%
+  summarize(angle_norm = mean(angle_norm),
+            distance = mean(length),
+            completion = mean(outcome_int))
+```
+
+```{r Sonar Plot, echo=FALSE}
+sonar_plot <- function(df, legend_title, plot_title, fill_var, legend){
+  fill_var <- sym(fill_var)
+
+  p <- ggplot() + 
+    geom_rect(aes(xmin = 0, ymin = 0, xmax = 93, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+    geom_rect(aes(xmin = 0, ymin = 0, xmax = -93, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+    geom_rect(aes(xmin = -93, ymin = 0, xmax = -187, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+    geom_rect(aes(xmin = 93, ymin = 0, xmax = 187, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+    geom_bar(data = df, aes(x = angle_rounded, y = angle_norm, fill = !!fill_var), stat = "identity") +
+    scale_y_continuous(limits = c(0, 1.2)) +
+    coord_polar(start = pi/2, direction = -1) +
+    scale_fill_viridis(legend_title, na.value = "#FDE725FF", labels = scales::percent, limits = c(0.6, 1.0), breaks = c(0.6, 0.8, 1)) +
+    theme_void() +
+    theme(legend.position = "bottom",
+          legend.text = element_text(color = "grey90", size = 8, family = "mono"), #uncomment to remove colorbar
+          legend.title = element_text(color = "grey90", size = 8, family = "mono", vjust = 0.8), #uncomment to remove colorbar
+          plot.background = element_rect(fill = "grey10", color = NA),
+          panel.background = element_rect(fill = "transparent", color = NA))
+  
+  if(!legend){
+    p <- p +
+      theme(legend.position = "none")
+  }
+
+  p
+}
+
+p1 <- sonar_plot(sonar_data, "Passquote", "Pass-Sonar", "completion", TRUE) +
+  labs(x = '', y = '', title = "Pass-Sonar: Toni Kroos") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 14, hjust = 0.5)) +
+  annotate("text", 
+           x = 0, 
+           y = 1.1, 
+           colour = "grey90", 
+           family = "mono",
+           size = 4, 
+           hjust = 0.4, 
+           angle = -90,
+           label = "Offensive") +
+  annotate("text", 
+           x = 90, 
+           y = 1.1, 
+           colour = "grey90", 
+           family = "mono",
+           size = 4, 
+           hjust = 0.4, 
+           angle = 0,
+           label = "Links") +
+  annotate("text", 
+           x = -180, 
+           y = 1.1, 
+           colour = "grey90", 
+           family = "mono",
+           size = 4, 
+           hjust = 0.4, 
+           angle = 90,
+           label = "Defensive") +
+  annotate("text", 
+           x = -90, 
+           y = 1.1, 
+           colour = "grey90",
+           family = "mono",
+           size = 4, 
+           hjust = 0.4, 
+           angle = 0,
+           label = "Rechts")
+
+sonar_data_dummy <- sonar_data %>%
+  rowwise() %>%
+  mutate(angle_norm = if_else(angle_rounded == 45, 1, 0)) %>%
+  mutate(distance = if_else(angle_rounded == 45, 0.8, 0))
+
+p2 <- sonar_plot(sonar_data_dummy, "Durchschn. Länge", "", "distance", FALSE) +
+  geom_rect(aes(xmin = 38, ymin = 0, xmax = 38, ymax = 1), colour = "gold", fill = NA, linetype = "dashed") +
+  labs(x = '', y = '', title = "Häufigkeit") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 9, hjust = 0.5))  
+
+p3 <- sonar_plot(sonar_data_dummy, "Durchschn. Länge", "", "distance", FALSE) +
+  geom_rect(aes(xmin = 0, ymin = 0, xmax = 38, ymax = 0.5), colour = "gold", fill = NA, linetype = "dashed") +
+  labs(x = '', y = '', title = "Winkel") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 9, hjust = 0.5))
+
+p4 <- sonar_plot(sonar_data_dummy, "Durchschn. Länge", "", "distance", FALSE) +
+  geom_rect(aes(xmin = 38, ymin = 0, xmax = 41, ymax = 1), colour = "gold", fill = NA, linetype = "dotted") +
+  geom_rect(aes(xmin = 41, ymin = 0, xmax = 44, ymax = 1), colour = "gold", fill = NA, linetype = "dotted") +
+  geom_rect(aes(xmin = 44, ymin = 0, xmax = 47, ymax = 1), colour = "gold", fill = NA, linetype = "dotted") +
+  geom_rect(aes(xmin = 47, ymin = 0, xmax = 50, ymax = 1), colour = "gold", fill = NA, linetype = "dotted") +
+  labs(x = '', y = '', title = "Passquote") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 9, hjust = 0.5))  
+
+p1 + (p2 / p3 / p4) &
+  theme(plot.background = element_rect(fill = "grey10")) +
+  theme(strip.background = element_rect(fill = "grey10"))
+```
+
+Um den Passwinkel nicht unnötig einzuschränken habe ich die Pässe nun auf das mittlere Drittel beschränkt. Pässe im Verteidigungs- oder Angriffsdrittel werden natürlich naturgemäß öfter nur nach vorne oder Richtung Tor gespielt. Das soll nicht heißen, dass eine Analyse dieser Pässe nicht interessant wäre.
+
+Im obigen Sonarplot sehen wir nun, dass Kroos häufiger nach vorne als nach hinten spielt und zudem häufiger nach rechts als nach links. Das deckt sich mit unseren Beobachtungen aus unseren Passcharts und der Heatmap. Zudem weist Toni Kroos wie zu erwarten eine beachtliche Passgenauigkeit auf, wobei diese nach vertikal nach vorne ein bisschen abflacht.
+
+Um die obigen Beobachtungen ein bisschen in Relation zu setzen vergleichen wir nun Kroos' Sonarplot mit zwei anderen Mittelfeldspielern: Thiago Alcántara und İlkay Gündoğan
+
+```{r Sonar Data All, echo=FALSE}
+angle_section = 15
+
+passes_sonar <- passes_ext_all %>% mutate(angle_rounded = round(angle/angle_section)*angle_section)
+passes_sonar <- passes_sonar %>% mutate(outcome_int = ifelse(outcome == "Successful", 1, 0))
+
+passes_sonar <- passes_sonar %>%
+  filter(between(location_x, 100*1/3, 100*2/3))
+
+sonar_data_all = passes_sonar %>%
+  group_by(playerId) %>%
+  mutate(N = n()) %>%
+  ungroup() %>%
+  group_by(playerId, angle_rounded) %>%
+  mutate(n_angle = n() / N) %>%
+  ungroup() %>%
+  group_by(playerId) %>%
+  mutate(maxN = max(n_angle),
+         angle_norm = n_angle / maxN) %>%
+  ungroup() %>%
+  group_by(playerId, angle_rounded, N) %>%
+  summarize(angle_norm = mean(angle_norm),
+            distance = mean(length),
+            completion = mean(outcome_int))
+```
+
+```{r Sonar Plot All, echo=FALSE}
+sonar_plot <- function(df, legend_title, plot_title, fill_var, legend){
+  fill_var <- sym(fill_var)
+
+  p <- ggplot() + 
+  geom_rect(aes(xmin = 0, ymin = 0, xmax = 93, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+  geom_rect(aes(xmin = 0, ymin = 0, xmax = -93, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+  geom_rect(aes(xmin = -93, ymin = 0, xmax = -187, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+  geom_rect(aes(xmin = 93, ymin = 0, xmax = 187, ymax = 1), colour = "grey80", fill = NA, linetype = "dashed") +
+  geom_bar(data = df, aes(x = angle_rounded, y = angle_norm, fill = !!fill_var), stat = "identity") +
+  scale_y_continuous(limits = c(0,1)) +
+  coord_polar(start = pi/2, direction = -1) +
+  scale_fill_viridis(legend_title, na.value = "#FDE725FF", labels = scales::percent, limits = c(0.6, 1.0), breaks = c(0.6, 0.8, 1)) +
+  theme_void() +
+  theme(legend.position = "bottom",
+        legend.text = element_text(color = "grey90", size = 8, family = "mono"), #uncomment to remove colorbar
+        legend.title = element_text(color = "grey90", size = 8, family = "mono", vjust = 0.8), #uncomment to remove colorbar
+        plot.background = element_rect(fill = "grey10", color = NA),
+        panel.background = element_rect(fill = "transparent", color = NA))
+  
+  if(!legend){
+    p <- p +
+      theme(legend.position = "none")
+  }
+  
+  p
+}
+
+p1 <- sonar_plot(sonar_data_all %>% filter(playerId == "31772"), "Passquote", "Pass-Sonar", "completion", FALSE) +
+  labs(x = '', y = '', title = "Pass-Sonar: Toni Kroos") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 8, hjust = 0.5))
+
+p2 <- sonar_plot(sonar_data_all %>% filter(playerId == "74939"), "Passquote", "Pass-Sonar", "completion", TRUE) +
+  labs(x = '', y = '', title = "Pass-Sonar: Thiago Alcántara") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 8, hjust = 0.5))
+
+p3 <- sonar_plot(sonar_data_all %>% filter(playerId == "77464"), "Passquote", "Pass-Sonar", "completion", FALSE) +
+  labs(x = '', y = '', title = "Pass-Sonar: Ilkay Gündogan") +
+  theme(plot.title = element_text(colour = "grey90", family = "mono", size = 8, hjust = 0.5))
+
+p1 + p2 + p3
+```
+
+Sowohl Thiagos als auch Gündogans Passsonare sind symmetrischer als die von Kroos, dessen Pässe, wie oben schon gesagt, sehr rechtslastig ist. Thiagos Passmuster ist ähnlicher zu dem von Kroos, während Gündogan öfter vertikal nach vorne spielt und dabei auch größeres Risiko eingeht, wie wir and der geringeren Passquote sehen. 
+
+<br>
+
+### Fortgeschrittene Statistiken von StatsBomb via FBRef
+
+Bis jetzt beruhten unsere Analysen auf rohen Passdaten, also Ort, Länge und Winkel von einer großen Anzahl einzelner Pässe. Als Alternative wollen wir uns zum Abschluss einige fortgeschrittene Statistiken von StatsBomb ansehen. 
+
+Diese sind für einige Ligen frei zugänglich auf FBRef.com und wir uns konzentrieren auf Mittelfeldspieler der fünf großen Ligen aus der jetzigen Saison 2019/2020. Alle Statistiken sind hier pro 90 gespielten Minuten berechnet um sie vergleichbar zu machen.
+
+<br>
+
+#### Passtypen: Seitenwechsel oder Vorwärtspässe
+
+Zu Beginn wollen wir uns noch einmal die oben schon genannten Seitenwechsel genauer ansehen und sie mit einem Maß für Vorwärtspässe in einen Kontrast setzen. *Seitenwechsel* sind hier wir oben definiert: Pässe die mehr als (ungefähr) 35m der Breite des Platzes überqueren. 
+
+Für *Vorwärtspässe* ist die Definition ein bisschen komplizierter: es werden nur erfolgreiche Pässe erfasst, die den Ball mehr als 10m nach vorne verlagern gemessen am höchsten Punkt der letzten sechs Pässe. Pässe in den Sechzehner werden zusätzlich berücksichtigt.
+
+```{r Scatter Pass Type, echo=FALSE}
+read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
+  mutate(highlight = if_else(Player %in% c("Toni Kroos", "Thiago Alcántara", "İlkay Gündoğan", "Leon Goretzka"), "1", "0")) %>%
+  ggplot(aes(x = Prog, y = Pass_Types_Sw, color = highlight)) +
+  geom_point() +
+  scale_color_manual(values = c("1" = "tomato2", "0" = "grey70")) +
+  scale_x_continuous(breaks = seq(from = 0, to = 12, by = 3), limits = c(0, 14) ) + 
+  geom_text_repel(aes(label = if_else(highlight == 1, Player, "")), size = 3, family = "mono") +
+  geom_segment(data = data.frame(x = 0, xend = 1.5, y = 7, yend = 7, highlight = NA), 
+               aes(x = x, y = y, xend = xend, yend = yend), 
+               color = "white", 
+               size = 0.2,
+               linetype = "dotted") +
+  geom_segment(data = data.frame(x = 0, xend = 0, y = 7, yend = 5.5, highlight = NA), 
+               aes(x = x, y = y, xend = xend, yend = yend), 
+               color = "white", 
+               size = 0.2,
+               linetype = "dotted") +
+  annotate("text", 
+           x = 1.7, 
+           y = 7, 
+           colour = "white", 
+           size = 2.5, 
+           family = "mono",
+           hjust = 0, 
+           label = "Vorwärtspässe (pro 90min)") +
+    annotate("text", 
+           x = 0, 
+           y = 2.3, 
+           colour = "white", 
+           size = 2.5, 
+           family = "mono",
+           hjust = 0, 
+           angle = 90,
+           label = "Seitenwechsel (pro 90min)") +
+  theme_minimal() +
+  labs(#x = 'Vorwärtspässe (pro 90min)', 
+    #y = 'Seitenwechsel (pro 90min)', 
+    x = "",
+    y = "",
+    title = "Seitenwechsel oder Vorwärtspässe",
+    subtitle = "Toni Kroos spielt die meisten Seitenwechsel in den Top 5-Ligen und trägt gleichzeitig zur Vorwärtsbewegung bei \n(Saison 2019-2020, Top 5-Ligen) - Daten: @StatsBomb via FBRef.com") +
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "grey10", color = NA),
+        panel.background = element_rect(fill = "transparent", color = NA),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(colour = "grey90", family = "mono"),
+        axis.text =  element_text(colour = "grey90", family = "mono"),
+        plot.title = element_text(colour = "grey90", family = "mono"),
+        plot.subtitle = element_text(colour = "grey90", family = "mono", size = 7)) +
+  draw_image("../data/SB_Regular_Alt.png", x = 11.0, y = 0.0, scale = 4)
+```
+
+<br>
+
+Wir sehen hier wieder deutlich, dass Seitenwechsel eines der Hauptstilmittel von Toni Kroos sind. Kein andere Mittelfeldakteur spielte mehr davon in dieser Saison. Das beißt sich aber natürlich nicht mit seiner Rolle in der Vorwärtsbewegung. Auch hier sind Toni Kroos' Pässe signifikant beteiligt.
+
+<br>
+
+#### Pässe ins Angriffsdrittel und wie sie dort hingelangen
+
+Auch bei Pässen ins letzte Spieldrittel liegt Toni Kroos weit mit vorne. Schnittstellenpässe, also Pässe durch die Reihen des Gegners in den offenen Raum, nehmen eine geringere Rolle ein. Kroos liegt aber immer noch vor Spielern wie Thiago und Goretzka. Natürlich sollte man hier idealerweise auch die Spielweise der jeweiligen Teams und auch ihrer Kontrahenten mit einbeziehen. Falls Gegner oftmals sehr tief stehen gibt es natürlich auch weniger Möglichkeiten einen Schnittstellenpass zu spielen.
+
+```{r Scatter Pass End Location, echo=FALSE}
+read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
+  mutate(highlight = if_else(Player %in% c("Toni Kroos", "Thiago Alcántara", "İlkay Gündoğan", "Leon Goretzka"), "1", "0")) %>%
+  ggplot(aes(x = Last_Third, y = Pass_Types_TB, color = highlight)) +
+  geom_point() +
+  scale_color_manual(values = c("1" = "tomato2", "0" = "grey70")) +
+  scale_x_continuous(breaks = seq(from = 0, to = 12, by = 3), limits = c(0, 14) ) + 
+  scale_y_continuous(breaks = seq(from = 0, to = 1, by = 0.2), limits = c(0, 1) ) + 
+  geom_text_repel(aes(label = if_else(highlight == 1, Player, "")), size = 3, family = "mono") +
+  geom_segment(data = data.frame(x = 0, xend = 1.5, y = 1, yend = 1, highlight = NA), 
+               aes(x = x, y = y, xend = xend, yend = yend), 
+               color = "white", 
+               size = 0.2,
+               linetype = "dotted") +
+  geom_segment(data = data.frame(x = 0, xend = 0, y = 1, yend = 0.8, highlight = NA), 
+               aes(x = x, y = y, xend = xend, yend = yend), 
+               color = "white", 
+               size = 0.2,
+               linetype = "dotted") +
+  annotate("text", 
+           x = 1.7, 
+           y = 1, 
+           colour = "white", 
+           size = 2.5, 
+           family = "mono",
+           hjust = 0, 
+           label = "Pässe ins letzte Drittel (pro 90min, keine Standards)") +
+    annotate("text", 
+           x = 0, 
+           y = 0.2, 
+           colour = "white", 
+           size = 2.5, 
+           family = "mono",
+           hjust = 0, 
+           angle = 90,
+           label = "Schnittstellenpässe (pro 90min)") +
+  theme_minimal() +
+  labs(x = "", 
+       y = "", 
+       title = "Schnittstellenpässe oder einfach nur ins letzte Drittel",
+       subtitle = "Toni Kroos spielt sehr viele Pässe ins letzte Drittel, aber Schnittstellenpässe sind nicht \nseine Spezialisierung \n(Saison 2019-2020, Top 5-Ligen) - Daten: @StatsBomb via FBRef.com") +
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "grey10", color = NA),
+        panel.background = element_rect(fill = "transparent", color = NA),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(colour = "grey90", family = "mono"),
+        axis.text =  element_text(colour = "grey90", family = "mono"),
+        plot.title = element_text(colour = "grey90", family = "mono"),
+        plot.subtitle = element_text(colour = "grey90", family = "mono", size = 7)) +
+  draw_image("../data/SB_Regular_Alt.png", x = 11.0, y = -0.4, scale = 4)
+```
+
+<br>
+
+#### Vorwärtsdistanz durch Pässe oder Dribblings?
+
+In einem letzten Vergleich betrachten wir wie Spieler zur Vorwärtsbewegung ihrer Mannschaften beitragen: durch Läufe mit dem Ball am Fuß oder durch Pässe. Beide Statistiken beziehen sich hier auf die gewonnen Meter pro 90 Minuten Spielzeit. Wie zu erwarten ist Toni Kroos hier wieder in der Elite der Passverteiler zu finden, aber auch in der Kategorie der Läufe mit Ball muss er sich nicht verstecken.
+
+```{r Scatter Progressive, echo=FALSE}
+read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
+  mutate(Total_PrgDist = 0.9144*Total_PrgDist, Carries_PrgDist = 0.9144*Carries_PrgDist) %>%
+  mutate(highlight = if_else(Player %in% c("Toni Kroos", "Thiago Alcántara", "İlkay Gündoğan", "Leon Goretzka"), "1", "0")) %>%
+  ggplot(aes(x = Total_PrgDist, y = Carries_PrgDist, color = highlight)) +
+  geom_point() +
+  scale_color_manual(values = c("1" = "tomato2", "0" = "grey70")) +
+  scale_x_continuous(breaks = seq(from = 0, to = 500, by = 50), limits = c(0, 500) ) + 
+  scale_y_continuous(breaks = seq(from = 0, to = 300, by = 50), limits = c(0, 320) ) + 
+  geom_text_repel(aes(label = if_else(highlight == 1, Player, "")), size = 3, family = "mono") +
+  geom_segment(data = data.frame(x = 0, xend = 80, y = 300, yend = 300, highlight = NA), 
+               aes(x = x, y = y, xend = xend, yend = yend), 
+               color = "white", 
+               size = 0.2,
+               linetype = "dotted") +
+  geom_segment(data = data.frame(x = 0, xend = 0, y = 300, yend = 250, highlight = NA), 
+               aes(x = x, y = y, xend = xend, yend = yend), 
+               color = "white", 
+               size = 0.2,
+               linetype = "dotted") +
+  annotate("text", 
+           x = 90, 
+           y = 300, 
+           colour = "white", 
+           size = 2.5, 
+           family = "mono",
+           hjust = 0, 
+           label = "Gewonnene Meter durch Vorwärtspässe (pro 90min)") +
+    annotate("text", 
+           x = 0, 
+           y = 15, 
+           colour = "white", 
+           size = 2.5, 
+           family = "mono",
+           hjust = 0, 
+           angle = 90,
+           label = "Gewonnene Meter durch Läufe (pro 90min)") +
+  theme_minimal() +
+  labs(x = "", 
+       y = "", 
+       title = "Gewonnene Meter mit dem Ball am Fuß oder durch Pässe",
+       subtitle = "Toni Kroos spielt sehr viele Pässe ins letzte Drittel, aber Schnittstellenpässe sind nicht seine Spezialisierung \n(Saison 2019-2020, Top 5-Ligen) - Daten: @StatsBomb via FBRef.com") +
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "grey10", color = NA),
+        panel.background = element_rect(fill = "transparent", color = NA),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(colour = "grey90", family = "mono"),
+        axis.text =  element_text(colour = "grey90", family = "mono"),
+        plot.title = element_text(colour = "grey90", family = "mono"),
+        plot.subtitle = element_text(colour = "grey90", family = "mono", size = 7)) +
+  draw_image("../data/SB_Regular_Alt.png", x = 400, y = 0.0, scale = 160)
+```
+
+<br>
+
+### Zum Abschluss
+
+In diesem Artikel haben wir zunächst drei verschiedene Wege kennengelernt um Passdaten grafisch darzustellen: simple Plots der Passwege mit oder ohne K-Means-Clustering, Pass-Heatmaps (für Seitenwechsel und Torschussvorlagen) und Sonar-Plots. In einem nächsten Schritt haben wir einige erste Eindrücke mit fortgeschrittenen Statistiken von StatsBomb bestätigt.
+
+Ein wichtiger Punkt ist, dass wir uns in diesem Artikel nur auf das Passspiel von Toni Kroos konzentrieren und andere Aspekte seines Spiels wie defensive Aktionen, Standards and Fernschüsse außen vor lassen. 
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+- Den Code um interaktive Heatmaps zu generieren gibt es auf meinem englischsprachigen [Blog](https://www.thesignificantgame.com/portfolio/incorporate-d3-into-a-r-workflow/){target="_blank"}. 
+- Eine Tutorial für Sonarplots findet ihr [hier](https://github.com/etmckinley/PassSonar){target="_blank"}. 
+- Die StatsBomb-Daten für die letzten Charts findet ihr auf [fbref.com](https://www.fbref.com){target="_blank"}
+- Um über neue Artikel informiert zu werden folgt uns doch gerne auf [Twitter](https://twitter.com/KeineMathematik){target="_blank"}
+
+</div>
