@@ -252,8 +252,7 @@ passes_kmeans <- passes_ext %>%
   mutate(horizontal = PassEndY - location_y) %>%
   mutate(location_x = location_x - 50) %>%
   mutate(location_y = location_y - 50) %>%
-  select(location_x, location_y, vertical, horizontal) %>%
-  head(1000)
+  select(location_x, location_y, vertical, horizontal)
 
 kclust <- kmeans(passes_kmeans, centers = 6)
 
@@ -290,7 +289,8 @@ passes_to_plot <- augment(kclust, passes_kmeans) %>%
   mutate(cluster = .cluster) %>%
   mutate(location_x = location_x + 50, location_y = location_y + 50) %>%
   mutate(PassEndX = location_x + vertical) %>%
-  mutate(PassEndY = location_y + horizontal)
+  mutate(PassEndY = location_y + horizontal) %>%
+  head(1000)
 
 passes_to_plot <- left_join(passes_to_plot, kmean_result %>% select(cluster, ratio), by = c("cluster"))
 
@@ -317,7 +317,7 @@ pitch +
   theme(strip.text = element_text(colour = 'white'))
 ```
 
-Am häufigsten sind kurze Pässe auf rechts oder links außen, gefolgt von drei Gruppen von Pässen in die Mitte. Die homogenste Gruppe ist allerdings die letzte (12.3% aller Pässe), die Seitenwechsel von links auf den rechten Flügel repräsentiert. 
+Am häufigsten sind kurze Pässe auf rechts oder links außen, gefolgt von einer Gruppen von verschiedenen Pässen aus dem hinteren, linken Halbraum. Die homogenste Gruppe ist allerdings die vorletzte (ca. 14% aller Pässe), die Seitenwechsel von links auf den rechten Flügel repräsentiert. 
 
 Wir werden dieses Muster noch häufiger in den nächsten Grafiken sehen.
 
