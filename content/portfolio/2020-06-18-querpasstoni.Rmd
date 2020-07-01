@@ -873,7 +873,8 @@ read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
         axis.text =  element_text(colour = "grey90", family = "mono"),
         plot.title = element_text(colour = "grey90", family = "mono"),
         plot.subtitle = element_text(colour = "grey90", family = "mono", size = 7)) +
-  draw_image("../data/SB_Regular_Alt.png", x = 11.0, y = 0.0, scale = 4)
+  draw_image("../data/SB_Regular_Alt.png", x = 11.0, y = 0.0, scale = 4) +
+  draw_image("../data/fb-logo.svg", x = 12.0, y = 0.6, scale = 2)
 ```
 
 <br>
@@ -936,7 +937,8 @@ read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
         axis.text =  element_text(colour = "grey90", family = "mono"),
         plot.title = element_text(colour = "grey90", family = "mono"),
         plot.subtitle = element_text(colour = "grey90", family = "mono", size = 7)) +
-  draw_image("../data/SB_Regular_Alt.png", x = 11.0, y = -0.4, scale = 4)
+  draw_image("../data/SB_Regular_Alt.png", x = 11.0, y = -0.5, scale = 4) +
+  draw_image("../data/fb-logo.svg", x = 12.0, y = -0.4, scale = 2)
 ```
 
 <br>
@@ -986,7 +988,7 @@ read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
   labs(x = "", 
        y = "", 
        title = "Gewonnene Meter mit dem Ball am Fuß oder durch Pässe",
-       subtitle = "Toni Kroos spielt sehr viele Pässe ins letzte Drittel, aber Schnittstellenpässe sind nicht seine Spezialisierung \n(Saison 2019-2020, Top 5-Ligen) - Daten: @StatsBomb via FBRef.com") +
+       subtitle = "Auch gemessen in gewonnenen Metern ist Toni Kroos Teil einer Gruppe von Elitespielern, \ndie sowohl durch Pässe als auch durch Läufe den Ball nach vorne treiben  \n(Saison 2019-2020, Top 5-Ligen) - Daten: @StatsBomb via FBRef.com") +
   theme(legend.position = "none",
         plot.background = element_rect(fill = "grey10", color = NA),
         panel.background = element_rect(fill = "transparent", color = NA),
@@ -996,7 +998,8 @@ read_csv("../data/fbref_passing.csv", col_types = cols()) %>%
         axis.text =  element_text(colour = "grey90", family = "mono"),
         plot.title = element_text(colour = "grey90", family = "mono"),
         plot.subtitle = element_text(colour = "grey90", family = "mono", size = 7)) +
-  draw_image("../data/SB_Regular_Alt.png", x = 400, y = 0.0, scale = 160)
+  draw_image("../data/SB_Regular_Alt.png", x = 400, y = 0.0, scale = 160) +
+  draw_image("../data/fb-logo.svg", x = 428, y = 40.0, scale = 100)
 ```
 
 <br>
