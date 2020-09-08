@@ -6,10 +6,29 @@
     <description>Recent content on Keine Mathematik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Klassiker der deutschen Fußballhistorie durch die xG-Lupe</title>
+      <link>/portfolio/klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe/</link>
+      <pubDate>Mon, 07 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe/</guid>
+      <description>Was sind expected Goals? Expected Goals (erwartete Tore) oder auch xG ist eine Statistik, die versucht die Qualität eines Torschußes in einem einzigen Wert zusammenzufassen. So hilft sie dabei eine vom Ergebnis unabhängige Aussage über die Leistung beider Teams (oder auch einzelner Spieler) zu treffen. Ein xG-Wert von 0.32 bedeutet dass aus 100 Schüssen aus ähnlicher Distanz und Spielsituation im Durchschnitt 32 Tore fallen.
+Schwächen dieser Statistik sind, dass dass nur Schüsse erfasst werden, also gefährliche Situationen ohne Abschluss (Grätsche in letzter Sekunde, verpasster Hereingaben, …) ignoriert werden.</description>
+    </item>
+    
+    <item>
+      <title>Bayern Passnetzwerke im Wandel der Zeit</title>
+      <link>/portfolio/bayern-passnetzwerke-im-wandel-der-zeit/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/bayern-passnetzwerke-im-wandel-der-zeit/</guid>
+      <description>soccerPassmap &amp;lt;- function(df, lengthPitch = 105, widthPitch = 68, minPass = 3, fill = &amp;quot;red&amp;quot;, col = &amp;quot;black&amp;quot;, edgeAlpha = 0.6, edgeCol = NULL, label = TRUE, shortNames = TRUE, maxNodeSize = 30, maxEdgeSize = 30, labelSize = 4, arrow = c(&amp;quot;none&amp;quot;, &amp;quot;r&amp;quot;, &amp;quot;l&amp;quot;), theme = c(&amp;quot;light&amp;quot;, &amp;quot;dark&amp;quot;, &amp;quot;grey&amp;quot;, &amp;quot;grass&amp;quot;), title = NULL) { if(length(unique(df$team.name)) &amp;gt; 1) stop(&amp;quot;Data contains more than one team&amp;quot;) # define colours by theme if(theme[1] == &amp;quot;grass&amp;quot;) { colText &amp;lt;- &amp;quot;white&amp;quot; if(is.</description>
+    </item>
     
     <item>
       <title>Von Wegen Querpasstoni</title>

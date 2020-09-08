@@ -1,0 +1,182 @@
+---
+title: Klassiker der deutschen Fußballhistorie durch die xG-Lupe
+author: Lars Maurath
+date: '2020-09-07'
+slug: klassiker-der-deutschen-fußballhistorie-durch-die-xg-lupe
+categories: []
+tags:
+  - DFB
+  - Expected Goals
+  - Die Mannschaft
+  - Nationalmannschaft
+  - WM
+  - EM
+  - Weltmeister
+image: 'img/portfolio/1990.jpg'
+showonlyimage: no
+---
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KeineMathematik">
+<meta name="twitter:creator" content="@KeineMathematik">
+<meta name="twitter:title" content="Klassiker der deutschen Fußballhistorie durch die xG-Lupe">
+<meta name="twitter:description" content="Expected Goals (erwartete Tore) oder auch xG ist eine Statistik, die versucht die Qualität eines Torschußes in einem einzigen Wert zusammenzufassen. So hilft sie dabei eine vom Ergebnis unabhängige Aussage über die Leistung beider Teams (oder auch einzelner Spieler) zu treffen. ">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/larsmaurath/significant-game/master/public/img/portfolio/xg_viz.png">
+<div class="row">
+<center>
+<h2 id="was-sind-expected-goals">Was sind expected Goals?</h2>
+<p>Expected Goals (erwartete Tore) oder auch <em>xG</em> ist eine Statistik, die versucht die Qualität eines Torschußes in einem einzigen Wert zusammenzufassen. So hilft sie dabei eine vom Ergebnis unabhängige Aussage über die Leistung beider Teams (oder auch einzelner Spieler) zu treffen. Ein xG-Wert von 0.32 bedeutet dass aus 100 Schüssen aus ähnlicher Distanz und Spielsituation <strong>im Durchschnitt</strong> 32 Tore fallen.</p>
+<p>Schwächen dieser Statistik sind, dass dass nur Schüsse erfasst werden, also gefährliche Situationen ohne Abschluss (Grätsche in letzter Sekunde, verpasster Hereingaben, …) ignoriert werden. Weiter kann die Statistik auch nur erfassen, was gemessen wird: Daten wie Schusshöhe oder Position des Torwarts werden oft ignoriert. Im Durchschnitt sind xG aber dennoch hilfreich um Partien nochmal durch eine andere Linse als das blanke Resultat zu durchleuchten.</p>
+<p>Seit dem Ende der letzten Saison werden xG-Werte nun auch während der Übertragung der Bundeligapartien eingeblendet. <a href="https://www.bundesliga.com/de/bundesliga/news/expected-goals-xgoals-fussball-analyse-statistik-3760" target="_blank">Hier</a> findet ihr eine detaillierte Erklärung dazu.Wer tiefer in die Materie einsteigen möchte findet <a href="https://www.thesignificantgame.com/portfolio/expected-goals-model-with-tidymodels/">hier</a> eine detaillierte Anleitung, wie man so ein Model implementiert.</p>
+</center>
+</div>
+<div class="row">
+<center>
+<h4 id="xg-timelines">xG-Timelines</h4>
+</center>
+<p><br></p>
+<div class="col-md-6">
+<p>xG-Timelines sind Darstellungen der kumulativen xG-Werte (y-Achse) beider Teams über die Dauer einer Partie (x-Achse). Jede vertikale Stufe entspricht einem Torschuss mit einem entsprechenden xG-Wert. Druckphasen der Teams lassen sich so besonders gut erkennen. Tore werden häufig nochmal durch eine weiteren Marker hervorgehoben.</p>
+</div>
+<div class="col-md-6">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/Dummy%20xG-Timeline-1.png" width="672" /></p>
+</div>
+</div>
+<div class="row">
+<center>
+<h4 id="shotmaps">Shotmaps</h4>
+</center>
+<p><br></p>
+<div class="col-md-6">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/Dummy%20Shotmap-1.png" width="672" /></p>
+</div>
+<div class="col-md-6">
+<p>Shotmaps konzentrieren sich auf Schusspositionen und können Aufschluss über bevorzugte Schusslagen von Teams oder Spielern geben. xG-Werte und Resultate (gehalten, geblockt, Tor, …) können durch Farbe oder Form hervorgehoben werden. Im folgenden Beispiel wird die Qualität (xG) eines Schusses farblich hervorgehoben. Tore werden durch eine Raute dargestellt.</p>
+</div>
+</div>
+<div class="row">
+<center>
+<p><br></p>
+<p>Nun analysieren wir einige Klassiker der deutschen Fußballgeschichte durch die <em>expected Goals</em>-Lupe und der Hilfe von xg-Timelines und Shotmaps.</p>
+</center>
+</div>
+<hr />
+<div id="wm-finale-1966" class="section level2">
+<h2>WM-Finale 1966</h2>
+<div class="row">
+<div class="col-md-4">
+<p><img src="../../data/1966.jpg" /></p>
+<p>Das Finale 1966 ist durch sehr viele Torschüsse geprägt und bis zur 70. Minute sehr ausgeglichen. Dann erarbeiten sich die Engländer ein Chancenvorteil und in der 78. Minute auch die Führung.</p>
+</div>
+<div class="col-md-8">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/1966-1.png" width="672" /></p>
+</div>
+</div>
+<p>England drückt weiter, doch Deutschland schafft den Ausgleich in letzter Sekunde und rettet sich in die Verlängerung.</p>
+<p>Doch auch in der Verlängerung bleibt England die bessere Mannschaft, bis in der 101. Minute das berühmte Wembleytor durch Hurst fällt. Deutschland schafft es nicht mehr gefährlich vors Tor und muss in der 120. Minute auch noch das 4:2 hinnehmen. England ist Weltmeister und nach xG auch verdient: <strong>1.91 - 1.47</strong></p>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+<div id="wm-finale-1974" class="section level2">
+<h2>WM-Finale 1974</h2>
+<div class="row">
+<div class="col-md-8">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/1974-1.png" width="672" /></p>
+</div>
+<div class="col-md-4">
+<p><img src="../../data/1974.jpg" /></p>
+<p>Die Anfangsphase des Endspiels 1974 wird durch zwei frühe Elfmeter bestimmt Schon in der 2. Minute verwandelt Neeskens für die Niederlande, Breitner gleicht in der 25. Spielminute nach Foul an Hölzenbein aus.</p>
+</div>
+</div>
+<p>Nach dem Ausgleich haben die Deutschen nun mehr vom Spiel belohnen sich durch Drehschuss Gerd Müller in der 43. Minute (xG: 0.25). In der zweiten Halbzeit ziehen sich die Deutschen nun vermehrt zurück und lauern auf Konter, die allerdings nicht sauber zu Ende gespielt werden.</p>
+<p>Die Niederlande hat einige gute Chancen auf den Ausgleich: Johnny Rep vergibt die beste aus kürzester Distanz in der 77. Minute. Nach langem Zittern kann sich die deutsche Mannschaft am Ende glücklich schätzen die Verlängerung zu vermeiden und den zweiten Weltmeistertitel zu feiern. <strong>xG-Bilanz: 1.54 - 2.17</strong></p>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+<div id="wm-finale-1990" class="section level2">
+<h2>WM-Finale 1990</h2>
+<div class="row">
+<div class="col-md-4">
+<p><img src="../../data/1990.jpg" /></p>
+<p>Ein etwas anderes Finale spielt sich im Juli 1990 in Rom ab. Argentinien geht ersatzgeschwächt ins Endspiel und vermisst vier Spieler mit Sperren aus dem Halbfinale.</p>
+</div>
+<div class="col-md-8">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/1990-1.png" width="672" /></p>
+</div>
+</div>
+<p>Deutschland ist über das gesamt Spiel drückend überlegen und erarbeitet sich eine Schussbilanz von 17:1. Der einzige Schuss Argentinies ist ein direkter Freistoß von Diego Maradona.</p>
+<p>Rudi Völler vergibt die zwei besten Chancen aus dem Spiel heraus, so dass eine strittige Elfmeterentscheidung in der 85. Minute für die Deutschen herhalten muss. Durch einen verweigerten Elfmeter nach Foul an Augenthaler und die klare Überlegenheit der Deutschen geht diese Ergebnis aber wahrhaft in Ordnung.</p>
+<p>Auch in Sachen xG wird es deutlich: xG-Bilanz <strong>1.90 - 0.10</strong> für Deutschland.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+<div id="em-finale-1996" class="section level2">
+<h2>EM-Finale 1996</h2>
+<div class="row">
+<div class="col-md-8">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/1996-1.png" width="672" /></p>
+</div>
+<div class="col-md-4">
+<p><img src="../../data/1996.jpg" /></p>
+<p>Deutschland beginnt dieses Spiel hochstehend und mit einem Großteil des Ballbesitzes, ohne jedoch selbst gefährlich zu werden. Die Tschechen starten immer wieder schnelle Gegenstöße und zum Ende der ersten Halbzeit entwickelt sich ein offenes Spiel mit ausgelichenen Torchancen.</p>
+</div>
+</div>
+<p>Nach Fehlpass Sammer belohnt sich Poborsky für einen Konter mit einem Elfmeter, den Berger in der 59. Minute gegen Andreas Köpke verwandelt. Mit dem Rückstand im Nacken gelingt den Deutschen bis zu Einwechslung von Oliver Bierhoff wenig.</p>
+<p>Die zündet dann bekanntlich umso mehr: mit einem typgerechten Kopfballtreffer und dem ersten Golden Goal der Geschichte gewinnt er Deutschland den Europameistertitel.</p>
+<p>Die xG-Bilanz ist ausgeglichen, aber Tschechien profitiert auch sehr von ihrem fragwürdigen Elfmeter: <strong>1.59 - 1.49</strong></p>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+<div id="wm-halbfinale-2006" class="section level2">
+<h2>WM-Halbfinale 2006</h2>
+<div class="row">
+<div class="col-md-4">
+<p><img src="../../data/2006.jpg" /></p>
+<p>Das Sommermärchen 2006 endete für die deutsche Mannschaft in einem ausgeglichenen und umkämpften Halbfinale gegen den späteren Weltmeister Italien.</p>
+</div>
+<div class="col-md-8">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/2006-1.png" width="672" /></p>
+</div>
+</div>
+<p>Während den Italienern die erste Halbzeit gehörte, übernahm Deutschland in der zweiten Hälfte die Initiative und hatte mit Podolskis Schuss und einem Ballack-Freistoß gute Möglichkeiten. Italien eröffnete die Verlängerung mit einem Pfostenschuss aus kürzester Distanz und der besten Chance der Begegnung.</p>
+<p>Es entwickelte sich eine offene Partie, die Podolski zweimal aus guter Position entscheiden hätte können ehe die Italiener mit einem Doppelschlag in der 119. und 121. Minute alles klar machen. Die xG-Entwicklung unterstreicht den Spielverlauf und Italien schafft sich erst in letzter Sekunde leichte Vorteile: <strong>1.07 - 1.34</strong></p>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+<div id="wm-finale-2014" class="section level2">
+<h2>WM-Finale 2014</h2>
+<div class="row">
+<div class="col-md-8">
+<p><img src="/portfolio/2020-09-07-klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe_files/figure-html/2014-1.png" width="672" /></p>
+</div>
+<div class="col-md-4">
+<p><img src="../../data/2014.jpg" /></p>
+<p>In der ersten Halbzeit dominiert die deutsche Mannschaft zunächst zwar das Passspiel doch kommt zu wenigen Torchancen, während Higuain nach Fehlpass Kroos alleine vor Neuer zum Abschluss kommen darf (21. Spielminute) und später im abseits-stehend trifft (30. Spielminute).</p>
+</div>
+</div>
+<p>Messi hatte auch eine Reihe von gefährlichen Vorstößen, die allerdings nicht in Schüssen endeten. Toni Kroos hat schießlich mit einem Fernschuss nach einem argentinischem Ballverlust die rste gute Torchance der deutschen Mannschaft (43. Minute).</p>
+<p>In der Verlängerung der ersten Halbzeit hat dann Höwedes die große Chance auf die Führung als er freistehen nach Ecke Kroos aus wenigen Metern an den Pfosten köpft (xG-Wert: 0.26).</p>
+<p>Die zweite Hälfte bleibt chancenarm, da die deutsche Mannschaft das Spiel nun besser unter Kontrolle hat, aber gegen eine tiefstehende argentinische Verteidigung nicht durchkommt.</p>
+<p>Die Verlängerung startet gleich mit einer tollen Chance für Andre Schürrle, die Argentinier kommen aber durch Unachtsamkeiten der Deutschen auch schnell zu zwei guten Chancen. Danach schaffen es die Südamerikaner immer weniger sich aus dem deutschen Powerplay zu befreien und Mario Götze belohnt den langen Atem der Deutschen mit seinem Siegtreffer in der 113. Minute. In Sachen xG war es wie zu erwarten einer ausgelichene Partie mit einer Bilanz von <strong>0.99 - 0.96</strong>.</p>
+<hr />
+<div id="verlängerung" class="section level3">
+<h3>Verlängerung</h3>
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class="blue">
+<ul>
+<li>Bundeliga <a href="https://www.bundesliga.com/de/bundesliga/news/expected-goals-xgoals-fussball-analyse-statistik-3760" target="_blank">Erklärung</a> des <em>expected Goals</em>-Konzepts</li>
+<li><a href="https://www.thesignificantgame.com/portfolio/expected-goals-model-with-tidymodels/">Tutorial</a> für Implementierung von expected Goals-Modell in R</li>
+<li>Falls ihr Vorschläge für weitere deutsche Klassiker habt schreibt gerne unten in die Kommentare</li>
+</ul>
+</div>
+</div>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bayern München on Keine Mathematik</title>
+    <link>/tags/bayern-m%C3%BCnchen/</link>
+    <description>Recent content in Bayern München on Keine Mathematik</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 08 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/bayern-m%C3%BCnchen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bayern Passnetzwerke im Wandel der Zeit</title>
+      <link>/portfolio/bayern-passnetzwerke-im-wandel-der-zeit/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/bayern-passnetzwerke-im-wandel-der-zeit/</guid>
+      <description>soccerPassmap &amp;lt;- function(df, lengthPitch = 105, widthPitch = 68, minPass = 3, fill = &amp;quot;red&amp;quot;, col = &amp;quot;black&amp;quot;, edgeAlpha = 0.6, edgeCol = NULL, label = TRUE, shortNames = TRUE, maxNodeSize = 30, maxEdgeSize = 30, labelSize = 4, arrow = c(&amp;quot;none&amp;quot;, &amp;quot;r&amp;quot;, &amp;quot;l&amp;quot;), theme = c(&amp;quot;light&amp;quot;, &amp;quot;dark&amp;quot;, &amp;quot;grey&amp;quot;, &amp;quot;grass&amp;quot;), title = NULL) { if(length(unique(df$team.name)) &amp;gt; 1) stop(&amp;quot;Data contains more than one team&amp;quot;) # define colours by theme if(theme[1] == &amp;quot;grass&amp;quot;) { colText &amp;lt;- &amp;quot;white&amp;quot; if(is.</description>
+    </item>
+    
+  </channel>
+</rss>

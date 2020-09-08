@@ -1,9 +1,9 @@
 {
-    "path" : "~/Documents/GitHub/keine-mathematik",
-    "sortOrder" : [
+    "path": "~/Documents/GitHub/keine-mathematik",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "ascending": true,
+            "columnIndex": 2
         }
     ]
 }

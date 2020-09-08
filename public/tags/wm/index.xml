@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WM on Keine Mathematik</title>
+    <link>/tags/wm/</link>
+    <description>Recent content in WM on Keine Mathematik</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/wm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Klassiker der deutschen Fußballhistorie durch die xG-Lupe</title>
+      <link>/portfolio/klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe/</link>
+      <pubDate>Mon, 07 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/klassiker-der-deutschen-fu%C3%9Fballhistorie-durch-die-xg-lupe/</guid>
+      <description>Was sind expected Goals? Expected Goals (erwartete Tore) oder auch xG ist eine Statistik, die versucht die Qualität eines Torschußes in einem einzigen Wert zusammenzufassen. So hilft sie dabei eine vom Ergebnis unabhängige Aussage über die Leistung beider Teams (oder auch einzelner Spieler) zu treffen. Ein xG-Wert von 0.32 bedeutet dass aus 100 Schüssen aus ähnlicher Distanz und Spielsituation im Durchschnitt 32 Tore fallen.
+Schwächen dieser Statistik sind, dass dass nur Schüsse erfasst werden, also gefährliche Situationen ohne Abschluss (Grätsche in letzter Sekunde, verpasster Hereingaben, …) ignoriert werden.</description>
+    </item>
+    
+  </channel>
+</rss>
