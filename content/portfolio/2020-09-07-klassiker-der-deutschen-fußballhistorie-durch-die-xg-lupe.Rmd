@@ -95,7 +95,7 @@ Expected Goals erlangen in letzter Zeit immer mehr an Beliebtheit. Höchste Zeit
 
 Expected Goals (erwartete Tore) oder auch *xG* ist eine Statistik, die versucht die Qualität eines Torschusses in einem einzigen Wert zusammenzufassen. Sie hilft dabei eine vom Ergebnis unabhängige Aussage über die Leistung beider Teams (oder auch einzelner Spieler) zu treffen, indem sie die Varianz des Torabschlusses entfernt. Ein xG-Wert von 0.32 bedeutet, dass aus 100 Schüssen aus ähnlicher Distanz und Spielsituation **im Durchschnitt** 32 Tore fallen.
 
-Schwächen dieser Statistik sind, dass dass nur Schüsse erfasst werden, also gefährliche Situationen ohne Abschluss (Grätschen in letzter Sekunde, verpasster Hereingaben, ...) ignoriert werden. Weiter kann die Statistik auch nur erfassen, was gemessen wird: Daten wie Schusshöhe oder Position des Torwarts werden oft ignoriert. Im Durchschnitt sind xG aber dennoch hilfreich um Partien nochmal durch eine andere Linse als das blanke Resultat zu durchleuchten. 
+Schwächen dieser Statistik sind, dass dass nur Schüsse erfasst werden, also gefährliche Situationen ohne Abschluss (Grätschen in letzter Sekunde, verpasste Hereingaben, ...) ignoriert werden. Weiter kann die Statistik auch nur erfassen, was gemessen wird: Daten wie Schusshöhe oder Position des Torwarts werden oft ignoriert. Im Durchschnitt sind xG aber dennoch hilfreich um Partien nochmal durch eine andere Linse als das blanke Resultat zu durchleuchten. 
 
 Seit dem Ende der letzten Saison werden xG-Werte nun auch während der Liveübertragung von Bundesligapartien eingeblendet. [Hier](https://www.bundesliga.com/de/bundesliga/news/expected-goals-xgoals-fussball-analyse-statistik-3760){target="_blank"} findet ihr eine detaillierte Erklärung dazu. Wer tiefer in die Materie einsteigen möchte findet [hier](https://www.thesignificantgame.com/portfolio/expected-goals-model-with-tidymodels/) eine detaillierte Anleitung, wie man so ein Modell implementiert. 
 
@@ -288,7 +288,7 @@ xg_timeline / (shotmap_en + shotmap_de)
 
 England drückt weiter, doch Deutschland schafft den Ausgleich in letzter Sekunde und rettet sich in die Verlängerung. 
 
-Doch auch dort bleibt England die bessere Mannschaft, bis in der 101. Minute das berühmte Wembleytor durch Hurst fällt. Deutschland schafft es nicht mehr gefährlich vors Tor und muss in der 120. Minute auch noch das 4:2 hinnehmen. England ist Weltmeister und nach xG auch verdient: **1.91 - 1.47**
+Doch auch dort bleibt England die bessere Mannschaft, bis in der 101. Minute das berühmte Wembleytor durch Geoff Hurst fällt. Deutschland schafft es nicht mehr gefährlich vors Tor und muss in der 120. Minute auch noch das 4:2 hinnehmen. England ist Weltmeister und nach xG auch verdient: **1.91 - 1.47**
 
 <br>
 
