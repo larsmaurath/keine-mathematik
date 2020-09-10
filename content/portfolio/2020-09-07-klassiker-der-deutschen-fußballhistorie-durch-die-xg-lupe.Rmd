@@ -823,6 +823,6 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 - Bundesliga [Erklärung](https://www.bundesliga.com/de/bundesliga/news/expected-goals-xgoals-fussball-analyse-statistik-3760){target="_blank"} des *expected Goals*-Konzepts
 - [Tutorial](https://www.thesignificantgame.com/portfolio/expected-goals-model-with-tidymodels/){target="_blank"} für Implementierung von expected Goals-Modell in R
 - Falls ihr Vorschläge für weitere historische Partien habt, lasst es mich in den Kommentaren wissen!
-- Um keine zukünftigen Artikel zu verpassen folgt uns auf [Twitter](https://twitter.com/KeineMathematik){target="_blank"}!
+- **Um keine zukünftigen Artikel zu verpassen folgt uns auf [Twitter](https://twitter.com/KeineMathematik){target="_blank"}!**
 
 </div>
