@@ -10,7 +10,7 @@ library(dplyr)
 #' @export standardize_opta_x
 standardize_opta_x <- function(data, cols = c("location_x", "PassEndX", "BlockedX"), unit = "meters"){
   # pitch specifications come from https://en.wikipedia.org/wiki/Penalty_area
-  
+
   if(unit == "meters"){
     data <- data %>%
       mutate_at(cols, ~ case_when(
@@ -41,7 +41,7 @@ standardize_opta_x <- function(data, cols = c("location_x", "PassEndX", "Blocked
 #' @export standardize_opta_y
 standardize_opta_y <- function(data, cols = c("location_y", "PassEndY", "BlockedY", "GoalMouthY"), unit = "meters"){
   # pitch specifications come from https://en.wikipedia.org/wiki/Penalty_area
-  
+
   if(unit == "meters"){
     data <- data %>%
       mutate_at(cols, ~ case_when(
@@ -71,7 +71,7 @@ standardize_opta_y <- function(data, cols = c("location_y", "PassEndY", "Blocked
 #' @export standardize_opta_z
 standardize_opta_z <- function(data, cols = c("GoalMouthZ"), unit = "meters"){
   # pitch specifications come from https://en.wikipedia.org/wiki/Penalty_area
-  
+
   if(unit == "meters"){
     data <- data %>%
       # we assume linear stretching for the z coordinate. Note that this transformation implied a post width of around 26cm which is more
@@ -99,13 +99,14 @@ standardize_opta_z <- function(data, cols = c("GoalMouthZ"), unit = "meters"){
 standardize_statsbomb_x <- function(data, cols = c("location.x", "carry.end_location.x", "pass.end_location.x", "shot.end_location.x", "location.x.GK"), unit = "meters"){
   # pitch specifications come from https://en.wikipedia.org/wiki/Penalty_area
   # and https://github.com/statsbomb/open-data/blob/master/doc/StatsBomb%20Open%20Data%20Specification%20v1.1.pdf
-  
+
   data <- data %>%
     mutate_at(cols, ~ case_when(
       . >= 102 ~ . - (120 - 114.829), # offensive 18 yard box
       . > 18 & . < 102 ~ (. - 18) * (114.829 - 36) / (102 - 18) + 18, # space between 18 yard boxes
+      . <= 18 ~ . # defensive 18 yard box
     ))
-  
+
   if(unit == "yards"){
     data <- data
   } else if(unit == "meters"){
@@ -114,7 +115,7 @@ standardize_statsbomb_x <- function(data, cols = c("location.x", "carry.end_loca
   } else{
     stop("Unknown unit")
   }
-  
+
   data
 }
 
@@ -134,15 +135,16 @@ standardize_statsbomb_x <- function(data, cols = c("location.x", "carry.end_loca
 standardize_statsbomb_y <- function(data, cols = c("location.y", "carry.end_location.y", "pass.end_location.y", "shot.end_location.y", "location.y.GK"), unit = "meters"){
   # pitch specifications come from https://en.wikipedia.org/wiki/Penalty_area
   # and https://github.com/statsbomb/open-data/blob/master/doc/StatsBomb%20Open%20Data%20Specification%20v1.1.pdf
-  
+
   data <- data %>%
     mutate_at(cols, ~ abs(. - 80)) %>% # flip y-coordinates
     mutate_at(cols, ~ case_when(
+      . < 18 ~ .,
       . >= 18 & . <= 62 ~ (. - 40) + 74.3657/2, # space within 18 yard boxes
       . < 18 ~ . * (74.3657 - 44) / 2 / 18,
       . > 62 ~ (. - 80) * (74.3657 - 44) / 2 / 18 + 74.3657
     ))
-  
+
   if(unit == "yards"){
     data <- data
   } else if(unit == "meters"){
@@ -151,7 +153,7 @@ standardize_statsbomb_y <- function(data, cols = c("location.y", "carry.end_loca
   } else{
     stop("Unknown unit")
   }
-  
+
   data
 }
 
@@ -171,7 +173,7 @@ standardize_statsbomb_y <- function(data, cols = c("location.y", "carry.end_loca
 standardize_statsbomb_z <- function(data, cols = c("shot.end_location.z"), unit = "meters"){
   # pitch specifications come from https://en.wikipedia.org/wiki/Penalty_area
   # and https://github.com/statsbomb/open-data/blob/master/doc/StatsBomb%20Open%20Data%20Specification%20v1.1.pdf
-  
+
   if(unit == "yards"){
     data <- data
   } else if(unit == "meters"){
@@ -180,7 +182,7 @@ standardize_statsbomb_z <- function(data, cols = c("shot.end_location.z"), unit 
   } else{
     stop("Unknown unit")
   }
-  
+
   data
 }
 
@@ -198,7 +200,7 @@ standardize_statsbomb_z <- function(data, cols = c("shot.end_location.z"), unit 
 #' @author Lars Maurath
 #' @export standardize_statsbomb_z
 standardize_coordinates <- function(data, provider, unit = "meters"){
-  
+
   if(provider == "opta"){
     data <- data %>%
       standardize_opta_x(unit = unit) %>%
@@ -212,6 +214,6 @@ standardize_coordinates <- function(data, provider, unit = "meters"){
   } else{
     stop("Unknown provider. Please choose 'opta' or 'statsbomb'.")
   }
-  
+
   data
 }
