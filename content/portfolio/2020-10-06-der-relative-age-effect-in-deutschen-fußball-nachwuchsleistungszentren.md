@@ -9,6 +9,15 @@ image: 'img/portfolio/age_effect.png'
 showonlyimage: no
 ---
 
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KeineMathematik">
+<meta name="twitter:creator" content="@KeineMathematik">
+<meta name="twitter:title" content="Der Relative Age Effect in deutschen Fußball-NLZ">
+<meta name="twitter:description" content="Jugendsport ist in der Regel in Altersklassen unterteilt, die auf einem Cutoff Datum basieren. In Deutschland ist dieser Cutoff der 31. Dezember. Diese Unterteilung bedingt, dass früh im Jahr geborene Spieler in ihrer Altersklasse um bis zu 11 Monate älter und somit physisch weiter entwickelt sind, als später im Jahr geborene.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/larsmaurath/keine-mathematik/master/public/img/portfolio/age_effect.png">
+
+
+
 Von [danzn1](https://twitter.com/danzn1)
 
 ##### Zusammengefasst:
