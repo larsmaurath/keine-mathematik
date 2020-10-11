@@ -57,6 +57,16 @@ Metrica Sports hat dieses Jahr den ersten frei verfügbaren [Trackingdatensatz](
 
 ***
 
+# [SkillCorner](https://www.skillcorner.com/)
+
+SkillCorner spezialisiert sich auf das Erfassen von Trackingdaten, die auf Videomaterial aus TV-Übertragungen basieren. Ein Vorteil dieses Ansatzes ist, dass eine Vielzahl von Spielen aus verschiedensten Ligen erfasst werden können. Während offizielle Trackingdaten der Ligen mit nicht-öffentlichem Videomaterial von mehreren Kameras erstellt werden, greift SkillCorner nur auf die Fernsehbilder zurück. Allerdings sind dort oft nicht alle 22 Spieler im Bild und Wiederholungen oder Nahaufnahmen können zu Lücken in den Datensätzen führen. Natürlich überwiegen dennoch die Vorteile dieser alternativen Datenquelle.
+
+In Zusammenarbeit mit Friend-of-Tracking hat SkillCorner [Trackingdatensätze](https://github.com/SkillCorner/opendata) für 9 Topspiele aus der Saison 2019/2020 veröffentlicht. Unter anderem die zwei Begegnungen des FC Bayern gegen Borussia Dortmund aus der Bundesliga. Die Daten umfassen (x,y)-Koordinaten für alle Spieler im Fokus der Übertragung mit 10 Frames pro Sekunde. Dazugehörige Eventdaten sind allerdings nicht enthalten und müssen andersweitig erfasst werden.
+
+Eine Vorstellung des des open-source Datensatzes findet ihr auf Friend-of-Trackings [Youtube-Channel](https://www.youtube.com/watch?v=N9qZ-I63BL8).
+
+***
+
 # [Statsbomb](https://statsbomb.com/)
 
 Statsbomb ist sicherlich eines der Unternehmen, das über die letzten Jahre am Meisten für die Verbreitung von Daten im Fußball getan hat. Gründer Ted Knutson ist herrlich präsent auf Twitter und arbeitete schon bei Brentford FC und FC Midtjylland, zwei Clubs die jeweils einen großen Schwerpunkt auf Daten setzen. 
@@ -117,6 +127,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 **Frei verfügbare Daten:**
 
 - Metrica Sports: [Trackingdatensatz](https://github.com/metrica-sports/sample-data)
+- SkillCorner: [Broadcast Trackingdatensatz](https://github.com/SkillCorner/opendata)
 - Statsbomb: [Eventdatensätze](https://github.com/statsbomb/open-data)
 - WyScout: [Eventdatensätze](https://figshare.com/collections/Soccer_match_event_dataset/4415000/5)
 
