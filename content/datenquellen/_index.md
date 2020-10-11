@@ -3,6 +3,13 @@ date: "2016-11-06T13:00:25+05:30"
 title: Datenquellen
 ---
 
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KeineMathematik">
+<meta name="twitter:creator" content="@KeineMathematik">
+<meta name="twitter:title" content="Datenquellen">
+<meta name="twitter:description" content="Die größte Hürde für die ersten Schritte in der Fußballanalytik ist die Suche nach Datensätzen. Hier gibt es keinen Unterschied zwischen datenbasierter Analytik oder mehr qualitativen Herangehensweisen wie z.B. durch Videoanalyse. Für Hobbyanalysten ist es genauso schwer an Videomaterial ganzer Spiele im Weitwinkelformat zu kommen wie an Eventdatensätze.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/larsmaurath/keine-mathematik/master/public/img/portfolio/homepage.png">
+
 ***
 
 Die größte Hürde für die ersten Schritte in der Fußballanalytik ist die Suche nach Datensätzen. Hier gibt es keinen Unterschied zwischen datenbasierter Analytik oder mehr qualitativen Herangehensweisen wie z.B. durch Videoanalyse. Für Hobbyanalysten ist es genauso schwer an Videomaterial ganzer Spiele im Weitwinkelformat zu kommen wie an Eventdatensätze. 
