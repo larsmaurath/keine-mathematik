@@ -90,6 +90,8 @@ plot_pitch <- function(unit = "meters", theme = "light", type = "full_pitch", or
                 alpha = 0.0, 
                 colour = line_color) + # right 6 yard  box
       geom_segment(aes(x = mid_point_x, xend = mid_point_x, y = 0, yend = width), size = 0.5, colour = line_color) + # center pitch
+      geom_segment(aes(x = length, xend = length, y = mid_point_y - goal_width/2, yend = mid_point_y + goal_width/2), size = 2, colour = line_color) + # goal line
+      geom_segment(aes(x = 0, xend = 0, y = mid_point_y - goal_width/2, yend = mid_point_y + goal_width/2), size = 2, colour = line_color) + # goal line
       geom_point(aes(x = mid_point_x, y = mid_point_y), size = 0.5, colour = line_color) + # center spot
       geom_point(aes(x = penalty_distance, y = mid_point_y), size = 0.5, colour = line_color) + # left penalty spot
       geom_point(aes(x = length - penalty_distance, y = mid_point_y), size = 0.5, colour = line_color) + # right penalty spot
@@ -123,6 +125,7 @@ plot_pitch <- function(unit = "meters", theme = "light", type = "full_pitch", or
                 size = 0.5, 
                 alpha = 0.0, 
                 colour = line_color) + # offensive 6 yard  box
+      geom_segment(aes(x = length, xend = length, y = mid_point_y - goal_width/2, yend = mid_point_y + goal_width/2), size = 2, colour = line_color) + # goal line
       geom_point(aes(x = length - penalty_distance, y = mid_point_y), size = 0.5, colour = line_color) + # offensive penalty spot
       geom_path(data = center_circle_data, aes(x,y), size = 0.5, colour = line_color) +
       geom_path(data = penalty_arc_right_data, aes(x,y), size = 0.5, colour = line_color) +
@@ -152,6 +155,7 @@ plot_pitch <- function(unit = "meters", theme = "light", type = "full_pitch", or
                 size = 0.5, 
                 alpha = 0.0, 
                 colour = line_color) + # defensive 6 yard box
+      geom_segment(aes(x = 0, xend = 0, y = mid_point_y - goal_width/2, yend = mid_point_y + goal_width/2), size = 2, colour = line_color) + # goal line
       geom_point(aes(x = penalty_distance, y = mid_point_y), size = 0.5, colour = line_color) + # defensive penalty spot
       geom_path(data = center_circle_data, aes(x,y), size = 0.5, colour = line_color) +
       geom_path(data = penalty_arc_left_data, aes(x,y), size = 0.5, colour = line_color) +
